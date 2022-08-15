@@ -1,0 +1,1 @@
+cmd_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_driver.o := arm-linux-gnueabihf-ld  -EL    -r -o /home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_driver.o /home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522.o /home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_api.o 
