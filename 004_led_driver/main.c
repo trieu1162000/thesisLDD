@@ -22,7 +22,7 @@ static void __exit etx_driver_exit(void);
 static int __init etx_driver_init(void)
 {
   
-  //Checking the GPIO is valid or not
+  //Checking the GPIO is valid or not 
   if(gpio_is_valid(GPIO_21) == false){
     pr_err("GPIO %d is not valid\n", GPIO_21);
     goto r_device;
