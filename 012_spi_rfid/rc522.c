@@ -367,6 +367,8 @@ static void RC522_exit(void)
 module_init(RC522_init);
 module_exit(RC522_exit);
 
+// test branch
+
 MODULE_AUTHOR("RealTime Goup-Tal,Alex,Shay,Avi");
 MODULE_DESCRIPTION("Linux Kernel Device Drivers Final Project");
 MODULE_LICENSE("Dual BSD/GPL");	
