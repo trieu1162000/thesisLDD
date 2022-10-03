@@ -1,8 +1,8 @@
-cmd_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_driver.mod.o := arm-linux-gnueabihf-gcc -Wp,-MD,/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/.rc522_driver.mod.o.d  -nostdinc -isystem /home/trieuhuynh/workspace/ldd/downloads/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/../lib/gcc/arm-linux-gnueabihf/7.5.0/include -I./arch/arm/include -I./arch/arm/include/generated  -I./include -I./arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -include ./include/linux/compiler_types.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-dwarf2-cfi-asm -fno-omit-frame-pointer -mapcs -mno-sched-prolog -fno-ipa-sra -msoft-float -mabi=aapcs-linux -mfpu=vfp -funwind-tables -marm -Wa,-mno-warn-deprecated -D__LINUX_ARM_ARCH__=7 -march=armv7-a -Uarm -fno-delete-null-pointer-checks -Wno-frame-address -Wno-format-truncation -Wno-format-overflow -Wno-int-in-bool-context -O2 --param=allow-store-data-races=0 -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DKBUILD_BASENAME='"rc522_driver.mod"' -DKBUILD_MODNAME='"rc522_driver"' -DMODULE  -c -o /home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_driver.mod.o /home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_driver.mod.c
+cmd_/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522_driver.mod.o := arm-linux-gnueabihf-gcc -Wp,-MD,/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/.rc522_driver.mod.o.d -nostdinc -isystem /home/trieuhuynh/Workspace/Downloads/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/../lib/gcc/arm-linux-gnueabihf/7.5.0/include -I./arch/arm/include -I./arch/arm/include/generated  -I./include -I./arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -include ./include/linux/compiler_types.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-dwarf2-cfi-asm -fno-omit-frame-pointer -mapcs -mno-sched-prolog -fno-ipa-sra -msoft-float -mabi=aapcs-linux -mfpu=vfp -funwind-tables -marm -Wa,-mno-warn-deprecated -D__LINUX_ARM_ARCH__=7 -march=armv7-a -Uarm -fno-delete-null-pointer-checks -Wno-frame-address -Wno-format-truncation -Wno-format-overflow -Wno-int-in-bool-context -O2 --param=allow-store-data-races=0 -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DKBUILD_BASENAME='"rc522_driver.mod"' -DKBUILD_MODNAME='"rc522_driver"' -DMODULE  -c -o /home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522_driver.mod.o /home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522_driver.mod.c
 
-source_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_driver.mod.o := /home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_driver.mod.c
+source_/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522_driver.mod.o := /home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522_driver.mod.c
 
-deps_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_driver.mod.o := \
+deps_/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522_driver.mod.o := \
     $(wildcard include/config/module/unload.h) \
     $(wildcard include/config/retpoline.h) \
   include/linux/kconfig.h \
@@ -191,7 +191,7 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_driver.mod
     $(wildcard include/config/debug/atomic/sleep.h) \
     $(wildcard include/config/arch/has/refcount.h) \
     $(wildcard include/config/panic/timeout.h) \
-  /home/trieuhuynh/workspace/ldd/downloads/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.5.0/include/stdarg.h \
+  /home/trieuhuynh/Workspace/Downloads/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.5.0/include/stdarg.h \
   include/linux/linkage.h \
   include/linux/stringify.h \
   include/linux/export.h \
@@ -494,6 +494,6 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_driver.mod
   include/linux/vermagic.h \
   include/generated/utsrelease.h \
 
-/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_driver.mod.o: $(deps_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_driver.mod.o)
+/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522_driver.mod.o: $(deps_/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522_driver.mod.o)
 
-$(deps_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_driver.mod.o):
+$(deps_/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522_driver.mod.o):
