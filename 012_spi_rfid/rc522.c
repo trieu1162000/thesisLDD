@@ -265,6 +265,16 @@ static int rc522_probe(struct spi_device *spi)
 	blockAddr = 1;
 	printk(KERN_DEBUG"%s\n", __func__);
 	rc522_spi = spi;
+	gpiodBuzz = devm_gpiod_get(&spi->dev, "buzz", GPIOD_OUT_LOW); // Get gpio desc from device tree component //
+	if(IS_ERR(gpiodBuzz)) {
+		printk(KERN_INFO "Cant get gpio - buzz - err num %d", IS_ERR(gpiodBuzz));
+		return -1;
+	}
+	printk(KERN_INFO "GPIO claimed successfully - number %d", desc_to_gpio(gpiodBuzz));
+	if(gpiod_direction_output(gpiodBuzz, 0)) { // Set the gpio pin on output //
+		printk(KERN_INFO "Cant set direction to gpio");
+		return -1;
+	}
 	return 0;
 };
 
@@ -332,35 +342,8 @@ static int RC522_init(void)
 	for(i=0; i < (sizeof(ioctls) / sizeof(IOCTLDescription_t)); i++)
 		printk(KERN_INFO"IOCTL Codes:\t%s=0x%02X\n", ioctls[i].name, ioctls[i].ioctlcode);
 
-	if(gpio_is_valid(GPIO_5) == false){
-    		pr_err("GPIO %d is not valid\n", GPIO_5);
-    		goto rem_device;
- 	}
-  
-  	//Requesting the GPIO
-  	if(gpio_request(GPIO_5,"GPIO_5") < 0){
-    		pr_err("ERROR: GPIO %d request\n", GPIO_5);
-    		goto rem_gpio;
- 	}
-  
-  	//configure the GPIO as output
-  	gpio_direction_output(GPIO_5, 0);
-  	gpio_set_value(GPIO_5, 0);
-  /* Using this call the GPIO 5 will be visible in /sys/class/gpio/
-  ** Now you can change the gpio values by using below commands also.
-  ** echo 1 > /sys/class/gpio/gpio21/value  (turn ON the LED)
-  ** echo 0 > /sys/class/gpio/gpio21/value  (turn OFF the LED)
-  ** cat /sys/class/gpio/gpio21/value  (read the value LED)
-  ** 
-  ** the second argument prevents the direction from being changed.
-  */
-  	gpio_export(GPIO_5, false);
-  
-  	pr_info("Devicei CS Driver Insert...Done!!!\n");
-  	return 0;
- 
-rem_gpio:
-  	gpio_free(GPIO_5);
+	return 0;
+
 rem_device:
 	device_destroy(dev_class,dev);
 rem_class:
@@ -373,9 +356,6 @@ rem_cdev:
 
 static void RC522_exit(void)
 {
-	gpio_set_value(GPIO_5,0);
-	gpio_unexport(GPIO_5);
-	gpio_free(GPIO_5);
 	spi_unregister_driver(&rc522_driver);
 	device_destroy(dev_class,dev);
 	class_destroy(dev_class);
