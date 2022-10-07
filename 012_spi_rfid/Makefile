@@ -2,7 +2,7 @@ obj-m := rc522_driver.o
 rc522_driver-objs := rc522.o rc522_api.o
 ARCH=arm
 CROSS_COMPILE=arm-linux-gnueabihf-
-KERN_DIR=/home/trieuhuynh/workspace/ldd/source/linux_bbb_4.19/
+KERN_DIR=/home/trieuhuynh/Workspace/source/linux_bbb_4.19/
 HOST_KERN_DIR=/lib/modules/$(shell uname -r)/build/
 
 all: 

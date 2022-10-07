@@ -1,8 +1,8 @@
-cmd_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522.o := arm-linux-gnueabihf-gcc -Wp,-MD,/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/.rc522.o.d  -nostdinc -isystem /home/trieuhuynh/workspace/ldd/downloads/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/../lib/gcc/arm-linux-gnueabihf/7.5.0/include -I./arch/arm/include -I./arch/arm/include/generated  -I./include -I./arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -include ./include/linux/compiler_types.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-dwarf2-cfi-asm -fno-omit-frame-pointer -mapcs -mno-sched-prolog -fno-ipa-sra -msoft-float -mabi=aapcs-linux -mfpu=vfp -funwind-tables -marm -Wa,-mno-warn-deprecated -D__LINUX_ARM_ARCH__=7 -march=armv7-a -Uarm -fno-delete-null-pointer-checks -Wno-frame-address -Wno-format-truncation -Wno-format-overflow -Wno-int-in-bool-context -O2 --param=allow-store-data-races=0 -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='"rc522"' -DKBUILD_MODNAME='"rc522_driver"' -c -o /home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/.tmp_rc522.o /home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522.c
+cmd_/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522.o := arm-linux-gnueabihf-gcc -Wp,-MD,/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/.rc522.o.d -nostdinc -isystem /home/trieuhuynh/Workspace/Downloads/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/../lib/gcc/arm-linux-gnueabihf/7.5.0/include -I./arch/arm/include -I./arch/arm/include/generated  -I./include -I./arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -include ./include/linux/compiler_types.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-dwarf2-cfi-asm -fno-omit-frame-pointer -mapcs -mno-sched-prolog -fno-ipa-sra -msoft-float -mabi=aapcs-linux -mfpu=vfp -funwind-tables -marm -Wa,-mno-warn-deprecated -D__LINUX_ARM_ARCH__=7 -march=armv7-a -Uarm -fno-delete-null-pointer-checks -Wno-frame-address -Wno-format-truncation -Wno-format-overflow -Wno-int-in-bool-context -O2 --param=allow-store-data-races=0 -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='"rc522"' -DKBUILD_MODNAME='"rc522_driver"' -c -o /home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/.tmp_rc522.o /home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522.c
 
-source_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522.o := /home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522.c
+source_/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522.o := /home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522.c
 
-deps_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522.o := \
+deps_/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522.o := \
   include/linux/kconfig.h \
     $(wildcard include/config/cpu/big/endian.h) \
     $(wildcard include/config/booger.h) \
@@ -15,7 +15,7 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522.o := \
   include/linux/compiler-gcc.h \
     $(wildcard include/config/retpoline.h) \
     $(wildcard include/config/arch/use/builtin/bswap.h) \
-  /home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522_api.h \
+  /home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522_api.h \
   include/linux/workqueue.h \
     $(wildcard include/config/debug/objects/work.h) \
     $(wildcard include/config/lockdep.h) \
@@ -63,7 +63,7 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522.o := \
     $(wildcard include/config/panic/timeout.h) \
     $(wildcard include/config/tracing.h) \
     $(wildcard include/config/ftrace/mcount/record.h) \
-  /home/trieuhuynh/workspace/ldd/downloads/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.5.0/include/stdarg.h \
+  /home/trieuhuynh/Workspace/Downloads/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.5.0/include/stdarg.h \
   include/linux/linkage.h \
   include/linux/stringify.h \
   include/linux/export.h \
@@ -938,7 +938,46 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522.o := \
     $(wildcard include/config/indirect/pio.h) \
   include/linux/vmalloc.h \
   include/linux/cdev.h \
+  include/linux/gpio.h \
+    $(wildcard include/config/arch/have/custom/gpio/h.h) \
+  arch/arm/include/asm/gpio.h \
+    $(wildcard include/config/arch/nr/gpio.h) \
+  include/asm-generic/gpio.h \
+  include/linux/gpio/driver.h \
+    $(wildcard include/config/gpiolib/irqchip.h) \
+    $(wildcard include/config/gpio/generic.h) \
+    $(wildcard include/config/of/gpio.h) \
+  include/linux/irq.h \
+    $(wildcard include/config/generic/irq/effective/aff/mask.h) \
+    $(wildcard include/config/generic/irq/ipi.h) \
+    $(wildcard include/config/irq/domain/hierarchy.h) \
+    $(wildcard include/config/generic/irq/migration.h) \
+    $(wildcard include/config/generic/pending/irq.h) \
+    $(wildcard include/config/hardirqs/sw/resend.h) \
+    $(wildcard include/config/generic/irq/legacy/alloc/hwirq.h) \
+    $(wildcard include/config/generic/irq/legacy.h) \
+    $(wildcard include/config/generic/irq/multi/handler.h) \
+  include/linux/irqhandler.h \
+  include/linux/io.h \
+  arch/arm/include/generated/asm/irq_regs.h \
+  include/asm-generic/irq_regs.h \
+  include/linux/irqdesc.h \
+    $(wildcard include/config/irq/preflow/fasteoi.h) \
+    $(wildcard include/config/generic/irq/debugfs.h) \
+    $(wildcard include/config/handle/domain/irq.h) \
+  arch/arm/include/asm/hw_irq.h \
+  include/linux/irqchip/chained_irq.h \
+  include/linux/irqdomain.h \
+    $(wildcard include/config/irq/domain.h) \
+  include/linux/pinctrl/pinctrl.h \
+    $(wildcard include/config/generic/pinconf.h) \
+  include/linux/pinctrl/pinctrl-state.h \
+  include/linux/pinctrl/devinfo.h \
+  include/linux/pinctrl/consumer.h \
+  include/linux/pinctrl/pinconf-generic.h \
+    $(wildcard include/config/debug/fs.h) \
+  include/linux/pinctrl/machine.h \
 
-/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522.o: $(deps_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522.o)
+/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522.o: $(deps_/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522.o)
 
-$(deps_/home/trieuhuynh/workspace/ldd/custom_drivers/012_spi_rfid/rc522.o):
+$(deps_/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522.o):

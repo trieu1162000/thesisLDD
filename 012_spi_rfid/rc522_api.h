@@ -22,6 +22,7 @@
 #include <linux/mutex.h>
 #include <linux/spi/spi.h>
 #include <linux/cdev.h>
+#include <linux/gpio.h> 
 
 #define PCD_IDLE              0x00
 #define PCD_AUTHENT           0x0E
@@ -123,8 +124,10 @@
 #define 	MI_NOTAGERR           (-1)
 #define 	MI_ERR                (-2)
 
-#define SET_SPI_CS  do{}while(0)
-#define CLR_SPI_CS  do{}while(0)
+#define GPIO_5		5
+
+#define SET_SPI_CS  do{gpio_set_value(GPIO_5, 1);}while(0)
+#define CLR_SPI_CS  do{gpio_set_value(GPIO_5, 0);}while(0)
 
 #define SET_SPI_CK  do{}while(0)
 #define CLR_SPI_CK  do{}while(0)
