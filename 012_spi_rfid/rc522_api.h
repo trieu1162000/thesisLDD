@@ -118,34 +118,34 @@
 #define     RFU3C                 0x3C   
 #define     RFU3D                 0x3D   
 #define     RFU3E                 0x3E   
-#define     RFU3F		  		  0x3F
+#define     RFU3F		  		        0x3F
 
 #define 	MI_OK                 0
 #define 	MI_NOTAGERR           (-1)
 #define 	MI_ERR                (-2)
 
-#define GPIO_5		5
+#define GPIO_5		  5
 
 #define SET_SPI_CS  do{gpio_set_value(GPIO_5, 1);}while(0)
 #define CLR_SPI_CS  do{gpio_set_value(GPIO_5, 0);}while(0)
 
-#define SET_SPI_CK  do{}while(0)
-#define CLR_SPI_CK  do{}while(0)
+#define SET_SPI_CK    do{}while(0)
+#define CLR_SPI_CK    do{}while(0)
 #define SET_SPI_MOSI  do{}while(0)
 #define CLR_SPI_MOSI  do{}while(0)
 #define STU_SPI_MISO  do{}while(0)
 
-#define SET_RC522RST do{}while(0) 
-#define CLR_RC522RST do{}while(0)
+#define SET_RC522RST  do{}while(0) 
+#define CLR_RC522RST  do{}while(0)
 
-#define RFID_IOCTL_BASE 0xCE
-#define CHANGE_PASSWD _IOW(RFID_IOCTL_BASE, 0x01, char *)
-#define CHANGE_BLOCK _IOW(RFID_IOCTL_BASE, (0x02 << 1), int)
-#define READ_CARD _IOR(RFID_IOCTL_BASE, (0x03 << 1), char *)
-#define WRITE_CARD _IOW(RFID_IOCTL_BASE, (0x04 << 1), char *)
-#define CHANGE_KEY _IO(RFID_IOCTL_BASE, (0x05 << 1))
-#define GET_ID _IOR(RFID_IOCTL_BASE, (0x06 << 1), char *)
-#define BEEP _IO(RFID_IOCTL_BASE, (0x07 << 1))
+#define RFID_IOCTL_BASE     0xCE
+#define CHANGE_PASSWD       _IOW(RFID_IOCTL_BASE, 0x01, char *)
+#define CHANGE_BLOCK        _IOW(RFID_IOCTL_BASE, (0x02 << 1), int)
+#define READ_CARD           _IOR(RFID_IOCTL_BASE, (0x03 << 1), char *)
+#define WRITE_CARD          _IOW(RFID_IOCTL_BASE, (0x04 << 1), char *)
+#define CHANGE_KEY          _IO(RFID_IOCTL_BASE, (0x05 << 1))
+#define GET_ID              _IOR(RFID_IOCTL_BASE, (0x06 << 1), char *)
+#define BEEP                _IO(RFID_IOCTL_BASE, (0x07 << 1))
 
 #define CLASS_NAME "RC522"
 #define DEVICE_NAME "rfid_rc522_dev"

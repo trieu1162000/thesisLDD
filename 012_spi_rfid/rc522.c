@@ -265,6 +265,16 @@ static int rc522_probe(struct spi_device *spi)
 	blockAddr = 1;
 	printk(KERN_DEBUG"%s\n", __func__);
 	rc522_spi = spi;
+	gpiodBuzz = devm_gpiod_get(&spi->dev, "buzz", GPIOD_OUT_LOW); // Get gpio desc from device tree component //
+	if(IS_ERR(gpiodBuzz)) {
+		printk(KERN_INFO "Cant get gpio - buzz - err num %d", IS_ERR(gpiodBuzz));
+		return -1;
+	}
+	printk(KERN_INFO "GPIO claimed successfully - number %d", desc_to_gpio(gpiodBuzz));
+	if(gpiod_direction_output(gpiodBuzz, 0)) { // Set the gpio pin on output //
+		printk(KERN_INFO "Cant set direction to gpio");
+		return -1;
+	}
 	return 0;
 };
 
@@ -332,6 +342,7 @@ static int RC522_init(void)
 	for(i=0; i < (sizeof(ioctls) / sizeof(IOCTLDescription_t)); i++)
 		printk(KERN_INFO"IOCTL Codes:\t%s=0x%02X\n", ioctls[i].name, ioctls[i].ioctlcode);
 
+<<<<<<< HEAD
 	if(gpio_is_valid(GPIO_5) == false){
     		pr_err("GPIO %d is not valid\n", GPIO_5);
     		goto rem_device;
@@ -361,6 +372,10 @@ static int RC522_init(void)
  
 rem_gpio:
   	gpio_free(GPIO_5);
+=======
+	return 0;
+
+>>>>>>> ffc8a6202043457ff83d12e59127fb7894498483
 rem_device:
 	device_destroy(dev_class,dev);
 rem_class:
@@ -373,9 +388,6 @@ rem_cdev:
 
 static void RC522_exit(void)
 {
-	gpio_set_value(GPIO_5,0);
-	gpio_unexport(GPIO_5);
-	gpio_free(GPIO_5);
 	spi_unregister_driver(&rc522_driver);
 	device_destroy(dev_class,dev);
 	class_destroy(dev_class);
@@ -386,6 +398,8 @@ static void RC522_exit(void)
 
 module_init(RC522_init);
 module_exit(RC522_exit);
+
+// test branch
 
 MODULE_AUTHOR("RealTime Goup-Tal,Alex,Shay,Avi");
 MODULE_DESCRIPTION("Linux Kernel Device Drivers Final Project");
