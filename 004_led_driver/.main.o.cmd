@@ -1,17 +1,19 @@
-cmd_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := arm-linux-gnueabihf-gcc -Wp,-MD,/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/.main.o.d  -nostdinc -isystem /home/trieuhuynh/workspace/ldd/downloads/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/../lib/gcc/arm-linux-gnueabihf/7.5.0/include -I./arch/arm/include -I./arch/arm/include/generated  -I./include -I./arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-dwarf2-cfi-asm -fno-omit-frame-pointer -mapcs -mno-sched-prolog -fno-ipa-sra -mabi=aapcs-linux -mfpu=vfp -funwind-tables -marm -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -fno-delete-null-pointer-checks -Wno-frame-address -Wno-format-truncation -Wno-format-overflow -Wno-int-in-bool-context -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='"main"'  -DKBUILD_MODNAME='"main"' -c -o /home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/.tmp_main.o /home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.c
+cmd_/home/trieuhuynh/Workspace/thesisLDD/004_led_driver/main.o := arm-linux-gnueabihf-gcc -Wp,-MD,/home/trieuhuynh/Workspace/thesisLDD/004_led_driver/.main.o.d -nostdinc -isystem /home/trieuhuynh/Workspace/Downloads/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/../lib/gcc/arm-linux-gnueabihf/7.5.0/include -I./arch/arm/include -I./arch/arm/include/generated  -I./include -I./arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -include ./include/linux/compiler_types.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-dwarf2-cfi-asm -fno-omit-frame-pointer -mapcs -mno-sched-prolog -fno-ipa-sra -msoft-float -mabi=aapcs-linux -mfpu=vfp -funwind-tables -marm -Wa,-mno-warn-deprecated -D__LINUX_ARM_ARCH__=7 -march=armv7-a -Uarm -fno-delete-null-pointer-checks -Wno-frame-address -Wno-format-truncation -Wno-format-overflow -Wno-int-in-bool-context -O2 --param=allow-store-data-races=0 -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='"main"' -DKBUILD_MODNAME='"main"' -c -o /home/trieuhuynh/Workspace/thesisLDD/004_led_driver/.tmp_main.o /home/trieuhuynh/Workspace/thesisLDD/004_led_driver/main.c
 
-source_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := /home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.c
+source_/home/trieuhuynh/Workspace/thesisLDD/004_led_driver/main.o := /home/trieuhuynh/Workspace/thesisLDD/004_led_driver/main.c
 
-deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
+deps_/home/trieuhuynh/Workspace/thesisLDD/004_led_driver/main.o := \
+  include/linux/kconfig.h \
+    $(wildcard include/config/cpu/big/endian.h) \
+    $(wildcard include/config/booger.h) \
+    $(wildcard include/config/foo.h) \
   include/linux/compiler_types.h \
     $(wildcard include/config/have/arch/compiler/h.h) \
     $(wildcard include/config/enable/must/check.h) \
-    $(wildcard include/config/enable/warn/deprecated.h) \
-  include/linux/compiler-gcc.h \
     $(wildcard include/config/arch/supports/optimized/inlining.h) \
     $(wildcard include/config/optimize/inlining.h) \
+  include/linux/compiler-gcc.h \
     $(wildcard include/config/retpoline.h) \
-    $(wildcard include/config/gcov/kernel.h) \
     $(wildcard include/config/arch/use/builtin/bswap.h) \
   include/linux/kernel.h \
     $(wildcard include/config/lbdaf.h) \
@@ -23,14 +25,15 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/panic/timeout.h) \
     $(wildcard include/config/tracing.h) \
     $(wildcard include/config/ftrace/mcount/record.h) \
-  /home/trieuhuynh/workspace/ldd/downloads/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.5.0/include/stdarg.h \
+  /home/trieuhuynh/Workspace/Downloads/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/lib/gcc/arm-linux-gnueabihf/7.5.0/include/stdarg.h \
   include/linux/linkage.h \
+  include/linux/compiler_types.h \
   include/linux/stringify.h \
   include/linux/export.h \
-    $(wildcard include/config/have/underscore/symbol/prefix.h) \
     $(wildcard include/config/modules.h) \
     $(wildcard include/config/modversions.h) \
     $(wildcard include/config/module/rel/crcs.h) \
+    $(wildcard include/config/have/arch/prel32/relocations.h) \
     $(wildcard include/config/trim/unused/ksyms.h) \
     $(wildcard include/config/unused/symbols.h) \
   arch/arm/include/asm/linkage.h \
@@ -67,7 +70,9 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/smp.h) \
     $(wildcard include/config/cpu/spectre.h) \
   include/asm-generic/barrier.h \
+  include/linux/kasan-checks.h \
   include/linux/bitops.h \
+  include/linux/bits.h \
   arch/arm/include/asm/bitops.h \
   include/linux/irqflags.h \
     $(wildcard include/config/trace/irqflags.h) \
@@ -85,16 +90,42 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
   arch/arm/include/uapi/asm/hwcap.h \
   include/asm-generic/irqflags.h \
   include/asm-generic/bitops/non-atomic.h \
+  include/asm-generic/bitops/builtin-__fls.h \
+  include/asm-generic/bitops/builtin-__ffs.h \
+  include/asm-generic/bitops/builtin-fls.h \
+  include/asm-generic/bitops/builtin-ffs.h \
+  include/asm-generic/bitops/ffz.h \
   include/asm-generic/bitops/fls64.h \
   include/asm-generic/bitops/sched.h \
   include/asm-generic/bitops/hweight.h \
   include/asm-generic/bitops/arch_hweight.h \
   include/asm-generic/bitops/const_hweight.h \
   include/asm-generic/bitops/lock.h \
+  include/linux/atomic.h \
+    $(wildcard include/config/generic/atomic64.h) \
+  arch/arm/include/asm/atomic.h \
+    $(wildcard include/config/arm/lpae.h) \
+  include/linux/prefetch.h \
+  arch/arm/include/asm/processor.h \
+    $(wildcard include/config/have/hw/breakpoint.h) \
+    $(wildcard include/config/binfmt/elf/fdpic.h) \
+    $(wildcard include/config/arm/errata/754327.h) \
+  arch/arm/include/asm/hw_breakpoint.h \
+  arch/arm/include/asm/unified.h \
+  arch/arm/include/asm/cache.h \
+    $(wildcard include/config/arm/l1/cache/shift.h) \
+    $(wildcard include/config/aeabi.h) \
+  arch/arm/include/asm/cmpxchg.h \
+    $(wildcard include/config/cpu/sa1100.h) \
+    $(wildcard include/config/cpu/sa110.h) \
+    $(wildcard include/config/cpu/v6.h) \
+  include/asm-generic/cmpxchg-local.h \
+  include/asm-generic/atomic-long.h \
+  include/asm-generic/bitops/find.h \
+    $(wildcard include/config/generic/find/first/bit.h) \
   include/asm-generic/bitops/le.h \
   arch/arm/include/uapi/asm/byteorder.h \
   include/linux/byteorder/little_endian.h \
-    $(wildcard include/config/cpu/big/endian.h) \
   include/uapi/linux/byteorder/little_endian.h \
   include/linux/swab.h \
   include/uapi/linux/swab.h \
@@ -108,6 +139,7 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
   include/linux/printk.h \
     $(wildcard include/config/message/loglevel/default.h) \
     $(wildcard include/config/console/loglevel/default.h) \
+    $(wildcard include/config/console/loglevel/quiet.h) \
     $(wildcard include/config/early/printk.h) \
     $(wildcard include/config/printk/nmi.h) \
     $(wildcard include/config/printk.h) \
@@ -120,15 +152,10 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/arch/has/cache/line/size.h) \
   include/uapi/linux/kernel.h \
   include/uapi/linux/sysinfo.h \
-  arch/arm/include/asm/cache.h \
-    $(wildcard include/config/arm/l1/cache/shift.h) \
-    $(wildcard include/config/aeabi.h) \
   include/linux/dynamic_debug.h \
     $(wildcard include/config/jump/label.h) \
   include/linux/jump_label.h \
   arch/arm/include/asm/jump_label.h \
-  arch/arm/include/asm/unified.h \
-    $(wildcard include/config/arm/asm/unified.h) \
   include/linux/build_bug.h \
   arch/arm/include/asm/div64.h \
   arch/arm/include/asm/compiler.h \
@@ -144,11 +171,13 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/event/tracing.h) \
     $(wildcard include/config/module/unload.h) \
     $(wildcard include/config/constructors.h) \
+    $(wildcard include/config/function/error/injection.h) \
   include/linux/list.h \
     $(wildcard include/config/debug/list.h) \
   include/linux/poison.h \
     $(wildcard include/config/illegal/pointer/value.h) \
     $(wildcard include/config/page/poisoning/zero.h) \
+  include/linux/const.h \
   include/uapi/linux/const.h \
   include/linux/stat.h \
   arch/arm/include/uapi/asm/stat.h \
@@ -159,11 +188,11 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/debug/lock/alloc.h) \
   include/linux/spinlock.h \
     $(wildcard include/config/debug/spinlock.h) \
-    $(wildcard include/config/generic/lockbreak.h) \
     $(wildcard include/config/preempt.h) \
   include/linux/preempt.h \
     $(wildcard include/config/preempt/count.h) \
     $(wildcard include/config/debug/preempt.h) \
+    $(wildcard include/config/trace/preempt/toggle.h) \
     $(wildcard include/config/preempt/notifiers.h) \
   arch/arm/include/generated/asm/preempt.h \
   include/asm-generic/preempt.h \
@@ -175,14 +204,17 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/bug/on/data/corruption.h) \
   arch/arm/include/asm/bug.h \
     $(wildcard include/config/debug/bugverbose.h) \
-    $(wildcard include/config/arm/lpae.h) \
   arch/arm/include/asm/opcodes.h \
     $(wildcard include/config/cpu/endian/be32.h) \
   include/asm-generic/bug.h \
     $(wildcard include/config/bug.h) \
     $(wildcard include/config/generic/bug/relative/pointers.h) \
   include/linux/restart_block.h \
-    $(wildcard include/config/compat.h) \
+  include/linux/time64.h \
+    $(wildcard include/config/64bit/time.h) \
+  include/linux/math64.h \
+    $(wildcard include/config/arch/supports/int128.h) \
+  include/uapi/linux/time.h \
   arch/arm/include/asm/thread_info.h \
     $(wildcard include/config/crunch.h) \
     $(wildcard include/config/arm/thumbee.h) \
@@ -194,7 +226,6 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/cpu/copy/v4wb.h) \
     $(wildcard include/config/cpu/copy/feroceon.h) \
     $(wildcard include/config/cpu/copy/fa.h) \
-    $(wildcard include/config/cpu/sa1100.h) \
     $(wildcard include/config/cpu/xscale.h) \
     $(wildcard include/config/cpu/copy/v6.h) \
     $(wildcard include/config/kuser/helpers.h) \
@@ -227,14 +258,8 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
   include/linux/lockdep.h \
     $(wildcard include/config/lockdep.h) \
     $(wildcard include/config/lock/stat.h) \
-    $(wildcard include/config/lockdep/crossrelease.h) \
   include/linux/rwlock_types.h \
   arch/arm/include/asm/spinlock.h \
-  include/linux/prefetch.h \
-  arch/arm/include/asm/processor.h \
-    $(wildcard include/config/have/hw/breakpoint.h) \
-    $(wildcard include/config/arm/errata/754327.h) \
-  arch/arm/include/asm/hw_breakpoint.h \
   include/linux/rwlock.h \
   include/linux/spinlock_api_smp.h \
     $(wildcard include/config/inline/spin/lock.h) \
@@ -247,6 +272,7 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/inline/spin/unlock/bh.h) \
     $(wildcard include/config/inline/spin/unlock/irq.h) \
     $(wildcard include/config/inline/spin/unlock/irqrestore.h) \
+    $(wildcard include/config/generic/lockbreak.h) \
   include/linux/rwlock_api_smp.h \
     $(wildcard include/config/inline/read/lock.h) \
     $(wildcard include/config/inline/write/lock.h) \
@@ -266,18 +292,7 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/inline/write/unlock/irq.h) \
     $(wildcard include/config/inline/read/unlock/irqrestore.h) \
     $(wildcard include/config/inline/write/unlock/irqrestore.h) \
-  include/linux/atomic.h \
-    $(wildcard include/config/generic/atomic64.h) \
-  arch/arm/include/asm/atomic.h \
-  arch/arm/include/asm/cmpxchg.h \
-    $(wildcard include/config/cpu/sa110.h) \
-    $(wildcard include/config/cpu/v6.h) \
-  include/asm-generic/cmpxchg-local.h \
-  include/asm-generic/atomic-long.h \
-  include/linux/math64.h \
-    $(wildcard include/config/arch/supports/int128.h) \
-  include/linux/time64.h \
-  include/uapi/linux/time.h \
+  include/linux/time32.h \
   include/linux/uidgid.h \
     $(wildcard include/config/multiuser.h) \
     $(wildcard include/config/user/ns.h) \
@@ -304,12 +319,10 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/flat/node/mem/map.h) \
     $(wildcard include/config/page/extension.h) \
     $(wildcard include/config/no/bootmem.h) \
-    $(wildcard include/config/numa/balancing.h) \
     $(wildcard include/config/deferred/struct/page/init.h) \
     $(wildcard include/config/transparent/hugepage.h) \
     $(wildcard include/config/have/memory/present.h) \
     $(wildcard include/config/have/memoryless/nodes.h) \
-    $(wildcard include/config/need/node/memmap/size.h) \
     $(wildcard include/config/have/memblock/node/map.h) \
     $(wildcard include/config/need/multiple/nodes.h) \
     $(wildcard include/config/have/arch/early/pfn/to/nid.h) \
@@ -337,12 +350,14 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/hugetlb/page.h) \
     $(wildcard include/config/hugetlb/page/size/variable.h) \
   include/linux/page-flags-layout.h \
+    $(wildcard include/config/numa/balancing.h) \
   include/generated/bounds.h \
   include/linux/memory_hotplug.h \
     $(wildcard include/config/arch/has/add/pages.h) \
     $(wildcard include/config/have/arch/nodedata/extension.h) \
     $(wildcard include/config/have/bootmem/info/node.h) \
   include/linux/notifier.h \
+    $(wildcard include/config/tree/srcu.h) \
   include/linux/errno.h \
   include/uapi/linux/errno.h \
   arch/arm/include/generated/uapi/asm/errno.h \
@@ -362,7 +377,6 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
   include/asm-generic/rwsem.h \
   include/linux/srcu.h \
     $(wildcard include/config/tiny/srcu.h) \
-    $(wildcard include/config/tree/srcu.h) \
     $(wildcard include/config/srcu.h) \
   include/linux/rcupdate.h \
     $(wildcard include/config/preempt/rcu.h) \
@@ -400,6 +414,7 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
   arch/arm/include/asm/timex.h \
   include/generated/timeconst.h \
   include/linux/timekeeping.h \
+  include/linux/timekeeping32.h \
   include/linux/debugobjects.h \
     $(wildcard include/config/debug/objects.h) \
     $(wildcard include/config/debug/objects/free.h) \
@@ -409,7 +424,6 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/rcu/fanout.h) \
     $(wildcard include/config/rcu/fanout/leaf.h) \
   include/linux/completion.h \
-    $(wildcard include/config/lockdep/completions.h) \
   include/linux/topology.h \
     $(wildcard include/config/use/percpu/numa/node/id.h) \
     $(wildcard include/config/sched/smt.h) \
@@ -426,8 +440,11 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
   include/asm-generic/percpu.h \
   include/linux/percpu-defs.h \
     $(wildcard include/config/debug/force/weak/per/cpu.h) \
+    $(wildcard include/config/virtualization.h) \
+    $(wildcard include/config/amd/mem/encrypt.h) \
   arch/arm/include/asm/topology.h \
     $(wildcard include/config/arm/cpu/topology.h) \
+  include/linux/arch_topology.h \
   include/asm-generic/topology.h \
   include/linux/sysctl.h \
     $(wildcard include/config/sysctl.h) \
@@ -460,6 +477,10 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/ia64.h) \
     $(wildcard include/config/ppc64.h) \
   include/linux/rbtree_latch.h \
+  include/linux/error-injection.h \
+  include/asm-generic/error-injection.h \
+  include/linux/tracepoint-defs.h \
+  include/linux/static_key.h \
   arch/arm/include/asm/module.h \
     $(wildcard include/config/arm/unwind.h) \
     $(wildcard include/config/arm/module/plts.h) \
@@ -480,8 +501,8 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/file/locking.h) \
     $(wildcard include/config/quota.h) \
     $(wildcard include/config/fs/dax.h) \
-    $(wildcard include/config/mandatory/file/locking.h) \
     $(wildcard include/config/block.h) \
+    $(wildcard include/config/mandatory/file/locking.h) \
     $(wildcard include/config/migration.h) \
   include/linux/wait_bit.h \
   include/linux/dcache.h \
@@ -497,15 +518,14 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/have/arch/hash.h) \
   include/linux/path.h \
   include/linux/list_lru.h \
-    $(wildcard include/config/slob.h) \
+    $(wildcard include/config/memcg/kmem.h) \
   include/linux/shrinker.h \
+  include/linux/xarray.h \
   include/linux/pid.h \
   include/linux/mm_types.h \
-    $(wildcard include/config/have/cmpxchg/double.h) \
     $(wildcard include/config/have/aligned/struct/page.h) \
     $(wildcard include/config/userfaultfd.h) \
     $(wildcard include/config/have/arch/compat/mmap/bases.h) \
-    $(wildcard include/config/pgtable/levels.h) \
     $(wildcard include/config/membarrier.h) \
     $(wildcard include/config/aio.h) \
     $(wildcard include/config/mmu/notifier.h) \
@@ -538,46 +558,7 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
   include/linux/uuid.h \
   include/uapi/linux/uuid.h \
   include/linux/errseq.h \
-  include/uapi/linux/fs.h \
-  include/uapi/linux/limits.h \
-  include/uapi/linux/ioctl.h \
-  arch/arm/include/generated/uapi/asm/ioctl.h \
-  include/asm-generic/ioctl.h \
-  include/uapi/asm-generic/ioctl.h \
-  include/linux/quota.h \
-    $(wildcard include/config/quota/netlink/interface.h) \
-  include/linux/percpu_counter.h \
-  include/uapi/linux/dqblk_xfs.h \
-  include/linux/dqblk_v1.h \
-  include/linux/dqblk_v2.h \
-  include/linux/dqblk_qtree.h \
-  include/linux/projid.h \
-  include/uapi/linux/quota.h \
-  include/linux/nfs_fs_i.h \
-  include/linux/cdev.h \
-  include/linux/device.h \
-    $(wildcard include/config/debug/devres.h) \
-    $(wildcard include/config/generic/msi/irq/domain.h) \
-    $(wildcard include/config/pinctrl.h) \
-    $(wildcard include/config/generic/msi/irq.h) \
-    $(wildcard include/config/dma/cma.h) \
-    $(wildcard include/config/of.h) \
-    $(wildcard include/config/devtmpfs.h) \
-    $(wildcard include/config/sysfs/deprecated.h) \
-  include/linux/ioport.h \
-  include/linux/klist.h \
-  include/linux/pinctrl/devinfo.h \
-    $(wildcard include/config/pm.h) \
-  include/linux/pinctrl/consumer.h \
-  include/linux/seq_file.h \
-  include/linux/cred.h \
-    $(wildcard include/config/debug/credentials.h) \
-    $(wildcard include/config/keys.h) \
-  include/linux/key.h \
-  include/linux/assoc_array.h \
-    $(wildcard include/config/associative/array.h) \
-  include/linux/selinux.h \
-    $(wildcard include/config/security/selinux.h) \
+  include/linux/ioprio.h \
   include/linux/sched.h \
     $(wildcard include/config/virt/cpu/accounting/native.h) \
     $(wildcard include/config/sched/info.h) \
@@ -588,7 +569,8 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/blk/dev/io/trace.h) \
     $(wildcard include/config/compat/brk.h) \
     $(wildcard include/config/cgroups.h) \
-    $(wildcard include/config/cc/stackprotector.h) \
+    $(wildcard include/config/blk/cgroup.h) \
+    $(wildcard include/config/stackprotector.h) \
     $(wildcard include/config/arch/has/scaled/cputime.h) \
     $(wildcard include/config/virt/cpu/accounting/gen.h) \
     $(wildcard include/config/posix/timers.h) \
@@ -601,7 +583,9 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/cpusets.h) \
     $(wildcard include/config/intel/rdt.h) \
     $(wildcard include/config/futex.h) \
+    $(wildcard include/config/compat.h) \
     $(wildcard include/config/perf/events.h) \
+    $(wildcard include/config/rseq.h) \
     $(wildcard include/config/task/delay/acct.h) \
     $(wildcard include/config/fault/injection.h) \
     $(wildcard include/config/latencytop.h) \
@@ -609,14 +593,13 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/kcov.h) \
     $(wildcard include/config/bcache.h) \
     $(wildcard include/config/vmap/stack.h) \
+    $(wildcard include/config/arch/task/struct/on/stack.h) \
+    $(wildcard include/config/debug/rseq.h) \
   include/uapi/linux/sched.h \
   include/linux/sem.h \
   include/uapi/linux/sem.h \
   include/linux/ipc.h \
-  include/linux/rhashtable.h \
-  include/linux/jhash.h \
-  include/linux/unaligned/packed_struct.h \
-  include/linux/list_nulls.h \
+  include/linux/rhashtable-types.h \
   include/uapi/linux/ipc.h \
   arch/arm/include/generated/uapi/asm/ipcbuf.h \
   include/uapi/asm-generic/ipcbuf.h \
@@ -670,17 +653,44 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
   include/uapi/asm-generic/siginfo.h \
   include/linux/task_io_accounting.h \
     $(wildcard include/config/task/io/accounting.h) \
-  include/linux/sched/user.h \
-    $(wildcard include/config/fanotify.h) \
-    $(wildcard include/config/posix/mqueue.h) \
-    $(wildcard include/config/bpf/syscall.h) \
-    $(wildcard include/config/net.h) \
-  include/linux/pinctrl/pinctrl-state.h \
+  include/uapi/linux/rseq.h \
+  include/linux/sched/rt.h \
+  include/linux/iocontext.h \
+  include/uapi/linux/fs.h \
+  include/uapi/linux/limits.h \
+  include/uapi/linux/ioctl.h \
+  arch/arm/include/generated/uapi/asm/ioctl.h \
+  include/asm-generic/ioctl.h \
+  include/uapi/asm-generic/ioctl.h \
+  include/linux/quota.h \
+    $(wildcard include/config/quota/netlink/interface.h) \
+  include/linux/percpu_counter.h \
+  include/uapi/linux/dqblk_xfs.h \
+  include/linux/dqblk_v1.h \
+  include/linux/dqblk_v2.h \
+  include/linux/dqblk_qtree.h \
+  include/linux/projid.h \
+  include/uapi/linux/quota.h \
+  include/linux/nfs_fs_i.h \
+  include/linux/cdev.h \
+  include/linux/device.h \
+    $(wildcard include/config/debug/devres.h) \
+    $(wildcard include/config/generic/msi/irq/domain.h) \
+    $(wildcard include/config/pinctrl.h) \
+    $(wildcard include/config/generic/msi/irq.h) \
+    $(wildcard include/config/dma/cma.h) \
+    $(wildcard include/config/of.h) \
+    $(wildcard include/config/devtmpfs.h) \
+    $(wildcard include/config/sysfs/deprecated.h) \
+  include/linux/ioport.h \
+  include/linux/klist.h \
   include/linux/pm.h \
     $(wildcard include/config/vt/console/sleep.h) \
+    $(wildcard include/config/pm.h) \
     $(wildcard include/config/pm/clk.h) \
     $(wildcard include/config/pm/generic/domains.h) \
   include/linux/ratelimit.h \
+  include/linux/overflow.h \
   arch/arm/include/asm/device.h \
     $(wildcard include/config/dmabounce.h) \
     $(wildcard include/config/iommu/api.h) \
@@ -691,7 +701,6 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
   include/linux/delay.h \
   arch/arm/include/asm/delay.h \
   include/linux/uaccess.h \
-  include/linux/kasan-checks.h \
   arch/arm/include/asm/uaccess.h \
     $(wildcard include/config/cpu/sw/domain/pan.h) \
     $(wildcard include/config/cpu/use/domains.h) \
@@ -708,35 +717,18 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/arch/nr/gpio.h) \
   include/asm-generic/gpio.h \
   include/linux/of.h \
-    $(wildcard include/config/sparc.h) \
     $(wildcard include/config/of/dynamic.h) \
-    $(wildcard include/config/attach/node.h) \
-    $(wildcard include/config/detach/node.h) \
-    $(wildcard include/config/add/property.h) \
-    $(wildcard include/config/remove/property.h) \
-    $(wildcard include/config/update/property.h) \
+    $(wildcard include/config/sparc.h) \
+    $(wildcard include/config/of/promtree.h) \
+    $(wildcard include/config/of/kobj.h) \
     $(wildcard include/config/of/numa.h) \
-    $(wildcard include/config/no/change.h) \
-    $(wildcard include/config/change/add.h) \
-    $(wildcard include/config/change/remove.h) \
-    $(wildcard include/config/of/resolve.h) \
     $(wildcard include/config/of/overlay.h) \
   include/linux/mod_devicetable.h \
   include/linux/property.h \
   include/linux/fwnode.h \
-  include/linux/slab.h \
-    $(wildcard include/config/debug/slab.h) \
-    $(wildcard include/config/failslab.h) \
-    $(wildcard include/config/have/hardened/usercopy/allocator.h) \
-    $(wildcard include/config/slab.h) \
-    $(wildcard include/config/slub.h) \
-  include/linux/kmemleak.h \
-    $(wildcard include/config/debug/kmemleak.h) \
-  include/linux/vmalloc.h \
-  include/linux/kasan.h \
   include/linux/gpio/driver.h \
-    $(wildcard include/config/gpio/generic.h) \
     $(wildcard include/config/gpiolib/irqchip.h) \
+    $(wildcard include/config/gpio/generic.h) \
     $(wildcard include/config/of/gpio.h) \
   include/linux/irq.h \
     $(wildcard include/config/generic/irq/effective/aff/mask.h) \
@@ -747,6 +739,7 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/hardirqs/sw/resend.h) \
     $(wildcard include/config/generic/irq/legacy/alloc/hwirq.h) \
     $(wildcard include/config/generic/irq/legacy.h) \
+    $(wildcard include/config/generic/irq/multi/handler.h) \
   include/linux/irqhandler.h \
   include/linux/irqreturn.h \
   include/linux/irqnr.h \
@@ -769,9 +762,19 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
   include/asm-generic/io.h \
     $(wildcard include/config/generic/iomap.h) \
     $(wildcard include/config/virt/to/bus.h) \
+  include/linux/logic_pio.h \
+    $(wildcard include/config/indirect/pio.h) \
+  include/linux/vmalloc.h \
+  include/linux/slab.h \
+    $(wildcard include/config/debug/slab.h) \
+    $(wildcard include/config/failslab.h) \
+    $(wildcard include/config/have/hardened/usercopy/allocator.h) \
+    $(wildcard include/config/slab.h) \
+    $(wildcard include/config/slub.h) \
+    $(wildcard include/config/slob.h) \
+  include/linux/kasan.h \
   arch/arm/include/asm/irq.h \
     $(wildcard include/config/sparse/irq.h) \
-    $(wildcard include/config/multi/irq/handler.h) \
   arch/arm/include/generated/asm/irq_regs.h \
   include/asm-generic/irq_regs.h \
   include/linux/irqdesc.h \
@@ -785,34 +788,29 @@ deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o := \
     $(wildcard include/config/irq/domain.h) \
   include/linux/pinctrl/pinctrl.h \
     $(wildcard include/config/generic/pinconf.h) \
+  include/linux/seq_file.h \
+  include/linux/cred.h \
+    $(wildcard include/config/debug/credentials.h) \
+    $(wildcard include/config/keys.h) \
+  include/linux/key.h \
+  include/linux/assoc_array.h \
+    $(wildcard include/config/associative/array.h) \
+  include/linux/selinux.h \
+    $(wildcard include/config/security/selinux.h) \
+  include/linux/sched/user.h \
+    $(wildcard include/config/fanotify.h) \
+    $(wildcard include/config/posix/mqueue.h) \
+    $(wildcard include/config/bpf/syscall.h) \
+    $(wildcard include/config/net.h) \
+  include/linux/pinctrl/pinctrl-state.h \
+  include/linux/pinctrl/devinfo.h \
+  include/linux/pinctrl/consumer.h \
   include/linux/pinctrl/pinconf-generic.h \
-    $(wildcard include/config/bias/bus/hold.h) \
-    $(wildcard include/config/bias/disable.h) \
-    $(wildcard include/config/bias/high/impedance.h) \
-    $(wildcard include/config/bias/pull/down.h) \
-    $(wildcard include/config/bias/pull/pin/default.h) \
-    $(wildcard include/config/bias/pull/up.h) \
-    $(wildcard include/config/drive/open/drain.h) \
-    $(wildcard include/config/drive/open/source.h) \
-    $(wildcard include/config/drive/push/pull.h) \
-    $(wildcard include/config/drive/strength.h) \
-    $(wildcard include/config/input/debounce.h) \
-    $(wildcard include/config/input/enable.h) \
-    $(wildcard include/config/input/schmitt.h) \
-    $(wildcard include/config/input/schmitt/enable.h) \
-    $(wildcard include/config/low/power/mode.h) \
-    $(wildcard include/config/output/enable.h) \
-    $(wildcard include/config/output.h) \
-    $(wildcard include/config/power/source.h) \
-    $(wildcard include/config/sleep/hardware/state.h) \
-    $(wildcard include/config/slew/rate.h) \
-    $(wildcard include/config/end.h) \
-    $(wildcard include/config/max.h) \
     $(wildcard include/config/debug/fs.h) \
   include/linux/pinctrl/machine.h \
   include/linux/gpio/consumer.h \
     $(wildcard include/config/gpio/sysfs.h) \
 
-/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o: $(deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o)
+/home/trieuhuynh/Workspace/thesisLDD/004_led_driver/main.o: $(deps_/home/trieuhuynh/Workspace/thesisLDD/004_led_driver/main.o)
 
-$(deps_/home/trieuhuynh/workspace/ldd/custom_drivers/004_led_driver/main.o):
+$(deps_/home/trieuhuynh/Workspace/thesisLDD/004_led_driver/main.o):

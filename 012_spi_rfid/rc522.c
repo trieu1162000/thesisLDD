@@ -348,9 +348,9 @@ static int RC522_init(void)
   	gpio_set_value(GPIO_5, 0);
   /* Using this call the GPIO 5 will be visible in /sys/class/gpio/
   ** Now you can change the gpio values by using below commands also.
-  ** echo 1 > /sys/class/gpio/gpio21/value  (turn ON the LED)
-  ** echo 0 > /sys/class/gpio/gpio21/value  (turn OFF the LED)
-  ** cat /sys/class/gpio/gpio21/value  (read the value LED)
+  ** echo 1 > /sys/class/gpio/gpio5/value  (turn ON the LED)
+  ** echo 0 > /sys/class/gpio/gpio5/value  (turn OFF the LED)
+  ** cat /sys/class/gpio/gpio5/value  (read the value LED)
   ** 
   ** the second argument prevents the direction from being changed.
   */
