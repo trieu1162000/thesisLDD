@@ -141,7 +141,7 @@ static struct file_operations rc522_fops = {
 		.open = rc522_open,
 		.release = rc522_release,
 		.read = rc522_read,
-		.write = rc522_write,
+		// .write = rc522_write,
 		// .unlocked_ioctl = rc522_ioctl,
 };
 
