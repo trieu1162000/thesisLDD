@@ -48,7 +48,7 @@
 #define PICC_REQIDL										0x26   	// find the antenna area does not enter hibernation
 #define PICC_REQALL										0x52   	// find all the cards antenna area
 #define PICC_ANTICOLL									0x93   	// anti-collision
-#define PICC_SElECTTAG								    0x93   	// election card
+#define PICC_SELECTTAG								    0x93   	// election card
 #define PICC_AUTHENT1A								    0x60   	// authentication key A
 #define PICC_AUTHENT1B								    0x61   	// authentication key B
 #define PICC_READ										0x30   	// Read Block
@@ -132,23 +132,25 @@
 #define MFRC522_DUMMY									0x00		// Dummy byte
 #define MFRC522_MAX_LEN								    16			// Buf len byte
 
-#define RFID_IOCTL_BASE     0xCE
-#define CHANGE_PASSWD       _IOW(RFID_IOCTL_BASE, 0x01, char *)
-#define CHANGE_BLOCK        _IOW(RFID_IOCTL_BASE, (0x02 << 1), int)
-#define READ_CARD           _IOR(RFID_IOCTL_BASE, (0x03 << 1), char *)
-#define WRITE_CARD          _IOW(RFID_IOCTL_BASE, (0x04 << 1), char *)
-#define CHANGE_KEY          _IO(RFID_IOCTL_BASE, (0x05 << 1))
-#define GET_ID              _IOR(RFID_IOCTL_BASE, (0x06 << 1), char *)
-#define BEEP                _IO(RFID_IOCTL_BASE, (0x07 << 1))
+// #define RFID_IOCTL_BASE     0xCE
+// #define CHANGE_PASSWD       _IOW(RFID_IOCTL_BASE, 0x01, char *)
+// #define CHANGE_BLOCK        _IOW(RFID_IOCTL_BASE, (0x02 << 1), int)
+// #define READ_CARD           _IOR(RFID_IOCTL_BASE, (0x03 << 1), char *)
+// #define WRITE_CARD          _IOW(RFID_IOCTL_BASE, (0x04 << 1), char *)
+// #define CHANGE_KEY          _IO(RFID_IOCTL_BASE, (0x05 << 1))
+// #define GET_ID              _IOR(RFID_IOCTL_BASE, (0x06 << 1), char *)
+// #define BEEP                _IO(RFID_IOCTL_BASE, (0x07 << 1))
 
 #define CLASS_NAME "RC522"
 #define DEVICE_NAME "rfid_rc522_dev"
 
-typedef struct ioctl_description {
-  uint32_t ioctlcode;
-  char	name[24];
-} IOCTLDescription_t;
+// typedef struct ioctl_description {
+//   uint32_t ioctlcode;
+//   char	name[24];
+// } IOCTLDescription_t;
 
 extern struct spi_device *rc522_spi;
+extern void MFRC522Init(void);
+extern uint8_t MFRC522Check(uint8_t* id);
 
 #endif
