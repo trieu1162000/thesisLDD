@@ -33,7 +33,7 @@
 // RC522
 uint8_t MFRC522Compare(uint8_t* cardID, uint8_t* compareID);
 void MFRC522WriteRaw(uint8_t ucAddress, uint8_t ucValue);
-uint8_t MFRC522_ReadRaw(uint8_t ucAddress);
+uint8_t MFRC522ReadRaw(uint8_t ucAddress);
 void MFRC522SetBitMask(uint8_t reg, uint8_t mask);
 void MFRC522ClearBitMask(uint8_t reg, uint8_t mask);
 uint8_t MFRC522Request(uint8_t reqMode, uint8_t* tagType);
@@ -61,11 +61,11 @@ void MFRC522WriteRaw(uint8_t ucAddress, uint8_t ucValue) {
 	spi_message_init( &SPIMessage );
 	memset( SPITransfer, 0, sizeof(SPITransfer) );
 
-	st[ 0 ].tx_buf = &ucAddr;  
-	st[ 0 ].len = 1;
+	SPITransfer[ 0 ].tx_buf = &ucAddr;  
+	SPITransfer[ 0 ].len = 1;
 	spi_message_add_tail( &SPITransfer[0], &SPIMessage );
-	st[ 1 ].tx_buf = &ucValue;  
-	st[ 1 ].len = 1;  
+	SPITransfer[ 1 ].tx_buf = &ucValue;  
+	SPITransfer[ 1 ].len = 1;  
 	spi_message_add_tail( &SPITransfer[1], &SPIMessage );  
 	spi_sync( rc522_spi, &SPIMessage );
 
@@ -84,7 +84,7 @@ uint8_t MFRC522ReadRaw(uint8_t ucAddress) {
 	int ret;
 	CLR_SPI_CS;
 	ucAddr = ((ucAddress << 1) & 0x7E) | 0x80;
-	ret = spi_write_then_read(rc522_spi, &ucAdrr, 1, &ucValue, 1);
+	ret = spi_write_then_read(rc522_spi, &ucAddr, 1, &ucValue, 1);
 	if(ret != 0) {
 		printk("spi_write_then_read err = %d\n", ret);
 	}
@@ -111,18 +111,18 @@ uint8_t MFRC522Compare(uint8_t* cardID, uint8_t* compareID) {
 }
 
 void MFRC522SetBitMask(uint8_t reg, uint8_t mask) {
-	MFRC522WriteRaw(reg, MFRC522_ReadRaw(reg) | mask);
+	MFRC522WriteRaw(reg, MFRC522ReadRaw(reg) | mask);
 }
 
 void MFRC522ClearBitMask(uint8_t reg, uint8_t mask){
-	MFRC522WriteRaw(reg, MFRC522_ReadRaw(reg) & (~mask));
+	MFRC522WriteRaw(reg, MFRC522ReadRaw(reg) & (~mask));
 }
 
-uint8_t MFRC522_Request(uint8_t reqMode, uint8_t* tagType) {
+uint8_t MFRC522Request(uint8_t reqMode, uint8_t* tagType) {
 	uint8_t status;  
 	uint16_t backBits;										// The received data bits
 
-	MFRC522_WriteRaw(MFRC522_REG_BIT_FRAMING, 0x07);		// TxLastBists = BitFramingReg[2..0]
+	MFRC522WriteRaw(MFRC522_REG_BIT_FRAMING, 0x07);		// TxLastBists = BitFramingReg[2..0]
 	tagType[0] = reqMode;
 	status = MFRC522ToCard(PCD_TRANSCEIVE, tagType, 1, tagType, &backBits);
 	if ((status != MI_OK) || (backBits != 0x10)) 
@@ -233,7 +233,7 @@ void MFRC522CalculateCRC(uint8_t*  pIndata, uint8_t len, uint8_t* pOutData) {
 	for (i = 0; i < len; i++) 
 	MFRC522WriteRaw(MFRC522_REG_FIFO_DATA, *(pIndata+i));
 
-	MFRC522_WriteRaw(MFRC522_REG_COMMAND, PCD_CALCCRC);
+	MFRC522WriteRaw(MFRC522_REG_COMMAND, PCD_CALCCRC);
 
 	// Wait CRC calculation is complete
 	i = 0xFF;
