@@ -94,9 +94,21 @@ uint8_t MFRC522ReadRaw(uint8_t ucAddress) {
 
 uint8_t MFRC522Check(uint8_t* id) {
 	uint8_t status;
+	printk(KERN_DEBUG"Request -> Anticoll -> Halt\n");
 	status = MFRC522Request(PICC_REQIDL, id);							// Find cards, return card type
-	if (status == MI_OK) 
-	status = MFRC522Anticoll(id);										// Card detected. Anti-collision, return card serial number 4 bytes
+	if (status == MI_OK) {
+		printk(KERN_DEBUG"Pass to call MFRC522Request Func\n");
+		status = MFRC522Anticoll(id);									// Card detected. Anti-collision, return card serial number 4 bytes
+		if (status == MI_OK) 
+			printk(KERN_DEBUG"Pass to call MFRC522Anticoll Func\n");
+		else 
+			printk(KERN_DEBUG"Fail to call MFRC522Anticoll Func\n");
+		printk(KERN_DEBUG"Next to the MFRC522Halt Func\n");
+	}
+	else 
+	{
+		printk(KERN_DEBUG"Fail to call MFRC522Request Func\nSkip MFRC522Anticoll Func and Jump to the MFRC522Halt Func\n");
+	}
 	MFRC522Halt();														// Command card into hibernation 
 	return status;
 }
@@ -126,7 +138,12 @@ uint8_t MFRC522Request(uint8_t reqMode, uint8_t* tagType) {
 	tagType[0] = reqMode;
 	status = MFRC522ToCard(PCD_TRANSCEIVE, tagType, 1, tagType, &backBits);
 	if ((status != MI_OK) || (backBits != 0x10)) 
-	status = MI_ERR;
+	{
+		status = MI_ERR;
+		printk(KERN_DEBUG"Fail to call MFRC522ToCard Func\n");
+	}
+	else 
+		printk(KERN_DEBUG"Pass to call MFRC522ToCard Func\n");
 	return status;
 }
 
@@ -183,8 +200,11 @@ uint8_t MFRC522ToCard(uint8_t command, uint8_t* sendData, uint8_t sendLen, uint8
 	if (i != 0)  {
 		if (!(MFRC522ReadRaw(MFRC522_REG_ERROR) & 0x1B)) {
 			status = MI_OK;
-			if (n & irqEn & 0x01) 
-			status = MI_NOTAGERR;
+			printk(KERN_DEBUG"MI_OK with MFRC522ReadRaw Func\n");
+			if (n & irqEn & 0x01) {
+				status = MI_NOTAGERR;
+				printk(KERN_DEBUG"MI_NOTAGERR with MFRC522ReadRaw Func\n");
+			}
 			if (command == PCD_TRANSCEIVE) {
 				n = MFRC522ReadRaw(MFRC522_REG_FIFO_LEVEL);
 				lastBits = MFRC522ReadRaw(MFRC522_REG_CONTROL) & 0x07;
@@ -197,7 +217,10 @@ uint8_t MFRC522ToCard(uint8_t command, uint8_t* sendData, uint8_t sendLen, uint8
 				for (i = 0; i < n; i++) 
 				backData[i] = MFRC522ReadRaw(MFRC522_REG_FIFO_DATA);		// Reading the received data in FIFO
 			}
-		} else status = MI_ERR;
+		} else {
+			status = MI_ERR;
+			printk(KERN_DEBUG"MI_ERR with MFRC522ReadRaw Func\n");
+		}
 	}
 	return status;
 }
