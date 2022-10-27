@@ -94,7 +94,7 @@ uint8_t MFRC522ReadRaw(uint8_t ucAddress) {
 
 uint8_t MFRC522Check(uint8_t* id) {
 	uint8_t status;
-	printk(KERN_DEBUG"Request -> Anticoll -> Halt\n");
+	printk(KERN_DEBUG"%s:Request -> Anticoll -> Halt\n,__FUNCTION__");
 	status = MFRC522Request(PICC_REQIDL, id);							// Find cards, return card type
 	if (status == MI_OK) {
 		printk(KERN_DEBUG"Pass to call MFRC522Request Func\n");
