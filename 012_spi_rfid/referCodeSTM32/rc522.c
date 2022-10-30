@@ -18,12 +18,13 @@ static int rc522_open(struct inode *inode,struct file *filp)
 
 static ssize_t rc522_read (struct file *filp, char *buf, size_t count, loff_t *f_pos)
 {
-		if (MFRC522Check(cardID) == MI_OK) 
+	if (MFRC522Check(cardID) == MI_OK) 
     {
-      printk(KERN_DEBUG"Card info:[%02x-%02x-%02x-%02x-%02x] \r\n", cardID[0], cardID[1], cardID[2], cardID[3], cardID[4]);
+      	printk(KERN_DEBUG"Card info:[%02x-%02x-%02x-%02x-%02x] \r\n", cardID[0], cardID[1], cardID[2], cardID[3], cardID[4]);
     }
     else 
-      printk(KERN_DEBUG"Cannot read Card ID!\n");
+      	//printk(KERN_DEBUG"Cannot read Card ID!\n");
+		printk(KERN_DEBUG"Card info:[%02x-%02x-%02x-%02x-%02x] \r\n", cardID[0], cardID[1], cardID[2], cardID[3], cardID[4]);
     return sizeof(buf);
   
 }
