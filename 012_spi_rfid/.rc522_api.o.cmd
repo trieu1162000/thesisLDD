@@ -938,45 +938,6 @@ deps_/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522_api.o := \
     $(wildcard include/config/indirect/pio.h) \
   include/linux/vmalloc.h \
   include/linux/cdev.h \
-  include/linux/gpio.h \
-    $(wildcard include/config/arch/have/custom/gpio/h.h) \
-  arch/arm/include/asm/gpio.h \
-    $(wildcard include/config/arch/nr/gpio.h) \
-  include/asm-generic/gpio.h \
-  include/linux/gpio/driver.h \
-    $(wildcard include/config/gpiolib/irqchip.h) \
-    $(wildcard include/config/gpio/generic.h) \
-    $(wildcard include/config/of/gpio.h) \
-  include/linux/irq.h \
-    $(wildcard include/config/generic/irq/effective/aff/mask.h) \
-    $(wildcard include/config/generic/irq/ipi.h) \
-    $(wildcard include/config/irq/domain/hierarchy.h) \
-    $(wildcard include/config/generic/irq/migration.h) \
-    $(wildcard include/config/generic/pending/irq.h) \
-    $(wildcard include/config/hardirqs/sw/resend.h) \
-    $(wildcard include/config/generic/irq/legacy/alloc/hwirq.h) \
-    $(wildcard include/config/generic/irq/legacy.h) \
-    $(wildcard include/config/generic/irq/multi/handler.h) \
-  include/linux/irqhandler.h \
-  include/linux/io.h \
-  arch/arm/include/generated/asm/irq_regs.h \
-  include/asm-generic/irq_regs.h \
-  include/linux/irqdesc.h \
-    $(wildcard include/config/irq/preflow/fasteoi.h) \
-    $(wildcard include/config/generic/irq/debugfs.h) \
-    $(wildcard include/config/handle/domain/irq.h) \
-  arch/arm/include/asm/hw_irq.h \
-  include/linux/irqchip/chained_irq.h \
-  include/linux/irqdomain.h \
-    $(wildcard include/config/irq/domain.h) \
-  include/linux/pinctrl/pinctrl.h \
-    $(wildcard include/config/generic/pinconf.h) \
-  include/linux/pinctrl/pinctrl-state.h \
-  include/linux/pinctrl/devinfo.h \
-  include/linux/pinctrl/consumer.h \
-  include/linux/pinctrl/pinconf-generic.h \
-    $(wildcard include/config/debug/fs.h) \
-  include/linux/pinctrl/machine.h \
 
 /home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522_api.o: $(deps_/home/trieuhuynh/Workspace/thesisLDD/012_spi_rfid/rc522_api.o)
 

@@ -29,8 +29,6 @@ __attribute__((section("__versions"))) = {
 	{ 0xf238fdf7, "cdev_del" },
 	{ 0x58f3a1ad, "cdev_init" },
 	{ 0x2e5810c6, "__aeabi_unwind_cpp_pr1" },
-	{ 0x47229b5c, "gpio_request" },
-	{ 0x395c5ae9, "gpio_to_desc" },
 	{ 0xaf87d05c, "device_destroy" },
 	{ 0xfa53f3eb, "__spi_register_driver" },
 	{ 0xb1ad28e0, "__gnu_mcount_nc" },
@@ -41,20 +39,14 @@ __attribute__((section("__versions"))) = {
 	{ 0x7c32d0f0, "printk" },
 	{ 0xef34a95d, "driver_unregister" },
 	{ 0x7c1318e3, "device_create" },
-	{ 0x4e8b35ac, "gpiod_direction_output_raw" },
 	{ 0x8e865d3c, "arm_delay_ops" },
 	{ 0x68f31cbd, "__list_add_valid" },
 	{ 0xe0a1cfb8, "spi_sync" },
 	{ 0x8fe01c8, "cdev_add" },
-	{ 0x848cee4, "gpiod_unexport" },
 	{ 0xdb7305a1, "__stack_chk_fail" },
-	{ 0xfe990052, "gpio_free" },
 	{ 0x1e047854, "warn_slowpath_fmt" },
 	{ 0xcab2fae0, "spi_write_then_read" },
-	{ 0xda575cc, "gpiod_export" },
-	{ 0xddc1fca4, "gpiod_set_raw_value" },
 	{ 0x3df0823f, "class_destroy" },
-	{ 0xe1f86e31, "gpiod_set_value_cansleep" },
 	{ 0x8f678b07, "__stack_chk_guard" },
 	{ 0xebdab104, "__class_create" },
 	{ 0xe3ec2f2b, "alloc_chrdev_region" },
@@ -67,3 +59,5 @@ __attribute__((section(".modinfo"))) =
 
 MODULE_ALIAS("of:N*T*Cshtl,rfid_rc522");
 MODULE_ALIAS("of:N*T*Cshtl,rfid_rc522C*");
+
+MODULE_INFO(srcversion, "201B6D9D31764652E6F05F2");
