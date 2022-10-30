@@ -181,7 +181,9 @@ char PcdWrite(unsigned char addr,unsigned char *pData)
 
 		status = PcdComMF522(PCD_TRANSCEIVE,ucComMF522Buf,18,ucComMF522Buf,&unLen);
 		if ((status != MI_OK) || (unLen != 4) || ((ucComMF522Buf[0] & 0x0F) != 0x0A))
-		{   status = MI_ERR;   }
+		{   
+			status = MI_ERR;   
+		}
 	}
 
 	return status;
