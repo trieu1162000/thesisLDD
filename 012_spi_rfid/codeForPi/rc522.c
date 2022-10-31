@@ -304,10 +304,10 @@ static int RC522_init(void)
 
 	struct spi_board_info spi_device_info = {
 		.modalias = "rc522",
-		.max_speed_hz = 1000000,
+		.max_speed_hz = 16000000,
 		.bus_num = 0,
 		.chip_select = 0,
-		.mode = 3,
+		.mode = SPI_MODE_0,
 	};
 
 	/* Get access to spi bus */
