@@ -1,22 +1,4 @@
-#include <linux/kernel.h>
-#include <linux/module.h>
-#include <linux/slab.h>
-#include <linux/input.h>
-#include <linux/init.h>
-#include <linux/errno.h>
-#include <linux/delay.h>
-#include <linux/miscdevice.h>
-#include <linux/platform_device.h>
-#include <asm/uaccess.h>
-#include <linux/poll.h>
-#include <linux/wait.h>
-#include <linux/interrupt.h>
-#include <linux/sched.h>
-#include <asm/atomic.h>
-#include <linux/mutex.h>
-#include <linux/spi/spi.h>
 #include "rc522_api.h"
-#include <linux/workqueue.h>
 
 
 #define  N_1  1
@@ -55,12 +37,10 @@ struct workqueue_struct *rc522_wq;
 struct work_struct rc522_work;
 
 struct spi_device *rc522_spi;
-struct spi_board_info spi_device_info = {
-	.modalias = "rc522",
-	.max_speed_hz = 24000000,
-	.bus_num = 0,
-	.chip_select = 0,
-};
+dev_t dev;
+static struct cdev rfid_cdev;
+static struct class *dev_class;
+static struct device *dev_struct;
 
 void delay_ms(uint tms)
 {
@@ -278,6 +258,37 @@ static long rc522_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	return 0;
 }
 
+static int rc522_remove(struct spi_device *spi)
+{
+
+	return 0;
+}
+
+static int rc522_probe(struct spi_device *spi)
+{
+	printk(KERN_DEBUG "SPI number = %d",spi->controller->bus_num);
+	blockAddr = 1;
+	printk(KERN_DEBUG"%s\n", __func__);
+	rc522_spi = spi;
+	return 0;
+};
+
+static struct of_device_id spi_rfid_dt_ids[] = { // DTS compatible //
+		{ .compatible = "shtl,rfid_rc522" },
+		{},
+};
+
+MODULE_DEVICE_TABLE(of, spi_rfid_dt_ids); // Add our device to Devices Table - for "Hot Pluggin" //
+
+static struct spi_driver rc522_driver = {
+		.driver = {
+				.name			= "rfid_rc522",
+				.owner  		= THIS_MODULE,
+				.of_match_table = of_match_ptr(spi_rfid_dt_ids),
+		},
+		.probe = rc522_probe,
+		.remove = rc522_remove,
+};
 
 static struct file_operations rc522_fops = {
 	.owner = THIS_MODULE,
@@ -289,61 +300,67 @@ static struct file_operations rc522_fops = {
 	.unlocked_ioctl = rc522_ioctl,
 };
 
-static struct miscdevice rc522_misc_device = {
-	.minor = MISC_DYNAMIC_MINOR,
-	.name = "rfid_rc522_dev",
-	.fops = &rc522_fops,
-};
-
 static int RC522_init(void)
 {
 	int res;
-	struct spi_master *master;
 	/* Register the character device (atleast try) */
 	printk(KERN_DEBUG"rfid_rc522 module init.\n");
 
-	res =  misc_register(&rc522_misc_device);
-	if(res < 0) {
-		printk(KERN_DEBUG"device register failed with %d.\n",res);
-		return res;
-	}
 
-	/* Get access to spi bus */
-	master = spi_busnum_to_master(0);
-	/* Check if we could get the master */
-	if(!master) {
-		printk("There is no spi bus with Nr. %d\n", 0);
+	if((alloc_chrdev_region(&dev, 0, 1, DEVICE_NAME)) < 0) {
+		printk(KERN_INFO "Error allocation Major number !\n");
 		return -1;
 	}
+	printk(KERN_INFO "RFID_RC522 module has been inserted, Major num: %d | Minor num: %d\n", MAJOR(dev), MINOR(dev));
 
-	/* Create new SPI device */
-	rc522_spi = spi_new_device(master, &spi_device_info);
-	if(!rc522_spi) {
-		printk("Could not create device!\n");
-		return -1;
+	cdev_init(&rfid_cdev,&rc522_fops);
+
+	if((cdev_add(&rfid_cdev, dev, 1)) < 0) {
+		printk(KERN_INFO "Cannot add rfid_cdev to the system\n");
+		goto rem_cdev;
+	}
+	printk(KERN_INFO "Char device for RC522_RFID module has been added");
+
+	if((dev_class = class_create(THIS_MODULE,CLASS_NAME)) == NULL) {
+		printk(KERN_INFO "Couldnt create a class");
+		goto rem_class;
 	}
 
-	rc522_spi -> bits_per_word = 8;
+	if((dev_struct = device_create(dev_class,NULL,dev,NULL,DEVICE_NAME)) == NULL) {
+		printk(KERN_INFO "Talos device cannot be created");
+		goto rem_device;
+	}
 
-	/* Setup the bus for device's parameters */
-	if(spi_setup(rc522_spi) != 0){
-		printk("Could not change bus setup!\n");
-		spi_unregister_device(rc522_spi);
-		return -1;
+	if(spi_register_driver(&rc522_driver) < 0) {
+		printk(KERN_DEBUG"SPI driver register failed\n");
+		goto rem_device;
 	}
 
 	return 0;
+
+rem_device:
+	device_destroy(dev_class,dev);
+rem_class:
+	class_destroy(dev_class);
+rem_cdev:
+	cdev_del(&rfid_cdev);
+	unregister_chrdev_region(dev,1);
+	return -1;
 }
 
 static void RC522_exit(void)
 {
-	printk(KERN_DEBUG"module is removed\n");
-	spi_unregister_device(rc522_spi);
-	misc_deregister(&rc522_misc_device);
+	spi_unregister_driver(&rc522_driver);
+	device_destroy(dev_class,dev);
+	class_destroy(dev_class);
+	cdev_del(&rfid_cdev);
+	unregister_chrdev_region(dev,1);
+	printk(KERN_DEBUG"RC522_RFID module has been removed\n");
 }
 
 module_init(RC522_init);
 module_exit(RC522_exit);
 
-MODULE_AUTHOR("Trieu Huynh");
-MODULE_LICENSE("Dual BSD/GPL");	
+MODULE_AUTHOR("Trieu Huynh <vikingtc4@gmail.com>");
+MODULE_DESCRIPTION("Device Driver for RFID RC522 Module");
+MODULE_LICENSE("GPL");	
