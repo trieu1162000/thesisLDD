@@ -135,33 +135,22 @@
 #define SET_RC522RST do{}while(0) 
 #define CLR_RC522RST do{}while(0)
 
-<<<<<<< HEAD
-#define RFID_IOCTL_BASE 0xCE
-#define CHANGE_PASSWD _IOW(RFID_IOCTL_BASE, 0x01, char *)
-#define CHANGE_BLOCK _IOW(RFID_IOCTL_BASE, (0x02 << 1), int)
-#define READ_CARD _IOR(RFID_IOCTL_BASE, (0x03 << 1), char *)
-#define WRITE_CARD _IOW(RFID_IOCTL_BASE, (0x04 << 1), char *)
-#define CHANGE_KEY _IO(RFID_IOCTL_BASE, (0x05 << 1))
-#define GET_ID _IOR(RFID_IOCTL_BASE, (0x06 << 1), char *)
-#define BEEP _IO(RFID_IOCTL_BASE, (0x07 << 1))
-=======
-// #define RFID_IOCTL_BASE     0xCE
-// #define CHANGE_PASSWD       _IOW(RFID_IOCTL_BASE, 0x01, char *)
-// #define CHANGE_BLOCK        _IOW(RFID_IOCTL_BASE, (0x02 << 1), int)
-// #define READ_CARD           _IOR(RFID_IOCTL_BASE, (0x03 << 1), char *)
-// #define WRITE_CARD          _IOW(RFID_IOCTL_BASE, (0x04 << 1), char *)
-// #define CHANGE_KEY          _IO(RFID_IOCTL_BASE, (0x05 << 1))
-// #define GET_ID              _IOR(RFID_IOCTL_BASE, (0x06 << 1), char *)
-// #define BEEP                _IO(RFID_IOCTL_BASE, (0x07 << 1))
->>>>>>> 34236d8c1cfb90ddec05b3d121ae1ae5e12d831c
+#define RFID_IOCTL_BASE     0xCE
+#define CHANGE_PASSWD       _IOW(RFID_IOCTL_BASE, 0x01, char *)
+#define CHANGE_BLOCK        _IOW(RFID_IOCTL_BASE, (0x02 << 1), int)
+#define READ_CARD           _IOR(RFID_IOCTL_BASE, (0x03 << 1), char *)
+#define WRITE_CARD          _IOW(RFID_IOCTL_BASE, (0x04 << 1), char *)
+#define CHANGE_KEY          _IO(RFID_IOCTL_BASE, (0x05 << 1))
+#define GET_ID              _IOR(RFID_IOCTL_BASE, (0x06 << 1), char *)
+#define BEEP                _IO(RFID_IOCTL_BASE, (0x07 << 1))
 
 #define CLASS_NAME "RC522"
 #define DEVICE_NAME "rfid_rc522_dev"
 
-// typedef struct ioctl_description {
-//   uint32_t ioctlcode;
-//   char	name[24];
-// } IOCTLDescription_t;
+typedef struct ioctl_description {
+  uint32_t ioctlcode;
+  char	name[24];
+} IOCTLDescription_t;
 
 extern char PcdReset(void);
 extern char PcdRequest(unsigned char req_code,unsigned char *pTagType);

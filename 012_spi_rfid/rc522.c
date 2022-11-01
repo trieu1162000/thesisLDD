@@ -8,16 +8,16 @@
 
 #define  RELOAD_COUNT  0xfb
 
-// static IOCTLDescription_t ioctls[] = {
-// 		{ .ioctlcode = CHANGE_PASSWD, .name = "CHANGE PASSWD", },
-// 		{ .ioctlcode = CHANGE_BLOCK, .name = "CHANGE BLOCK", },
-// 		{ .ioctlcode = READ_CARD, .name = "READ CARD" },
-// 		{ .ioctlcode = WRITE_CARD, .name = "WRITE CARD" },
-// 		{ .ioctlcode = CHANGE_KEY, .name = "CHANGE KEY" },
-// 		{ .ioctlcode = GET_ID, .name = "GET ID" },
-// 		{ .ioctlcode = BEEP, .name = "BEEP" },
+static IOCTLDescription_t ioctls[] = {
+		{ .ioctlcode = CHANGE_PASSWD, .name = "CHANGE PASSWD", },
+		{ .ioctlcode = CHANGE_BLOCK, .name = "CHANGE BLOCK", },
+		{ .ioctlcode = READ_CARD, .name = "READ CARD" },
+		{ .ioctlcode = WRITE_CARD, .name = "WRITE CARD" },
+		{ .ioctlcode = CHANGE_KEY, .name = "CHANGE KEY" },
+		{ .ioctlcode = GET_ID, .name = "GET ID" },
+		{ .ioctlcode = BEEP, .name = "BEEP" },
 
-// };
+};
 
 typedef unsigned char uchar;
 uchar NewKey[16]={0xff,0xff,0xff,0xff,0xff,0xff,0xff,0x07,0x80,0x69,0x00,0x00,0x00,0x00,0x00,0x00};
@@ -33,6 +33,8 @@ static unsigned char MLastSelectedSnr[4];
 uint blockAddr,operationcard;
 
 struct spi_device *rc522_spi;
+
+static struct gpio_desc *gpiodBuzz;
 
 dev_t dev;
 static struct cdev rfid_cdev;
@@ -87,8 +89,7 @@ static char rc522_loop_work(uint opnd)
 	if (opnd == GET_ID) {
 		PcdHalt();	
 		return 0;	
-	}
-	else if (opnd == READ_CARD) {
+	} else if (opnd == READ_CARD) {
 		status=PcdAuthState(PICC_AUTHENT1A,blockAddr,PassWd,MLastSelectedSnr);
 		if(status!=MI_OK)
 		{
@@ -166,39 +167,38 @@ static ssize_t rc522_read (struct file *filp, char *buf, size_t count, loff_t *f
 	return sizeof(read_data_buff);
 }
 
-// static ssize_t rc522_write (struct file *filp, const char *buf, size_t count, loff_t *f_pos)
-// {
-// 	if (blockAddr == 0) {
-// 		printk(KERN_DEBUG"block[0] is reserveed, can't write\n");
-// 		return 0;
-// 	}
-// 	if (blockAddr < 0 || blockAddr > 63) {
-// 		printk(KERN_DEBUG"block[%d] unreachable, please set the write block first", blockAddr);
-// 		return -0;
-// 	} 
-// 	if ((blockAddr % 4) == 3) {
-// 		printk(KERN_DEBUG"block[%d] is key block, not data block\n", blockAddr);
-// 		return -0;
-// 	}
-// 	memset(WriteData, 0, sizeof(WriteData));
-// 	if (copy_from_user(WriteData, (char *)buf, count)) {
-// 		printk(KERN_DEBUG"%s, [line %d] copy from user err.\n", __FILE__, __LINE__);
-// 		return 0;
-// 	}
-// 	/*PcdReset();*/
-// 	operationcard =  WRITE_CARD;
-// 	if(rc522_loop_work(operationcard))
-// 		return -EFAULT;
-// 	return 0;
-// }
+static ssize_t rc522_write (struct file *filp, const char *buf, size_t count, loff_t *f_pos)
+{
+	if (blockAddr == 0) {
+		printk(KERN_DEBUG"block[0] is reserveed, can't write\n");
+		return 0;
+	}
+	if (blockAddr < 0 || blockAddr > 63) {
+		printk(KERN_DEBUG"block[%d] unreachable, please set the write block first", blockAddr);
+		return -0;
+	} 
+	if ((blockAddr % 4) == 3) {
+		printk(KERN_DEBUG"block[%d] is key block, not data block\n", blockAddr);
+		return -0;
+	}
+	memset(WriteData, 0, sizeof(WriteData));
+	if (copy_from_user(WriteData, (char *)buf, count)) {
+		printk(KERN_DEBUG"%s, [line %d] copy from user err.\n", __FILE__, __LINE__);
+		return 0;
+	}
+	/*PcdReset();*/
+	operationcard =  WRITE_CARD;
+	if(rc522_loop_work(operationcard))
+		return -EFAULT;
+	return 0;
+}
 
-// static int rc522_release(struct inode *inode,struct file *filp)
-// {
-// 	printk(KERN_DEBUG"%s\n", __func__);
-// 	return 0;
-// }
+static int rc522_release(struct inode *inode,struct file *filp)
+{
+	printk(KERN_DEBUG"%s\n", __func__);
+	return 0;
+}
 
-<<<<<<< HEAD
 static long rc522_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
 	printk(KERN_DEBUG "CMD = 0x%x\n", cmd);
@@ -241,50 +241,6 @@ static long rc522_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	}
 	return 0;
 }
-=======
-// static long rc522_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
-// {
-// 	printk(KERN_DEBUG "CMD = 0x%x\n", cmd);
-// 	switch(cmd) {
-// 	case CHANGE_PASSWD:
-// 		operationcard = CHANGE_PASSWD;
-// 		if (copy_from_user(PassWd, (char *)arg, sizeof(PassWd))) {
-// 			printk(KERN_DEBUG"%s:change pass word err", __func__);
-// 			return -EFAULT;
-// 		}
-// 		break;
-// 	case CHANGE_BLOCK:
-// 		if (arg < 0 || arg > 63) {
-// 			printk(KERN_DEBUG"block number err %lu\n", arg);
-// 			return -EFAULT;
-// 		}
-// 		blockAddr = (int)arg;
-// 		printk(KERN_INFO "block = %d", blockAddr);
-// 		break;
-// 	case READ_CARD:
-// 		break;
-// 	case WRITE_CARD:
-// 		break;
-// 	case CHANGE_KEY:
-// 		operationcard = CHANGE_KEY;
-// 		break;
-// 	case GET_ID:
-// 		operationcard =  GET_ID;
-// 		if(!rc522_loop_work(operationcard)){
-// 			if (copy_to_user((char *)arg, MLastSelectedSnr,4)) {
-// 				printk(KERN_DEBUG"%s, [line %d] copy to user err.\n", __FILE__, __LINE__);
-// 				return -EFAULT;
-// 			}
-// 		}
-// 		else
-// 			return -EFAULT;
-// 		break;
-// 	default:
-// 		break;
-// 	}
-// 	return 0;
-// }
->>>>>>> 34236d8c1cfb90ddec05b3d121ae1ae5e12d831c
 
 
 static int rc522_remove(struct spi_device *spi)
@@ -298,19 +254,6 @@ static int rc522_probe(struct spi_device *spi)
 	blockAddr = 1;
 	printk(KERN_DEBUG"%s\n", __func__);
 	rc522_spi = spi;
-<<<<<<< HEAD
-=======
-	// gpiodBuzz = devm_gpiod_get(&spi->dev, "buzz", GPIOD_OUT_LOW); // Get gpio desc from device tree component //
-	// if(IS_ERR(gpiodBuzz)) {
-	// 	printk(KERN_INFO "Cant get gpio - buzz - err num %d", IS_ERR(gpiodBuzz));
-	// 	return -1;
-	// }
-	// printk(KERN_INFO "GPIO claimed successfully - number %d", desc_to_gpio(gpiodBuzz));
-	// if(gpiod_direction_output(gpiodBuzz, 0)) { // Set the gpio pin on output //
-	// 	printk(KERN_INFO "Cant set direction to gpio");
-	// 	return -1;
-	// }
->>>>>>> 34236d8c1cfb90ddec05b3d121ae1ae5e12d831c
 	return 0;
 };
 
@@ -336,13 +279,14 @@ static struct file_operations rc522_fops = {
 		.open = rc522_open,
 		.release = rc522_release,
 		.read = rc522_read,
-		//.write = rc522_write,
-		//.unlocked_ioctl = rc522_ioctl,
+		.write = rc522_write,
+		.unlocked_ioctl = rc522_ioctl,
 };
 
 static int RC522_init(void)
 {
 	int i;
+	
 	printk(KERN_DEBUG"RFID_RC522 module init.\n");
 
 	if((alloc_chrdev_region(&dev, 0, 1, DEVICE_NAME)) < 0) {
@@ -374,12 +318,6 @@ static int RC522_init(void)
 		goto rem_device;
 	}
 
-<<<<<<< HEAD
-	for(i=0; i < (sizeof(ioctls) / sizeof(IOCTLDescription_t)); i++)
-		printk(KERN_INFO"IOCTL Codes:\t%s=0x%02X\n", ioctls[i].name, ioctls[i].ioctlcode);
-
-=======
->>>>>>> 34236d8c1cfb90ddec05b3d121ae1ae5e12d831c
 	return 0;
 
 rem_device:
@@ -405,7 +343,9 @@ static void RC522_exit(void)
 module_init(RC522_init);
 module_exit(RC522_exit);
 
+// test branch
+
 MODULE_AUTHOR("RealTime Goup-Tal,Alex,Shay,Avi");
 MODULE_DESCRIPTION("Linux Kernel Device Drivers Final Project");
 MODULE_LICENSE("Dual BSD/GPL");	
-MODULE_VERSION("0.1.0");
+
