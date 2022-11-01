@@ -1,5 +1,23 @@
+#include <linux/kernel.h>
+#include <linux/module.h>
+#include <linux/slab.h>
+#include <linux/input.h>
+#include <linux/init.h>
+#include <linux/errno.h>
+#include <linux/delay.h>
+#include <linux/miscdevice.h>
+#include <linux/platform_device.h>
+#include <asm/uaccess.h>
+#include <linux/poll.h>
+#include <linux/wait.h>
+#include <linux/interrupt.h>
+#include <linux/sched.h>
+#include <asm/atomic.h>
+#include <linux/mutex.h>
+#include <linux/spi/spi.h>
 #include "rc522_api.h"
-
+#include <linux/workqueue.h>
+#include <linux/of.h>
 
 #define  N_1  1
 #define  N_2  2
@@ -37,10 +55,6 @@ struct workqueue_struct *rc522_wq;
 struct work_struct rc522_work;
 
 struct spi_device *rc522_spi;
-dev_t dev;
-static struct cdev rfid_cdev;
-static struct class *dev_class;
-static struct device *dev_struct;
 
 void delay_ms(uint tms)
 {
@@ -50,11 +64,9 @@ void InitRc522(void)
 {
 	unsigned char a;
 	PcdReset();
-
-	printk("opening\n");
 	a = ReadRawRC(TReloadRegL);
 	if(a != 30)
-		printk(KERN_DEBUG"NO RC522%d\n",a);
+		printk(KERN_DEBUG"FUCK ,NO RC522%d\n",a);
 	else
 		printk(KERN_DEBUG"RC522 exist\n");
 	PcdAntennaOff();  
@@ -68,13 +80,13 @@ static char rc522_loop_work(uchar opnd)
 	char status;
 
 	PcdReset();
-	status=PcdRequest(PICC_REQIDL,&RevBuffer[0]);
+	status=PcdRequest(PICC_REQIDL,&RevBuffer[0]);//Ñ°ÌìÏßÇøÄÚÎ´½øÈëÐÝÃß×´Ì¬µÄ¿¨£¬·µ»Ø¿¨Æ¬ÀàÐÍ 2×Ö½Ú
 	if(status!=MI_OK)
 	{
 		printk(KERN_DEBUG"search card: no card\n");
 		return -EFAULT;
 	}
-	status=PcdAnticoll(&RevBuffer[2]);
+	status=PcdAnticoll(&RevBuffer[2]);//·À³å×²£¬·µ»Ø¿¨µÄÐòÁÐºÅ 4×Ö½Ú
 	if(status!=MI_OK)
 	{
 		printk(KERN_DEBUG"get card nu: no number\n");
@@ -82,7 +94,7 @@ static char rc522_loop_work(uchar opnd)
 	} 
 	memcpy(MLastSelectedSnr,&RevBuffer[2],4);
 
-	status=PcdSelect(MLastSelectedSnr);
+	status=PcdSelect(MLastSelectedSnr);//Ñ¡¿¨
 	if(status!=MI_OK)
 	{
 		printk(KERN_DEBUG"select card: no card\n");
@@ -92,7 +104,7 @@ static char rc522_loop_work(uchar opnd)
 		PcdHalt();	
 		return 0;	
 	}
-	else if (opnd == READ_CARD) {
+	else if (opnd == READ_CARD) {//¶Á¿¨
 		status=PcdAuthState(PICC_AUTHENT1A,KuaiN,PassWd,MLastSelectedSnr);
 		if(status!=MI_OK)
 		{
@@ -114,7 +126,7 @@ static char rc522_loop_work(uchar opnd)
 			}
 			printk(KERN_DEBUG"\n");
 		}
-	} else if (opnd == CHANGE_KEY) {
+	} else if (opnd == CHANGE_KEY) {//ÐÞ¸ÄÃÜÂë
 		status=PcdAuthState(PICC_AUTHENT1A,KuaiN,PassWd,MLastSelectedSnr);
 		if(status!=MI_OK)
 		{
@@ -160,16 +172,11 @@ static int rc522_open(struct inode *inode,struct file *filp)
 
 static ssize_t rc522_read (struct file *filp, char *buf, size_t count, loff_t *f_pos)
 {
+	/*PcdReset();*/
 	operationcard = READ_CARD;
 	if(rc522_loop_work(operationcard))
 		return 0;
 	printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[0]);
-	printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[1]);
-	printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[2]);
-	printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[3]);
-	printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[4]);
-	printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[5]);
-	printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[6]);
 	if (copy_to_user(buf, read_data_buff, sizeof(read_data_buff))) {
 		printk(KERN_DEBUG"copy card number to userspace err\n");
 		return 0;
@@ -213,6 +220,13 @@ static int rc522_release(struct inode *inode,struct file *filp)
 static unsigned int rc522_poll(struct file *file, poll_table *wait)
 {
 	unsigned int mask = 0;
+
+	//poll_wait(file, &rc522_wait, wait);
+
+	/*if (have_card_number) {*/
+	/*have_card_number = 0;*/
+	/*mask |= POLLIN | POLLRDNORM;*/
+	/*}   */
 
 	return mask;
 }
@@ -258,16 +272,16 @@ static long rc522_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	return 0;
 }
 
+
 static int rc522_remove(struct spi_device *spi)
 {
 
 	return 0;
 }
-
 static int rc522_probe(struct spi_device *spi)
 {
-	printk(KERN_DEBUG "SPI number = %d",spi->controller->bus_num);
-	blockAddr = 1;
+	//默认读第一块(可选0 ~ 63)
+	KuaiN = 1; 
 	printk(KERN_DEBUG"%s\n", __func__);
 	rc522_spi = spi;
 	return 0;
@@ -281,13 +295,13 @@ static struct of_device_id spi_rfid_dt_ids[] = { // DTS compatible //
 MODULE_DEVICE_TABLE(of, spi_rfid_dt_ids); // Add our device to Devices Table - for "Hot Pluggin" //
 
 static struct spi_driver rc522_driver = {
-		.driver = {
-				.name			= "rfid_rc522",
-				.owner  		= THIS_MODULE,
-				.of_match_table = of_match_ptr(spi_rfid_dt_ids),
-		},
-		.probe = rc522_probe,
-		.remove = rc522_remove,
+	.probe = rc522_probe,
+	.remove = rc522_remove,
+	.driver = {
+		.name		= "rfid_rc522",
+		.owner  	= THIS_MODULE,
+		.of_match_table = of_match_ptr(spi_rfid_dt_ids),
+	},
 };
 
 static struct file_operations rc522_fops = {
@@ -300,67 +314,56 @@ static struct file_operations rc522_fops = {
 	.unlocked_ioctl = rc522_ioctl,
 };
 
+static struct miscdevice rc522_misc_device = {
+	.minor = MISC_DYNAMIC_MINOR,
+	.name = "rfid_rc522_dev",
+	.fops = &rc522_fops,
+};
+
 static int RC522_init(void)
 {
 	int res;
+
 	/* Register the character device (atleast try) */
 	printk(KERN_DEBUG"rfid_rc522 module init.\n");
 
-
-	if((alloc_chrdev_region(&dev, 0, 1, DEVICE_NAME)) < 0) {
-		printk(KERN_INFO "Error allocation Major number !\n");
-		return -1;
-	}
-	printk(KERN_INFO "RFID_RC522 module has been inserted, Major num: %d | Minor num: %d\n", MAJOR(dev), MINOR(dev));
-
-	cdev_init(&rfid_cdev,&rc522_fops);
-
-	if((cdev_add(&rfid_cdev, dev, 1)) < 0) {
-		printk(KERN_INFO "Cannot add rfid_cdev to the system\n");
-		goto rem_cdev;
-	}
-	printk(KERN_INFO "Char device for RC522_RFID module has been added");
-
-	if((dev_class = class_create(THIS_MODULE,CLASS_NAME)) == NULL) {
-		printk(KERN_INFO "Couldnt create a class");
-		goto rem_class;
+	res =  misc_register(&rc522_misc_device);
+	if(res < 0) {
+		printk(KERN_DEBUG"device register failed with %d.\n",res);
+		return res;
 	}
 
-	if((dev_struct = device_create(dev_class,NULL,dev,NULL,DEVICE_NAME)) == NULL) {
-		printk(KERN_INFO "Talos device cannot be created");
-		goto rem_device;
-	}
+	/*rc522_wq = create_singlethread_workqueue("rfid_rc522_work");*/
+	/*INIT_WORK(&rc522_work, rc522_loop_work); */
+	/*init_timer(&beep_timer);  */
+	/*beep_timer.function = start_beep;*/
+	/*poll_timer.function = poll_time;*/
 
-	if(spi_register_driver(&rc522_driver) < 0) {
-		printk(KERN_DEBUG"SPI driver register failed\n");
-		goto rem_device;
+#if 1
+	res = spi_register_driver(&rc522_driver);   
+	if(res < 0){
+		printk(KERN_DEBUG"spi register %s fail\n", __FUNCTION__);
+		return res;
 	}
-
+#endif
 	return 0;
-
-rem_device:
-	device_destroy(dev_class,dev);
-rem_class:
-	class_destroy(dev_class);
-rem_cdev:
-	cdev_del(&rfid_cdev);
-	unregister_chrdev_region(dev,1);
-	return -1;
 }
 
 static void RC522_exit(void)
 {
+	printk(KERN_DEBUG"FUCK YOU\n");
+	/*flags = 0;*/
+
+	/*del_timer(&poll_timer);*/
+	/*flush_workqueue(rc522_wq);*/
+	/*destroy_workqueue(rc522_wq);*/
+	/*ifopen = 0;*/
 	spi_unregister_driver(&rc522_driver);
-	device_destroy(dev_class,dev);
-	class_destroy(dev_class);
-	cdev_del(&rfid_cdev);
-	unregister_chrdev_region(dev,1);
-	printk(KERN_DEBUG"RC522_RFID module has been removed\n");
+	misc_deregister(&rc522_misc_device);
 }
 
 module_init(RC522_init);
 module_exit(RC522_exit);
 
-MODULE_AUTHOR("Trieu Huynh <vikingtc4@gmail.com>");
-MODULE_DESCRIPTION("Device Driver for RFID RC522 Module");
-MODULE_LICENSE("GPL");	
+MODULE_AUTHOR("Chen Hao");
+MODULE_LICENSE("Dual BSD/GPL");	

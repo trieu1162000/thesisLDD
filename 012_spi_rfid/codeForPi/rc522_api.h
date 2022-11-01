@@ -1,27 +1,6 @@
 #ifndef __rc522_h__
 #define __rc522_h__
 
-#include <linux/workqueue.h>
-#include <linux/of.h>
-#include <linux/ioctl.h>
-#include <linux/kernel.h>
-#include <linux/module.h>
-#include <linux/slab.h>
-#include <linux/input.h>
-#include <linux/init.h>
-#include <linux/errno.h>
-#include <linux/delay.h>
-#include <linux/platform_device.h>
-#include <linux/uaccess.h>
-#include <linux/poll.h>
-#include <linux/wait.h>
-#include <linux/interrupt.h>
-#include <linux/sched.h>
-#include <linux/atomic.h>
-#include <linux/mutex.h>
-#include <linux/spi/spi.h>
-#include <linux/cdev.h>
-
 #define PCD_IDLE              0x00               //ȡ����ǰ����
 #define PCD_AUTHENT           0x0E               //��֤��Կ
 #define PCD_RECEIVE           0x08               //��������
@@ -134,10 +113,6 @@
 
 #define SET_RC522RST do{}while(0) 
 #define CLR_RC522RST do{}while(0)
-
-#define CLASS_NAME "RC522"
-#define DEVICE_NAME "rfid_rc522_dev"
-
 extern char PcdReset(void);
 extern char PcdRequest(unsigned char req_code,unsigned char *pTagType);
 extern void PcdAntennaOn(void);
@@ -150,7 +125,6 @@ extern char PcdWrite(unsigned char addr,unsigned char *pData);
 extern char PcdRead(unsigned char addr,unsigned char *pData);
 extern char PcdHalt(void);
 extern struct spi_device *rc522_spi;
-
 extern unsigned char ReadRawRC(unsigned char Address);
 
 #endif

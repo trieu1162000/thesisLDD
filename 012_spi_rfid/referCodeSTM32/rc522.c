@@ -1,6 +1,7 @@
 #include "rc522_api.h"
 
-static unsigned char cardID[5];
+static unsigned char Read_Data[16]={0x00};
+static unsigned char read_data_buff[16];
 
 struct spi_device *rc522_spi;
 
@@ -18,14 +19,22 @@ static int rc522_open(struct inode *inode,struct file *filp)
 
 static ssize_t rc522_read (struct file *filp, char *buf, size_t count, loff_t *f_pos)
 {
-	if (MFRC522Check(cardID) == MI_OK) 
-    {
-      	printk(KERN_DEBUG"Card info:[%02x-%02x-%02x-%02x-%02x] \r\n", cardID[0], cardID[1], cardID[2], cardID[3], cardID[4]);
-    }
-    else 
-      	//printk(KERN_DEBUG"Cannot read Card ID!\n");
-		printk(KERN_DEBUG"Card info:[%02x-%02x-%02x-%02x-%02x] \r\n", cardID[0], cardID[1], cardID[2], cardID[3], cardID[4]);
-    return sizeof(buf);
+	if(MFRC522Check(Read_Data) ==MI_OK){
+		printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[0]);
+		printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[1]);
+		printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[2]);
+		printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[3]);
+		printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[4]);
+		printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[5]);
+		printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[6]);
+	}
+	else
+		printk(KERN_DEBUG"No Card found!");
+	if (copy_to_user(buf, read_data_buff, sizeof(read_data_buff))) {
+		printk(KERN_DEBUG"copy card number to userspace err\n");
+		return 0;
+	}
+	return sizeof(read_data_buff);
   
 }
 
