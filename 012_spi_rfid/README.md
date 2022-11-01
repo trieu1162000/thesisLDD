@@ -1,4 +1,4 @@
-To work with SPI on BBB, you must hard code on device tree or use device tree overlay but i recommend using dto bcs its easy to me. Hmm, having many difficult and taking a lot of time but its work ;
+To work with SPI on BBB, you must hard code on device tree or use device tree overlay but i recommend using dto bcs its easy to me. Hmm, having many difficult and taking a lot of time but its work ;)
 
 Step 1: Copy folder overlayRFID to BBB and run ./build_dts_overlay.sh 
 
