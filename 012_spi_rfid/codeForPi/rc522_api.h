@@ -125,6 +125,8 @@ extern char PcdWrite(unsigned char addr,unsigned char *pData);
 extern char PcdRead(unsigned char addr,unsigned char *pData);
 extern char PcdHalt(void);
 extern struct spi_device *rc522_spi;
+extern struct spi_board_info spi_device_info;
+
 extern unsigned char ReadRawRC(unsigned char Address);
 
 #endif

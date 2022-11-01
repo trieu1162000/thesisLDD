@@ -24,11 +24,9 @@
 #include <linux/cdev.h>
 #include <linux/gpio.h> 
 
-// SPI CS define
-#define GPIO_5		  5
 
-#define SET_SPI_CS  do{gpio_set_value(GPIO_5, 1);}while(0)
-#define CLR_SPI_CS  do{gpio_set_value(GPIO_5, 0);}while(0)
+#define SET_SPI_CS  do{}while(0)
+#define CLR_SPI_CS  do{}while(0)
 
 // Status enumeration, Used with most functions
 #define MI_OK											0

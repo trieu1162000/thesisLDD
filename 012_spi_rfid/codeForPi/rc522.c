@@ -55,6 +55,12 @@ struct workqueue_struct *rc522_wq;
 struct work_struct rc522_work;
 
 struct spi_device *rc522_spi;
+struct spi_board_info spi_device_info = {
+	.modalias = "rc522",
+	.max_speed_hz = 24000000,
+	.bus_num = 0,
+	.chip_select = 0,
+};
 
 void delay_ms(uint tms)
 {
@@ -62,10 +68,10 @@ void delay_ms(uint tms)
 }
 void InitRc522(void)
 {
-	printk("opening\n");
 	unsigned char a;
 	PcdReset();
 
+	printk("opening\n");
 	a = ReadRawRC(TReloadRegL);
 	if(a != 30)
 		printk(KERN_DEBUG"NO RC522%d\n",a);
@@ -301,14 +307,6 @@ static int RC522_init(void)
 		printk(KERN_DEBUG"device register failed with %d.\n",res);
 		return res;
 	}
-
-	struct spi_board_info spi_device_info = {
-		.modalias = "rc522",
-		.max_speed_hz = 16000000,
-		.bus_num = 0,
-		.chip_select = 0,
-		.mode = SPI_MODE_0,
-	};
 
 	/* Get access to spi bus */
 	master = spi_busnum_to_master(0);

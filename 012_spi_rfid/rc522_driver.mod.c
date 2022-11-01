@@ -59,5 +59,3 @@ __attribute__((section(".modinfo"))) =
 
 MODULE_ALIAS("of:N*T*Cshtl,rfid_rc522");
 MODULE_ALIAS("of:N*T*Cshtl,rfid_rc522C*");
-
-MODULE_INFO(srcversion, "201B6D9D31764652E6F05F2");

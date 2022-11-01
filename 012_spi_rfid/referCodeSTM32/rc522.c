@@ -182,35 +182,15 @@ static int RC522_driver_init(void)
 	// for(i=0; i < (sizeof(ioctls) / sizeof(IOCTLDescription_t)); i++)
 	// 	printk(KERN_INFO"IOCTL Codes:\t%s=0x%02X\n", ioctls[i].name, ioctls[i].ioctlcode);
 
-	if(gpio_is_valid(GPIO_5) == false){
-    		pr_err("GPIO %d is not valid\n", GPIO_5);
-    		goto rem_device;
- 	}
-  
-  	//Requesting the GPIO
-  	if(gpio_request(GPIO_5,"GPIO_5") < 0){
-    		pr_err("ERROR: GPIO %d request\n", GPIO_5);
-    		goto rem_gpio;
- 	}
-  
-  	//configure the GPIO as output
-  	gpio_direction_output(GPIO_5, 0);
-  	gpio_set_value(GPIO_5, 0);
-  /* Using this call the GPIO 5 will be visible in /sys/class/gpio/
-  ** Now you can change the gpio values by using below commands also.
+  /* Now you can change the gpio values by using below commands also.
   ** echo 1 > /sys/class/gpio/gpio21/value  (turn ON the LED)
   ** echo 0 > /sys/class/gpio/gpio21/value  (turn OFF the LED)
   ** cat /sys/class/gpio/gpio21/value  (read the value LED)
   ** 
   ** the second argument prevents the direction from being changed.
   */
-  	gpio_export(GPIO_5, false);
-  
-  	pr_info("GPIO init Pass!!!\n");
   	return 0;
  
-rem_gpio:
-  	gpio_free(GPIO_5);
 rem_device:
 	device_destroy(dev_class,dev);
 rem_class:
@@ -223,9 +203,6 @@ rem_cdev:
 
 static void RC522_driver_exit(void)
 {
-	gpio_set_value(GPIO_5,0);
-	gpio_unexport(GPIO_5);
-	gpio_free(GPIO_5);
 	spi_unregister_driver(&rc522_driver);
 	device_destroy(dev_class,dev);
 	class_destroy(dev_class);

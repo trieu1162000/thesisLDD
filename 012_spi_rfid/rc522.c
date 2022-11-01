@@ -34,8 +34,6 @@ uint blockAddr,operationcard;
 
 struct spi_device *rc522_spi;
 
-static struct gpio_desc *gpiodBuzz;
-
 dev_t dev;
 static struct cdev rfid_cdev;
 static struct class *dev_class;
@@ -317,7 +315,9 @@ static int RC522_init(void)
 		printk(KERN_DEBUG"SPI driver register failed\n");
 		goto rem_device;
 	}
-
+	for(i=0; i < (sizeof(ioctls) / sizeof(IOCTLDescription_t)); i++)
+		printk(KERN_INFO"IOCTL Codes:\t%s=0x%02X\n", ioctls[i].name, ioctls[i].ioctlcode);
+	
 	return 0;
 
 rem_device:
