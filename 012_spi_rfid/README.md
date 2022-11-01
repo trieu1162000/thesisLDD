@@ -10,4 +10,4 @@ Step 3: Run make (in host) to cross compile kernel in this folder (012.../)
 
 Step 4: Run make copy-drv to scp file .ko to BBB
 
-Step 5: Load module and use rc522App in folder 012.../testCodeApps (you must to build it by gcc before use.) to test the module which have been loaded to the kernel on BBB
+Step 5: Load module and use rc522App in folder 012.../testCodeApps (you must build it by gcc before using) to test the module which have been loaded to the kernel on BBB
