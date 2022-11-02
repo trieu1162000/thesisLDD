@@ -9,7 +9,7 @@
 #include <linux/slab.h>
 #include <linux/list.h>
 
-#include "lcd.h"
+#include "lcd_i2c_api.h"
 
 #define CLASS_NAME	"hd44780"
 #define NAME		"hd44780"
@@ -22,6 +22,18 @@ static atomic_t next_minor = ATOMIC_INIT(-1);
 
 static LIST_HEAD(hd44780_list);
 static DEFINE_SPINLOCK(hd44780_list_lock);
+
+static int __init hd44780_driver_init(void);
+static void __exit hd44780_driver_exit(void);
+
+void hd44780_write(struct hd44780 *, const char *, size_t);
+void hd44780_init_lcd(struct hd44780 *);
+void hd44780_print(struct hd44780 *, const char *);
+void hd44780_flush(struct hd44780 *);
+void hd44780_set_geometry(struct hd44780 *, struct hd44780_geometry *);
+void hd44780_set_backlight(struct hd44780 *, bool);
+void hd44780_set_cursor_blink(struct hd44780 *, bool);
+void hd44780_set_cursor_display(struct hd44780 *, bool);
 
 /* Device attributes */
 
@@ -205,7 +217,6 @@ static int hd44780_probe(struct i2c_client *client, const struct i2c_device_id *
 	struct device *device;
 	int ret, minor;
 
-	pr_info("A device is detected\n");
 	minor = atomic_inc_return(&next_minor);
 	devt = MKDEV(MAJOR(dev_no), minor);
 
@@ -244,7 +255,7 @@ static int hd44780_probe(struct i2c_client *client, const struct i2c_device_id *
 	hd44780_print(lcd, "/dev/");
 	hd44780_print(lcd, device->kobj.name);
 	lcd->dirty = true;
-	pr_info("Probe was successful\n");
+	pr_info("Probe was called successfully\n");
 
 	return 0;
 
@@ -308,7 +319,7 @@ static struct i2c_driver hd44780_driver = {
 	.id_table = hd44780_id,
 };
 
-static int __init hd44780_mod_init(void)
+static int __init hd44780_driver_init(void)
 {
 	int ret;
 
@@ -340,16 +351,17 @@ exit:
 
 	return ret;
 }
-module_init(hd44780_mod_init);
 
-static void __exit hd44780_mod_exit(void)
+static void __exit hd44780_driver_exit(void)
 {
 	i2c_del_driver(&hd44780_driver);
 	class_destroy(hd44780_class);
 	unregister_chrdev_region(dev_no, NUM_DEVICES);
 }
-module_exit(hd44780_mod_exit);
 
-MODULE_AUTHOR("Mariusz Gorski <marius.gorski@gmail.com>");
-MODULE_DESCRIPTION("HD44780 I2C via PCF8574 driver");
+module_init(hd44780_driver_init);
+module_exit(hd44780_driver_exit);
+
 MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Trieu Huynh <vikingtc4@gmail.com>");
+MODULE_DESCRIPTION("Device Driver for LCD - I2C <ThesisLDD Project>");

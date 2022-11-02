@@ -3,7 +3,7 @@
 #include <linux/delay.h>
 #include <linux/slab.h>
 
-#include "lcd.h"
+#include "lcd_i2c_api.h"
 
 #define BL	0x08
 #define E	0x04
