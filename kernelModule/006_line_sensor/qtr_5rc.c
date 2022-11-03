@@ -24,14 +24,11 @@ static ssize_t qtr_5rc_read(struct file *file, char *user_buffer, size_t count, 
     char *pValue = value_of_sensor;
     int i;
 
-	/* Get amount of data to copy */
-	to_copy = min(count, sizeof(tmp));
-
 	/* Read value of button */
     for(i=0; i<5; i++){
         gpio_read_value[i] = gpio_get_value(GPIO_BASE_NUM+i);
         pValue = strcat(pValue, "-");
-        pValue = strcat(pValue, gpio_read_value[i]);
+        pValue = strcat(pValue, "%d", gpio_read_value[i]);
     }
 	printk("Value read from sensor: %s\n", value_of_sensor);
 
@@ -65,9 +62,9 @@ static int driver_close(struct inode *device_file, struct file *instance) {
 
 static struct file_operations fops = {
 	.owner = THIS_MODULE,
-	.open = driver_open,
-	.release = driver_close,
-	.read = driver_read,
+	.open = qtr_5rc_open,
+	.release = qtr_5rc_close,
+	.read = qtr_5rc_read,
 };
 
 /**
@@ -105,13 +102,13 @@ static int __init qtr_5rc_init(void) {
 	}
 
     for(i=0; i<5; i++){
-	/* GPIO 17 init */
+	    /* GPIO init */
         if(gpio_request(GPIO_BASE_NUM + i, "rpi-gpio-%d", GPIO_BASE_NUM + i)) {
             printk("Can not allocate GPIO %d\n", GPIO_BASE_NUM +i);
-            goto Gpio4Error;
+            goto GpioError;
         }
 
-        /* Set GPIO 17 direction */
+        /* Set GPIO direction */
         if(gpio_direction_input(GPIO_BASE_NUM + i)) {
             printk("Can not set GPIO %d to input!\n", GPIO_BASE_NUM + i);
             goto GpioError;
@@ -137,7 +134,7 @@ ClassError:
 /**
  * @brief This function is called, when the module is removed from the kernel
  */
-static void __exit ModuleExit(void) {
+static void __exit qtr_5rc_exit(void) {
     int i;
     for(i=0; i<5; i++){
 	    gpio_free(GPIO_BASE_NUM + i);
