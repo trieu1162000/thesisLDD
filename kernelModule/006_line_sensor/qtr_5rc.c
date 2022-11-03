@@ -27,12 +27,13 @@ static ssize_t qtr_5rc_read(struct file *file, char *user_buffer, size_t count, 
 
 	/* Read value of button */
     for(i=0; i<5; i++){
-        gpio_read_value[i] = gpio_get_value(GPIO_BASE_NUM+i);
-        sprintf(gpio_num,"%d", GPIO_BASE_NUM + i);
-        pValue = strcat(pValue, "-");
-        pValue = strcat(pValue, gpio_num);
+        // gpio_read_value[i] = gpio_get_value(GPIO_BASE_NUM+i);
+        // sprintf(gpio_num,"%d", GPIO_BASE_NUM + i);
+        // pValue = strcat(pValue, "-");
+        // pValue = strcat(pValue, gpio_num);
+        printk("Value read from sensor: %d\n", gpio_get_value(GPIO_BASE_NUM+i));
     }
-	printk("Value read from sensor: %s\n", value_of_sensor);
+	// printk("Value read from sensor: %s\n", value_of_sensor);
 
 	/* Get amount of data to copy */
 	to_copy = min(count, strlen(value_of_sensor));
@@ -107,8 +108,9 @@ static int __init qtr_5rc_init(void) {
 
     for(i=0; i<5; i++){
 	    /* GPIO init */
-        sprintf(label,"rpi-gpio%d", GPIO_BASE_NUM+i);
-        if(gpio_request(GPIO_BASE_NUM + i, label)) {
+        // sprintf(label,"rpi-gpio%d", GPIO_BASE_NUM+i);
+        // if(gpio_request(GPIO_BASE_NUM + i, label)) {
+        if(gpio_request(GPIO_BASE_NUM + i, "RPI-GPIO")) {
             printk("Can not allocate GPIO %d\n", GPIO_BASE_NUM +i);
             goto GpioError;
         }
