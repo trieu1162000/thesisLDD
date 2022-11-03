@@ -108,7 +108,7 @@ static int __init qtr_5rc_init(void) {
     for(i=0; i<5; i++){
 	    /* GPIO init */
         sprintf(label,"rpi-gpio%d", GPIO_BASE_NUM+i);
-        if(gpio_request(GPIO_BASE_NUM + i, label) {
+        if(gpio_request(GPIO_BASE_NUM + i, label)) {
             printk("Can not allocate GPIO %d\n", GPIO_BASE_NUM +i);
             goto GpioError;
         }
