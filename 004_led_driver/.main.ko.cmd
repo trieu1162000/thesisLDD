@@ -1,1 +1,0 @@
-cmd_/home/trieuhuynh/Workspace/thesisLDD/004_led_driver/main.ko := arm-linux-gnueabihf-ld -r -EL -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds  --build-id  -o /home/trieuhuynh/Workspace/thesisLDD/004_led_driver/main.ko /home/trieuhuynh/Workspace/thesisLDD/004_led_driver/main.o /home/trieuhuynh/Workspace/thesisLDD/004_led_driver/main.mod.o ;  true
