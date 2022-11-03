@@ -21,14 +21,16 @@ static ssize_t qtr_5rc_read(struct file *file, char *user_buffer, size_t count, 
 	int to_copy, not_copied, delta;
 	char gpio_read_value[5] = {0};
     char value_of_sensor[100];
+    char *gpio_num;
     char *pValue = value_of_sensor;
     int i;
 
 	/* Read value of button */
     for(i=0; i<5; i++){
         gpio_read_value[i] = gpio_get_value(GPIO_BASE_NUM+i);
+        sprintf(gpio_num,"%d", GPIO_BASE_NUM + i);
         pValue = strcat(pValue, "-");
-        pValue = strcat(pValue, "%d", gpio_read_value[i]);
+        pValue = strcat(pValue, gpio_num);
     }
 	printk("Value read from sensor: %s\n", value_of_sensor);
 
@@ -55,7 +57,7 @@ static int qtr_5rc_open(struct inode *device_file, struct file *instance) {
 /**
  * @brief This function is called, when the device file is opened
  */
-static int driver_close(struct inode *device_file, struct file *instance) {
+static int qtr_5rc_close(struct inode *device_file, struct file *instance) {
 	printk(KERN_DEBUG"Device driver for QTR-5RC was closed.\n");
 	return 0;
 }
@@ -73,6 +75,8 @@ static struct file_operations fops = {
 static int __init qtr_5rc_init(void) {
 
     int i;
+    char *label;
+
 	/* Allocate a device nr */
 	if( alloc_chrdev_region(&qtr_5rc_dev, 0, 1, DRIVER_NAME) < 0) {
 		printk("Device number could not be allocated!\n");
@@ -103,7 +107,8 @@ static int __init qtr_5rc_init(void) {
 
     for(i=0; i<5; i++){
 	    /* GPIO init */
-        if(gpio_request(GPIO_BASE_NUM + i, "rpi-gpio-%d", GPIO_BASE_NUM + i)) {
+        sprintf(label,"rpi-gpio%d", GPIO_BASE_NUM+i);
+        if(gpio_request(GPIO_BASE_NUM + i, label, GPIO_BASE_NUM + i)) {
             printk("Can not allocate GPIO %d\n", GPIO_BASE_NUM +i);
             goto GpioError;
         }
