@@ -21,7 +21,7 @@ static ssize_t qtr_5rc_read(struct file *file, char *user_buffer, size_t count, 
 	int to_copy, not_copied, delta;
 	char gpio_read_value[5] = {0};
     char value_of_sensor[100];
-    char *gpio_num = {0};
+    char gpio_num[1] = {0};
     char *pValue = value_of_sensor;
     int i;
 
