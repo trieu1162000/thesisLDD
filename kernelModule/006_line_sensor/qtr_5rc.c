@@ -21,7 +21,7 @@ static struct cdev qtr_5rc_cdev;
  * @brief Initializing the GPIO
  */
 static int qtr_5rc_init_gpio(uint gpio_num){
-	char *label;
+	char label[100];
 
 	//Checking the GPIO is valid or not 
 	if(!gpio_is_valid(gpio_num)){
@@ -61,12 +61,12 @@ static void qtr_5rc_gpio_output_high(uint gpio_num)
 /**
  * @brief set pin of gpios to the output mode and init low value
  */
-static void qtr_5rc_gpio_output_low(uint gpio_num)
-{
-	if(gpio_direction_output(gpio_num, 0)) {
-		pr_err("ERRORCan not set GPIO %d to output low!\n", gpio_num);
-	}
-}
+// static void qtr_5rc_gpio_output_low(uint gpio_num)
+// {
+// 	if(gpio_direction_output(gpio_num, 0)) {
+// 		pr_err("ERRORCan not set GPIO %d to output low!\n", gpio_num);
+// 	}
+// }
 
 /**
  * @brief Read value from pin of sensor
