@@ -194,8 +194,8 @@ static int __init qtr_5rc_init(void) {
 	}
 
 	for(i = 0; i<5; i++){
-		if(!qtr_5rc_init_gpio(GPIO_BASE_NUM+i));
-		goto GpioError;
+		if(!qtr_5rc_init_gpio(GPIO_BASE_NUM+i))
+			goto GpioError;
 	}
 
 	printk(KERN_DEBUG"Kernel module for QTR-5RC was loaded.\n");
@@ -205,10 +205,15 @@ GpioError:
     for(i=0; i<5; i++){
 	    gpio_free(GPIO_BASE_NUM + i);
     }
+	printk(KERN_DEBUG"GPIO ERROR.\n");
 AddError:
 	device_destroy(qtr_5rc_class, qtr_5rc_dev);
+	printk(KERN_DEBUG"Device create ERROR.\n");
+
 FileError:
 	class_destroy(qtr_5rc_class);
+	printk(KERN_DEBUG"Class create ERROR.\n");
+
 ClassError:
 	unregister_chrdev_region(qtr_5rc_dev, 1);
 	return -1;
