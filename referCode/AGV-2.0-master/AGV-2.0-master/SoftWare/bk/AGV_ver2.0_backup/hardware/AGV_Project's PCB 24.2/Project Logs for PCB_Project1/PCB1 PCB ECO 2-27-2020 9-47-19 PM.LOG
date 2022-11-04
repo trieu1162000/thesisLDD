@@ -1,0 +1,21 @@
+Change Component Designator: OldDesignator=JP1 NewDesignator=PD
+Change Component Designator: OldDesignator=JP2 NewDesignator=TD
+Added Component: Designator=LINE(Header12)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "Connector 12"; VariantName = "[No Variations]"
+Added Component: Designator=PT(Header10)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "Connector 10"; VariantName = "[No Variations]"
+Added Component: Designator=TT(Header10)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "Connector 10"; VariantName = "[No Variations]"
+Change Net Name : Old Net Name=NetJP1_1 New Net Name=NetPD_1
+Change Net Name : Old Net Name=NetJP1_2 New Net Name=NetPD_2
+Change Net Name : Old Net Name=NetJP1_3 New Net Name=NetPD_3
+Change Net Name : Old Net Name=NetJP1_4 New Net Name=NetPD_4
+Added Member To Class: ClassName=Sheet1 Member=Component C1 25V 220uF
+Added Member To Class: ClassName=Sheet1 Member=Component LINE JP12
+Added Member To Class: ClassName=Sheet1 Member=Component PT JP10
+Added Member To Class: ClassName=Sheet1 Member=Component R12 RI
+Added Member To Class: ClassName=Sheet1 Member=Component TT JP10
+Added Room: Name=Sheet1

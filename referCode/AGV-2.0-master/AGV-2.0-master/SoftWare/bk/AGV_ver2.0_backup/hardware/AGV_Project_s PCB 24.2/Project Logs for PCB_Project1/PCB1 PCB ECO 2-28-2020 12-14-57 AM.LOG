@@ -1,0 +1,23 @@
+Added Pin To Net: NetName=NetPD1_5 Pin=PD1-5
+Added Pin To Net: NetName=NetPD1_5 Pin=R4-1
+Added Net: Name=NetPD1_5
+Added Pin To Net: NetName=NetPD1_6 Pin=PD1-6
+Added Pin To Net: NetName=NetPD1_6 Pin=R5-2
+Added Net: Name=NetPD1_6
+Added Pin To Net: NetName=NetPD1_7 Pin=PD1-7
+Added Pin To Net: NetName=NetPD1_7 Pin=R9-1
+Added Net: Name=NetPD1_7
+Added Pin To Net: NetName=NetPD1_8 Pin=PD1-8
+Added Pin To Net: NetName=NetPD1_8 Pin=R8-1
+Added Net: Name=NetPD1_8
+Added Pin To Net: NetName=NetPD1_9 Pin=PD1-9
+Added Pin To Net: NetName=NetPD1_9 Pin=R30-1
+Added Net: Name=NetPD1_9
+Added Pin To Net: NetName=NetR12_1 Pin=R12-1
+Added Pin To Net: NetName=NetR12_1 Pin=TD1-9
+Added Net: Name=NetR12_1
+Added Pin To Net: NetName=NetR13_2 Pin=R13-2
+Added Pin To Net: NetName=NetR13_2 Pin=TD1-5
+Added Net: Name=NetR13_2
+Added Member To Class: ClassName=Sheet1 Member=Component U2 AMS1117-3.3
+Added Room: Name=Sheet1

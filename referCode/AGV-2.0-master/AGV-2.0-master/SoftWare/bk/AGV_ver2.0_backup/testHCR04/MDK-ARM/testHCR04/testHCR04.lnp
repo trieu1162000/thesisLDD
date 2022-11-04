@@ -1,0 +1,24 @@
+--cpu Cortex-M3
+"testhcr04\main.o"
+"testhcr04\stm32f1xx_it.o"
+"testhcr04\stm32f1xx_hal_msp.o"
+"testhcr04\dwt_delay.o"
+"testhcr04\stm32f1xx_hal_rcc_ex.o"
+"testhcr04\stm32f1xx_hal_uart.o"
+"testhcr04\stm32f1xx_hal_gpio.o"
+"testhcr04\stm32f1xx_hal_gpio_ex.o"
+"testhcr04\stm32f1xx_hal_tim.o"
+"testhcr04\stm32f1xx_hal_cortex.o"
+"testhcr04\stm32f1xx_hal_dma.o"
+"testhcr04\stm32f1xx_hal_tim_ex.o"
+"testhcr04\stm32f1xx_hal_pwr.o"
+"testhcr04\stm32f1xx_hal_flash_ex.o"
+"testhcr04\stm32f1xx_hal_rcc.o"
+"testhcr04\stm32f1xx_hal_flash.o"
+"testhcr04\stm32f1xx_hal.o"
+"testhcr04\startup_stm32f103xe.o"
+"testhcr04\system_stm32f1xx.o"
+--library_type=microlib --strict --scatter "testHCR04\testHCR04.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "testHCR04.map" -o testHCR04\testHCR04.axf

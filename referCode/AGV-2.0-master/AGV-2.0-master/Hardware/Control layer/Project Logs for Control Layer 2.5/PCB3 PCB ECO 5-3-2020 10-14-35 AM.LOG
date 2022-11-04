@@ -1,0 +1,3 @@
+Change Component Comment : Designator=U2 Old Comment=ESP8266-12E New Comment=ESP8266-12E/ESP-12E
+Change Component Comment : Designator=SW7 Old Comment=SW New Comment=Buzzer
+Added Room: Name=STM32

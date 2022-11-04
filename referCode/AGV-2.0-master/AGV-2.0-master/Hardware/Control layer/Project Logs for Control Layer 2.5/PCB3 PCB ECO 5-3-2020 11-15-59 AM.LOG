@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=Get-IP Pin=LED1-2
+Removed Pin From Net: NetName=VCC3.3 Pin=R4-1
+Removed Member From Class: ClassName=STM32 Member=LED1
+Removed Member From Class: ClassName=STM32 Member=R4
+Added Room: Name=STM32

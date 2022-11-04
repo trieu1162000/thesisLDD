@@ -1,0 +1,10 @@
+Added Pin To Net: NetName=+5 Pin=Q1-3
+Added Pin To Net: NetName=+5 Pin=Q2-3
+Added Pin To Net: NetName=GND Pin=Q3-1
+Added Pin To Net: NetName=GND Pin=Q4-3
+Added Pin To Net: NetName=GND Pin=Q5-3
+Added Pin To Net: NetName=GND Pin=Q6-1
+Added Pin To Net: NetName=+5 Pin=R1-1
+Added Pin To Net: NetName=+5 Pin=R2-2
+Change Net Name : Old Net Name=+5 New Net Name=+12
+Added Room: Name=Sheet1

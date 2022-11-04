@@ -1,0 +1,25 @@
+Added Component: Designator=Q?(QTO-92)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "C2383"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "C1815"; VariantName = "[No Variations]"
+Added Component: Designator=R?(R1/4W)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "R1/4W - 1K"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetP2_2 Pin=LS1-2A
+Added Pin To Net: NetName=NetP2_2 Pin=LS1-2
+Added Pin To Net: NetName=NetP1_1 Pin=P2-17
+Added Pin To Net: NetName=NetP1_1 Pin=P2-18
+Added Pin To Net: NetName=GND Pin=Q?-1
+Added Pin To Net: NetName=NetLS1_1 Pin=Q?-2
+Change Net Name : Old Net Name=NetP2_2 New Net Name=NetLS1_2
+Added Pin To Net: NetName=NetPP2_15 Pin=PP2-15
+Added Net: Name=NetPP2_15
+Added Pin To Net: NetName=NetQ?_3 Pin=Q?-3
+Added Pin To Net: NetName=NetQ?_3 Pin=R?-2
+Added Net: Name=NetQ?_3
+Added Pin To Net: NetName=NetR?_1 Pin=R?-1
+Added Net: Name=NetR?_1
+Added Member To Class: ClassName=Sheet1 Member=Component P1 Header 6
+Added Member To Class: ClassName=Sheet1 Member=Component Q? C1815
+Added Member To Class: ClassName=Sheet1 Member=Component R? 1k
+Added Room: Name=Sheet1

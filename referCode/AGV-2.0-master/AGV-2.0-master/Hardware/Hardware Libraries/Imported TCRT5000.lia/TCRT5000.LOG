@@ -1,0 +1,32 @@
+PCAD Importer Log
+Project : TCRT5000.LibPkg
+
+Section : D:\AGV_ver2.0\hardware\TCRT5000.lia
+    Section : PCB Library - TCRT5000.PcbLib
+        Section : Load Messages
+            Warning - 1 : Skipping Token TCRT5000 On Line 153
+            Warning - 1 : Skipping Token attachedSymbol On Line 249
+        EndSection
+
+        Section : Import Messages
+            Warning - 0 : PCAD Pattern Graphics [*OPTO_TCRT5000][Primary] associated with PCAD Component [TCRT5000] has been renamed to PCB FootPrint [*OPTO_TCRT5000_TCRT5000(Primary)].
+        EndSection
+    EndSection
+
+    Section : SCH Library - TCRT5000.SchLib
+        Section : Parsing Messages
+            Warning - 1 : Skipping Token padStyleDef On Line 9
+            Warning - 1 : Skipping Token padStyleDef On Line 21
+            Warning - 1 : Skipping Token padStyleDef On Line 32
+            Warning - 1 : Skipping Token multiLayer On Line 106
+            Warning - 1 : Skipping Token layerContents On Line 115
+            Warning - 1 : Skipping Token layerContents On Line 125
+            Warning - 1 : Skipping Token layerContents On Line 131
+            Warning - 1 : Skipping Token layerContents On Line 141
+        EndSection
+
+        Section : Generating SCH Library - TCRT5000.SchLib
+            Warning - 0 : PCAD Pattern Graphics [*OPTO_TCRT5000][Primary] associated with PCAD Component [TCRT5000] has been renamed to PCB FootPrint [*OPTO_TCRT5000_TCRT5000(Primary)].
+        EndSection
+    EndSection
+EndSection

@@ -1,0 +1,435 @@
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Dashboard.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Monitoring.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.exe
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.pdb
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\bin\Debug\AGV_Form.exe.config
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\bin\Debug\AGV_Form.exe
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\bin\Debug\AGV_Form.pdb
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Help.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Report.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Task.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Warehouse.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Help.resources
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Report.resources
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Task.resources
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Dashboard.resources
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Monitoring.resources
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Warehouse.resources
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.exe
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.pdb
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\bin\Debug\AGV_Form.exe.config
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\bin\Debug\AGV_Form.exe
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\bin\Debug\AGV_Form.pdb
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+D:\University\LUAN VAN TOT NGHIEP\AGV_Form - Copy\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.Help.resources
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.Report.resources
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.Task.resources
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.Dashboard.resources
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.Monitoring.resources
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.Warehouse.resources
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.exe
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.pdb
+D:\AGV Control And Monitoring System\AGV_Form\bin\Debug\AGV_Form.exe.config
+D:\AGV Control And Monitoring System\AGV_Form\bin\Debug\AGV_Form.exe
+D:\AGV Control And Monitoring System\AGV_Form\bin\Debug\AGV_Form.pdb
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+D:\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.AddRemoveAGVForm.resources
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\bin\Debug\AGV_Form.exe.config
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\bin\Debug\AGV_Form.exe
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\bin\Debug\AGV_Form.pdb
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV_Form.AddRemoveAGVForm.resources
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV_Form.DashboardForm.resources
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV_Form.exe
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV_Form.pdb
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV_Form.HelpForm.resources
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV_Form.MonitoringForm.resources
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV_Form.ReportForm.resources
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV_Form.TasksForm.resources
+D:\AGV Control And Monitoring System - Copy (2)\AGV_Form\obj\Debug\AGV_Form.WarehouseForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\bin\Debug\AGV_Form.exe.config
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\bin\Debug\AGV_Form.exe
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\bin\Debug\AGV_Form.pdb
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.AddRemoveAGVForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.DashboardForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.HelpForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.MonitoringForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.ReportForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.TasksForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.WarehouseForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.exe
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.pdb
+C:\Users\thien\OneDrive\Máy tính\AGV Control And Monitoring System\AGV_Form\obj\Debug\AGV_Form.AddTaskAGVForm.resources
+D:\AGVs_Software\AGV_Form\bin\Debug\AGV_Form.exe.config
+D:\AGVs_Software\AGV_Form\bin\Debug\AGV_Form.exe
+D:\AGVs_Software\AGV_Form\bin\Debug\AGV_Form.pdb
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.AddRemoveAGVForm.resources
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.AddTaskAGVForm.resources
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.DashboardForm.resources
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.HelpForm.resources
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.MonitoringForm.resources
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.ReportForm.resources
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.TasksForm.resources
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.WarehouseForm.resources
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.exe
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.pdb
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.OrderForm.resources
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.StoreForm.resources
+E:\AGVs_Software\AGV_Form\bin\Debug\AGV_Form.exe.config
+E:\AGVs_Software\AGV_Form\bin\Debug\AGV_Form.exe
+E:\AGVs_Software\AGV_Form\bin\Debug\AGV_Form.pdb
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.AddRemoveAGVForm.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.AddTaskAGVForm.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.DashboardForm.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.HelpForm.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.MonitoringForm.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.OrderForm.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.StoreForm.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.ReportForm.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.TasksForm.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.WarehouseForm.resources
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.exe
+E:\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.pdb
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\bin\Debug\AGV_Form.exe.config
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\bin\Debug\AGV_Form.exe
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\bin\Debug\AGV_Form.pdb
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.AddRemoveAGVForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.AddTaskAGVForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.DashboardForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.HelpForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.MonitoringForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.OrderForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.StoreForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.ReportForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.TasksForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.WarehouseForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.exe
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software\AGV_Form\obj\Debug\AGV_Form.pdb
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\bin\Debug\AGV_Form.exe.config
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\bin\Debug\AGV_Form.exe
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\bin\Debug\AGV_Form.pdb
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.AddRemoveAGVForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.AddTaskAGVForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.DashboardForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.HelpForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.MonitoringForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.OrderForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.StoreForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.ReportForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.TasksForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.WarehouseForm.resources
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.exe
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV_Form.pdb
+C:\Users\thien\OneDrive\Máy tính\AGVs_Software - Copy\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+D:\AGVs_Software\AGV_Form\bin\Debug\ZedGraph.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\ZedGraph.xml
+D:\AGVs_Software\AGV_Form\bin\Debug\de\ZedGraph.resources.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\es\ZedGraph.resources.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\fr\ZedGraph.resources.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\hu\ZedGraph.resources.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\it\ZedGraph.resources.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\ja\ZedGraph.resources.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\pt\ZedGraph.resources.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\ru\ZedGraph.resources.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\sk\ZedGraph.resources.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\sv\ZedGraph.resources.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\tr\ZedGraph.resources.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\zh-cn\ZedGraph.resources.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\zh-tw\ZedGraph.resources.dll
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CopyComplete
+D:\AGVs_Software\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+D:\AGVs_Software\AGV_Form\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
+D:\AGVs_Software\AGV_Form\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.AddRemoveAGVForm.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.AddTaskAGVForm.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.DashboardForm.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.HelpForm.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.MonitoringForm.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.OrderForm.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.StoreForm.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.ReportForm.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.TasksForm.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.WarehouseForm.resources
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.exe
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.pdb
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.exe.config
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.exe
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.pdb
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\ZedGraph.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\ZedGraph.xml
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\de\ZedGraph.resources.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\es\ZedGraph.resources.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\fr\ZedGraph.resources.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\hu\ZedGraph.resources.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\it\ZedGraph.resources.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\ja\ZedGraph.resources.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\pt\ZedGraph.resources.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\ru\ZedGraph.resources.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\sk\ZedGraph.resources.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\sv\ZedGraph.resources.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\tr\ZedGraph.resources.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\zh-cn\ZedGraph.resources.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\bin\Debug\zh-tw\ZedGraph.resources.dll
+D:\7thang5_AGVSoftware\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CopyComplete
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.exe.config
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.exe
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.pdb
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\ZedGraph.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\ZedGraph.xml
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\de\ZedGraph.resources.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\es\ZedGraph.resources.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\fr\ZedGraph.resources.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\hu\ZedGraph.resources.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\it\ZedGraph.resources.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\ja\ZedGraph.resources.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\pt\ZedGraph.resources.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\ru\ZedGraph.resources.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\sk\ZedGraph.resources.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\sv\ZedGraph.resources.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\tr\ZedGraph.resources.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\zh-cn\ZedGraph.resources.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\bin\Debug\zh-tw\ZedGraph.resources.dll
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.AddRemoveAGVForm.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.AddTaskAGVForm.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.DashboardForm.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.HelpForm.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.MonitoringForm.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.OrderForm.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.StoreForm.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.ReportForm.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.TasksForm.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.WarehouseForm.resources
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CopyComplete
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.exe
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.pdb
+D:\AGVs_Software_8thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.exe.config
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.exe
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.pdb
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\ZedGraph.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\ZedGraph.xml
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\de\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\es\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\fr\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\hu\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\it\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\ja\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\pt\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\ru\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\sk\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\sv\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\tr\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\zh-cn\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\bin\Debug\zh-tw\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.AddRemoveAGVForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.AddTaskAGVForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.DashboardForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.HelpForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.MonitoringForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.OrderForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.StoreForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.ReportForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.TasksForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.WarehouseForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CopyComplete
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.exe
+D:\University\LUAN VAN TOT NGHIEP\LVTN\11thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.pdb
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.exe.config
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.exe
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.pdb
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\ZedGraph.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\ZedGraph.xml
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\de\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\es\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\fr\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\hu\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\it\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\ja\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\pt\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\ru\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\sk\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\sv\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\tr\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\zh-cn\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\bin\Debug\zh-tw\ZedGraph.resources.dll
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.AddRemoveAGVForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.AddTaskAGVForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.DashboardForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.HelpForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.MonitoringForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.OrderForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.StoreForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.ReportForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.TasksForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.WarehouseForm.resources
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CopyComplete
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.exe
+D:\University\LUAN VAN TOT NGHIEP\LVTN\12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.pdb
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.exe.config
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.exe
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.pdb
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\ZedGraph.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\ZedGraph.xml
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\de\ZedGraph.resources.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\es\ZedGraph.resources.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\fr\ZedGraph.resources.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\hu\ZedGraph.resources.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\it\ZedGraph.resources.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\ja\ZedGraph.resources.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\pt\ZedGraph.resources.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\ru\ZedGraph.resources.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\sk\ZedGraph.resources.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\sv\ZedGraph.resources.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\tr\ZedGraph.resources.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\zh-cn\ZedGraph.resources.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\zh-tw\ZedGraph.resources.dll
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.AddRemoveAGVForm.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.AddTaskAGVForm.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.DashboardForm.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.HelpForm.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.MonitoringForm.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.OrderForm.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.StoreForm.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.ReportForm.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.TasksForm.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.WarehouseForm.resources
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CopyComplete
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.exe
+C:\Users\thien\Downloads\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.pdb
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.exe.config
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.exe
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\AGV_Form.pdb
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\ZedGraph.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\ZedGraph.xml
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\de\ZedGraph.resources.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\es\ZedGraph.resources.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\fr\ZedGraph.resources.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\hu\ZedGraph.resources.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\it\ZedGraph.resources.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\ja\ZedGraph.resources.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\pt\ZedGraph.resources.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\ru\ZedGraph.resources.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\sk\ZedGraph.resources.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\sv\ZedGraph.resources.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\tr\ZedGraph.resources.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\zh-cn\ZedGraph.resources.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\bin\Debug\zh-tw\ZedGraph.resources.dll
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.AddRemoveAGVForm.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.AddTaskAGVForm.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.COMSetting.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.DashboardForm.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.fLogin.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.HelpForm.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.MonitoringForm.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.HomeScreenForm.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.OrderForm.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.StoreForm.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.ReportForm.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.TasksForm.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.WarehouseForm.resources
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.GenerateResource.cache
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CoreCompileInputs.cache
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csproj.CopyComplete
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.exe
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV_Form.pdb
+D:\AGVs_Software-master_12thang5\AGVs_Software-master\AGV_Form\obj\Debug\AGV Control And Monitoring System.csprojAssemblyReference.cache

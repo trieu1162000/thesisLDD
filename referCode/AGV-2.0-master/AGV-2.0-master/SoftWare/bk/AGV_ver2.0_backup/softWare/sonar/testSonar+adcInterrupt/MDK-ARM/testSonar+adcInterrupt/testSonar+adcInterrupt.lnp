@@ -1,0 +1,24 @@
+--cpu Cortex-M3
+"testsonar+adcinterrupt\system_stm32f1xx.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_msp.o"
+"testsonar+adcinterrupt\main.o"
+"testsonar+adcinterrupt\stm32f1xx_it.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_rcc_ex.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_flash.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_pwr.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_gpio.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_flash_ex.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_gpio_ex.o"
+"testsonar+adcinterrupt\stm32f1xx_hal.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_tim_ex.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_adc.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_adc_ex.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_cortex.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_dma.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_rcc.o"
+"testsonar+adcinterrupt\stm32f1xx_hal_tim.o"
+"testsonar+adcinterrupt\startup_stm32f103xe.o"
+--library_type=microlib --strict --scatter "testSonar+adcInterrupt\testSonar+adcInterrupt.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "testSonar+adcInterrupt.map" -o testSonar+adcInterrupt\testSonar+adcInterrupt.axf

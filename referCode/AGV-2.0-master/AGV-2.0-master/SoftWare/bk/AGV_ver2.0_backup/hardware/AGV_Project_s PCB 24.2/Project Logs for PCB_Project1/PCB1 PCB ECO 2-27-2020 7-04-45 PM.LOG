@@ -1,0 +1,11 @@
+Change Component Footprint: Designator=JP1 Old Footprint=Header12 New Footprint=Header10
+Change Component Comment : Designator=JP1 Old Comment=JP12 New Comment=JP10
+Change Component Designator: OldDesignator=SS34 NewDesignator=SS1
+Change component parameters: Designator = "JP1"; Footprint = "Header10"; UniqueID = "\MFPCFAHY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Value"; Value = "Connector 10"; VariantName = "[No Variations]"
+Added Component: Designator=JP2(Header10)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "Connector 10"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=Sheet1 Member=Component JP2 JP10
+Added Room: Name=Sheet1

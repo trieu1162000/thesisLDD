@@ -1,0 +1,117 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.29.0.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: a aa, a, LIC=65IDY-IE0KZ-5T33W-QW1CJ-06QJF-0EQIA
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.29.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.29.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.7.0
+Dialog DLL:      TCM.DLL V1.36.5.0
+ 
+<h2>Project:</h2>
+C:\Users\trand\Desktop\AGV_Project\SoftWare\AGV05.03\MDK-ARM\AGV05.03.uvprojx
+Project File Date:  03/07/2020
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'AGV05.03'
+compiling main.c...
+../Inc/motor.h(9): warning:  #1-D: last line of file ends without a newline
+  void motorRightBackward(uint32_t speed);
+../Src/main.c(114): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(Trig_sonar_GPIO_Port,Trig_sonar_Pin,0);
+../Src/main.c(116): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(Trig_sonar_GPIO_Port,Trig_sonar_Pin,1);
+../Src/main.c(118): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(Trig_sonar_GPIO_Port,Trig_sonar_Pin,0);
+../Src/main.c(194): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *restrict"
+  		sprintf(LCD,"  Getting Ready  ");
+../Src/main.c(210): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(Running_light_GPIO_Port, Running_light_Pin, 1);
+../Src/main.c(211): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(stop_light_GPIO_Port, stop_light_Pin, 1);
+../Src/main.c(295): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(stop_light_GPIO_Port,stop_light_Pin,1);
+../Src/main.c(296): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(led_GPIO_Port,led_Pin,0);
+../Src/main.c(310): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *"
+  		lcd_send_string(LCD);
+../Src/main.c(312): warning:  #188-D: enumerated type mixed with another type
+  			HAL_GPIO_WritePin(Running_light_GPIO_Port,Running_light_Pin,1);
+../Src/main.c(313): warning:  #188-D: enumerated type mixed with another type
+  			HAL_GPIO_WritePin(stop_light_GPIO_Port,stop_light_Pin,0);
+../Src/main.c(347): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *restrict"
+  			sprintf(LCD,"    Ready :)     ");
+../Src/main.c(363): warning:  #188-D: enumerated type mixed with another type
+  			HAL_GPIO_WritePin(GetIP_GPIO_Port,GetIP_Pin,0);
+../Src/main.c(375): warning:  #167-D: argument of type "volatile char *" is incompatible with parameter of type "char *"
+  			lcd_send_string(getIPResult);
+../Src/main.c(378): warning:  #188-D: enumerated type mixed with another type
+  			HAL_GPIO_WritePin(led_GPIO_Port,led_Pin,0);
+../Src/main.c(412): warning:  #223-D: function "atoi" declared implicitly
+              if (atoi(resultcpy) != 0) {
+../Src/main.c(415): warning:  #167-D: argument of type "volatile char *" is incompatible with parameter of type "char *restrict"
+                  sprintf(lcd, "  speed: %d       ", speed);
+../Src/main.c(419): warning:  #167-D: argument of type "volatile char *" is incompatible with parameter of type "char *"
+                  lcd_send_string(lcd);
+../Src/main.c(428): warning:  #223-D: function "atoi" declared implicitly
+              if (atoi(resultcpy) != 0) {
+../Src/main.c(430): warning:  #167-D: argument of type "volatile char *" is incompatible with parameter of type "char *restrict"
+                  sprintf(lcd, "    KD: %d           ", KD);
+../Src/main.c(435): warning:  #167-D: argument of type "volatile char *" is incompatible with parameter of type "char *"
+                  lcd_send_string(lcd);
+../Src/main.c(444): warning:  #223-D: function "atoi" declared implicitly
+              if (atoi(resultcpy) != 0) {
+../Src/main.c(447): warning:  #167-D: argument of type "volatile char *" is incompatible with parameter of type "char *restrict"
+                  sprintf(lcd, "    KI: %d           ", KI);
+../Src/main.c(451): warning:  #167-D: argument of type "volatile char *" is incompatible with parameter of type "char *"
+                  lcd_send_string(lcd);
+../Src/main.c(460): warning:  #223-D: function "atoi" declared implicitly
+              if (atoi(resultcpy) != 0) {
+../Src/main.c(463): warning:  #167-D: argument of type "volatile char *" is incompatible with parameter of type "char *restrict"
+                  sprintf(lcd, "    KP: %d            ", KP);
+../Src/main.c(467): warning:  #167-D: argument of type "volatile char *" is incompatible with parameter of type "char *"
+                  lcd_send_string(lcd);
+../Src/main.c: 28 warnings, 0 errors
+linking...
+Program Size: Code=14892 RO-data=496 RW-data=60 ZI-data=1700  
+FromELF: creating hex file...
+"AGV05.03\AGV05.03" - 0 Error(s), 28 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.6.0.pack
+                ARM.CMSIS.5.6.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.3.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.3.0.pack
+                Keil.STM32F1xx_DFP.2.3.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_AGV05.03
+  C:\Users\trand\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include
+  C:\Users\trand\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.3.0
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>

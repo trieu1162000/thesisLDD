@@ -1,0 +1,5 @@
+Added Component: Designator=T(Header8)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "Connector 8"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=Sheet1 Member=Component T JP8
+Added Room: Name=Sheet1

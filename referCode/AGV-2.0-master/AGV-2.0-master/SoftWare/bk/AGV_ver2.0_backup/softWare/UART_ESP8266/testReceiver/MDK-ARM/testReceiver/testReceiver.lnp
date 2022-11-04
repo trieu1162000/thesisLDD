@@ -1,0 +1,25 @@
+--cpu Cortex-M3
+"testreceiver\stm32f1xx_hal_gpio.o"
+"testreceiver\stm32f1xx_hal_flash.o"
+"testreceiver\stm32f1xx_hal_pwr.o"
+"testreceiver\stm32f1xx_hal_i2c.o"
+"testreceiver\stm32f1xx_hal_tim.o"
+"testreceiver\stm32f1xx_hal_cortex.o"
+"testreceiver\stm32f1xx_hal_tim_ex.o"
+"testreceiver\stm32f1xx_hal_uart.o"
+"testreceiver\stm32f1xx_hal_gpio_ex.o"
+"testreceiver\stm32f1xx_hal.o"
+"testreceiver\stm32f1xx_hal_flash_ex.o"
+"testreceiver\stm32f1xx_hal_rcc_ex.o"
+"testreceiver\stm32f1xx_hal_dma.o"
+"testreceiver\stm32f1xx_hal_rcc.o"
+"testreceiver\startup_stm32f103xe.o"
+"testreceiver\stm32f1xx_hal_msp.o"
+"testreceiver\main.o"
+"testreceiver\stm32f1xx_it.o"
+"testreceiver\i2c-lcd.o"
+"testreceiver\system_stm32f1xx.o"
+--library_type=microlib --strict --scatter "testReceiver\testReceiver.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "testReceiver.map" -o testReceiver\testReceiver.axf

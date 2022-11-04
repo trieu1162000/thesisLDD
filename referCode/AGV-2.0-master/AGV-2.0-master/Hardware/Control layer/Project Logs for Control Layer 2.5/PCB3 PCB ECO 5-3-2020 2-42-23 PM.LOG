@@ -1,0 +1,49 @@
+Removed Pin From Net: NetName=VCC3.3 Pin=C4-4
+Removed Pin From Net: NetName=NetLS1_2 Pin=LS1-2A
+Removed Pin From Net: NetName=NetLS1_2 Pin=LS1-2
+Removed Pin From Net: NetName=GND Pin=Q3-1
+Removed Member From Class: ClassName=STM32 Member=LS1
+Removed Member From Class: ClassName=STM32 Member=Q3
+Removed Member From Class: ClassName=STM32 Member=R25
+Added Component: Designator=LS(XDCR_MCKPM-G1201A-K4037)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Multicomp"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "MCKPM-G1201A-K4037"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/MCKPM-G1201A-K4037/Multicomp/view-part/231709/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Q?(SOT23B)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "C2383"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "C1815"; VariantName = "[No Variations]"
+Added Component: Designator=R?(RES-SMD-0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Class"; Value = "Passive"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Generic Components"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "08/06/2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Hobart Technology Centre"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetLS1_2 Pin=C4-4
+Added Pin To Net: NetName=NetLS1_2 Pin=C16-1
+Added Pin To Net: NetName=NetLS1_2 Pin=C18-2
+Added Pin To Net: NetName=NetLS1_2 Pin=C19-2
+Added Pin To Net: NetName=NetLS1_2 Pin=FUSE1-1
+Added Pin To Net: NetName=NetLS1_2 Pin=LS-1
+Added Pin To Net: NetName=GND Pin=Q?-1
+Added Pin To Net: NetName=NetLS1_2 Pin=U3-3
+Change Net Name : Old Net Name=NetLS1_2 New Net Name=VCC5
+Added Pin To Net: NetName=NetLS_2 Pin=LS-2
+Added Pin To Net: NetName=NetLS_2 Pin=Q?-2
+Added Net: Name=NetLS_2
+Added Pin To Net: NetName=NetP1_12 Pin=P1-12
+Added Net: Name=NetP1_12
+Added Pin To Net: NetName=NetQ?_3 Pin=Q?-3
+Added Pin To Net: NetName=NetQ?_3 Pin=R?-1
+Added Net: Name=NetQ?_3
+Added Pin To Net: NetName=NetR?_2 Pin=R?-2
+Added Net: Name=NetR?_2
+Added Member To Class: ClassName=STM32 Member=Component LS MCKPM-G1201A-K4037
+Added Member To Class: ClassName=STM32 Member=Component Q? C1815
+Added Member To Class: ClassName=STM32 Member=Component R? Res
+Added Room: Name=STM32

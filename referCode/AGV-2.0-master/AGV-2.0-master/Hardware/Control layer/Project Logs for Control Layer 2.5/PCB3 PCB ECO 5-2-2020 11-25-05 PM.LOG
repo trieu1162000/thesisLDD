@@ -1,0 +1,76 @@
+Removed Pin From Net: NetName=NetR7_1 Pin=R7-1
+Removed Member From Class: ClassName=Sheet1 Member=R23
+Removed Member From Class: ClassName=Sheet1 Member=R24
+Removed Member From Class: ClassName=Sheet1 Member=R25
+Change Component Designator: OldDesignator=R3 NewDesignator=R2
+Change Component Designator: OldDesignator=R4 NewDesignator=R3
+Change Component Designator: OldDesignator=R6 NewDesignator=R4
+Change Component Designator: OldDesignator=R8 NewDesignator=R5
+Change Component Designator: OldDesignator=R9 NewDesignator=R6
+Change Component Designator: OldDesignator=R10 NewDesignator=R7
+Change Component Designator: OldDesignator=R11 NewDesignator=R8
+Change Component Designator: OldDesignator=R12 NewDesignator=R9
+Change Component Designator: OldDesignator=R13 NewDesignator=R10
+Change Component Designator: OldDesignator=R14 NewDesignator=R11
+Change Component Designator: OldDesignator=R15 NewDesignator=R12
+Change Component Designator: OldDesignator=R16 NewDesignator=R13
+Change Component Designator: OldDesignator=R17 NewDesignator=R14
+Change Component Designator: OldDesignator=R18 NewDesignator=R15
+Change Component Designator: OldDesignator=R19 NewDesignator=R16
+Change Component Designator: OldDesignator=R20 NewDesignator=R17
+Change Component Designator: OldDesignator=R21 NewDesignator=R18
+Change Component Designator: OldDesignator=R22 NewDesignator=R19
+Change Component Designator: OldDesignator=R23 NewDesignator=R20
+Change Component Designator: OldDesignator=R24 NewDesignator=R21
+Change Component Designator: OldDesignator=R25 NewDesignator=R22
+Added Component: Designator=DIO1(DIO-SMD-106)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Code - JEDEC"; Value = "DO-214-AB"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = "July-2002: Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1N5007"; VariantName = "[No Variations]"
+Added Component: Designator=DIO2(DIO-SMD-106)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Code - JEDEC"; Value = "DO-214-AB"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = "July-2002: Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1N5007"; VariantName = "[No Variations]"
+Added Component: Designator=DIO3(DIO-SMD-106)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Code - JEDEC"; Value = "DO-214-AB"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = "July-2002: Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1N5007"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetR7_1 Pin=DIO3-1
+Change Net Name : Old Net Name=NetR3_1 New Net Name=NetR2_1
+Change Net Name : Old Net Name=NetR3_2 New Net Name=NetR2_2
+Change Net Name : Old Net Name=NetR4_1 New Net Name=NetR3_1
+Change Net Name : Old Net Name=NetR6_1 New Net Name=NetR4_1
+Change Net Name : Old Net Name=NetR7_1 New Net Name=NetDIO3_1
+Change Net Name : Old Net Name=NetR11_1 New Net Name=NetR8_1
+Change Net Name : Old Net Name=NetR12_2 New Net Name=NetR9_2
+Change Net Name : Old Net Name=NetR17_1 New Net Name=NetR14_1
+Added Pin To Net: NetName=NetDIO1_1 Pin=DIO1-1
+Added Pin To Net: NetName=NetDIO1_1 Pin=U2-20
+Added Net: Name=NetDIO1_1
+Added Pin To Net: NetName=NetDIO1_2 Pin=DIO1-2
+Added Pin To Net: NetName=NetDIO1_2 Pin=Start1-2
+Added Pin To Net: NetName=NetDIO1_2 Pin=U1-55
+Added Net: Name=NetDIO1_2
+Added Pin To Net: NetName=NetDIO2_1 Pin=DIO2-1
+Added Pin To Net: NetName=NetDIO2_1 Pin=U2-19
+Added Net: Name=NetDIO2_1
+Added Pin To Net: NetName=NetDIO2_2 Pin=DIO2-2
+Added Pin To Net: NetName=NetDIO2_2 Pin=Stop1-2
+Added Pin To Net: NetName=NetDIO2_2 Pin=U1-56
+Added Net: Name=NetDIO2_2
+Added Pin To Net: NetName=NetDIO3_2 Pin=DIO3-2
+Added Pin To Net: NetName=NetDIO3_2 Pin=Ready1-2
+Added Pin To Net: NetName=NetDIO3_2 Pin=U1-57
+Added Net: Name=NetDIO3_2
+Added Member To Class: ClassName=Sheet1 Member=Component DIO1 Diode SMD
+Added Member To Class: ClassName=Sheet1 Member=Component DIO2 Diode SMD
+Added Member To Class: ClassName=Sheet1 Member=Component DIO3 Diode SMD

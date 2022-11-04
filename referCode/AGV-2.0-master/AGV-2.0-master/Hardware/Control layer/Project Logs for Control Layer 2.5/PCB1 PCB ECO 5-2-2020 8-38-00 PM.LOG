@@ -1,0 +1,21 @@
+Added Component: Designator=C?(HDR4)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1 Description"; Value = "Manufacturer"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.we-online.com"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2 Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://katalog.we-online.de/em/datasheet/6130xx143121.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Created by"; Value = "Karrer Zheng"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Created Date"; Value = "29 March 2013"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "W¨¹rth Elektronik eiSos GmbH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "NoPins"; Value = "02"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "partNo"; Value = "613002143121"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=VCC3.3 Pin=C?-1
+Added Pin To Net: NetName=GND Pin=C?-2
+Change Net Name : Old Net Name=NetSW2_2 New Net Name=A0
+Added Pin To Net: NetName=CLK Pin=C?-4
+Added Pin To Net: NetName=CLK Pin=U1-49
+Added Net: Name=CLK
+Added Pin To Net: NetName=DIO Pin=C?-3
+Added Pin To Net: NetName=DIO Pin=U1-46
+Added Net: Name=DIO
+Added Member To Class: ClassName=Sheet1 Member=Component C? Header4

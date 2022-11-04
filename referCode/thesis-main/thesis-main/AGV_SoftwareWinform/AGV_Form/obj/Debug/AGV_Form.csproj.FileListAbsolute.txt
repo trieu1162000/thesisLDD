@@ -1,0 +1,24 @@
+C:\Users\thien\source\repos\AGV_Form\AGV_Form\bin\Debug\AGV_Form.exe.config
+C:\Users\thien\source\repos\AGV_Form\AGV_Form\bin\Debug\AGV_Form.exe
+C:\Users\thien\source\repos\AGV_Form\AGV_Form\bin\Debug\AGV_Form.pdb
+C:\Users\thien\source\repos\AGV_Form\AGV_Form\obj\Debug\AGV_Form.csprojAssemblyReference.cache
+C:\Users\thien\source\repos\AGV_Form\AGV_Form\obj\Debug\AGV_Form.Form1.resources
+C:\Users\thien\source\repos\AGV_Form\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+C:\Users\thien\source\repos\AGV_Form\AGV_Form\obj\Debug\AGV_Form.csproj.GenerateResource.cache
+C:\Users\thien\source\repos\AGV_Form\AGV_Form\obj\Debug\AGV_Form.csproj.CoreCompileInputs.cache
+C:\Users\thien\source\repos\AGV_Form\AGV_Form\obj\Debug\AGV_Form.exe
+C:\Users\thien\source\repos\AGV_Form\AGV_Form\obj\Debug\AGV_Form.pdb
+C:\Users\thien\source\repos\AGV_Form\AGV_Form\obj\Debug\AGV_Form.UserControl1.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\bin\Debug\AGV_Form.exe.config
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\bin\Debug\AGV_Form.exe
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\bin\Debug\AGV_Form.pdb
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Dashboard.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Form1.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Monitoring.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.Properties.Resources.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.UserControl1.resources
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.csproj.GenerateResource.cache
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.csproj.CoreCompileInputs.cache
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.exe
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.pdb
+C:\Users\thien\source\repos\AGV_Form - Copy\AGV_Form\obj\Debug\AGV_Form.csprojAssemblyReference.cache

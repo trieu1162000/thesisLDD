@@ -1,0 +1,53 @@
+Removed Pin From Net: NetName=NetP3_14 Pin=P5-2
+Removed Pin From Net: NetName=NetP1_6 Pin=P5-6
+Removed Pin From Net: NetName=NetP1_5 Pin=P5-7
+Removed Pin From Net: NetName=NetP1_1 Pin=P5-13
+Removed Pin From Net: NetName=NetLS1_2 Pin=P5-14
+Removed Pin From Net: NetName=GND Pin=P5-15
+Removed Member From Class: ClassName=Sheet1 Member=P5
+Added Component: Designator=P?(HDR1X16)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetP3_14 Pin=P?-3
+Added Pin To Net: NetName=NetP1_6 Pin=P?-7
+Added Pin To Net: NetName=NetP1_5 Pin=P?-8
+Added Pin To Net: NetName=NetP1_1 Pin=P?-14
+Added Pin To Net: NetName=NetLS1_2 Pin=P?-15
+Added Pin To Net: NetName=GND Pin=P?-16
+Added Pin To Net: NetName=NetP?_1 Pin=P?-1
+Added Pin To Net: NetName=NetP?_1 Pin=PT1-10
+Added Pin To Net: NetName=NetP?_1 Pin=PT2-24
+Added Net: Name=NetP?_1
+Added Pin To Net: NetName=NetP?_2 Pin=P?-2
+Added Pin To Net: NetName=NetP?_2 Pin=PT2-18
+Added Net: Name=NetP?_2
+Added Pin To Net: NetName=NetP?_4 Pin=P?-4
+Added Pin To Net: NetName=NetP?_4 Pin=PP2-10
+Added Net: Name=NetP?_4
+Added Pin To Net: NetName=NetP?_5 Pin=P?-5
+Added Pin To Net: NetName=NetP?_5 Pin=PP2-25
+Added Net: Name=NetP?_5
+Added Pin To Net: NetName=NetP?_6 Pin=P?-6
+Added Pin To Net: NetName=NetP?_6 Pin=PP2-2
+Added Net: Name=NetP?_6
+Added Pin To Net: NetName=NetP?_9 Pin=P?-9
+Added Pin To Net: NetName=NetP?_9 Pin=PP2-15
+Added Net: Name=NetP?_9
+Added Pin To Net: NetName=NetP?_10 Pin=P?-10
+Added Pin To Net: NetName=NetP?_10 Pin=PT2-19
+Added Net: Name=NetP?_10
+Added Pin To Net: NetName=NetP?_11 Pin=P?-11
+Added Pin To Net: NetName=NetP?_11 Pin=PT2-5
+Added Net: Name=NetP?_11
+Added Pin To Net: NetName=NetP?_12 Pin=P?-12
+Added Pin To Net: NetName=NetP?_12 Pin=PT2-20
+Added Net: Name=NetP?_12
+Added Pin To Net: NetName=NetP?_13 Pin=P?-13
+Added Pin To Net: NetName=NetP?_13 Pin=PT1-5
+Added Pin To Net: NetName=NetP?_13 Pin=R1-2
+Added Net: Name=NetP?_13
+Added Member To Class: ClassName=Sheet1 Member=Component P4 Header 4
+Added Member To Class: ClassName=Sheet1 Member=Component P? Header 16
+Added Room: Name=Sheet1

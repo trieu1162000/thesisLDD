@@ -1,0 +1,30 @@
+PCAD Importer Log
+Project : XL6009.LibPkg
+
+Section : D:\AGV_ver2.0\hardware\XL6009\XL6009.lia
+    Section : PCB Library - XL6009.PcbLib
+        Section : Load Messages
+            Warning - 1 : Skipping Token XL6009 On Line 263
+            Warning - 1 : Skipping Token attachedSymbol On Line 350
+        EndSection
+
+        Section : Import Messages
+        EndSection
+    EndSection
+
+    Section : SCH Library - XL6009.SchLib
+        Section : Parsing Messages
+            Warning - 1 : Skipping Token padStyleDef On Line 9
+            Warning - 1 : Skipping Token padStyleDef On Line 21
+            Warning - 1 : Skipping Token multiLayer On Line 96
+            Warning - 1 : Skipping Token layerContents On Line 104
+            Warning - 1 : Skipping Token layerContents On Line 114
+            Warning - 1 : Skipping Token layerContents On Line 236
+            Warning - 1 : Skipping Token layerContents On Line 243
+            Warning - 1 : Skipping Token layerContents On Line 252
+        EndSection
+
+        Section : Generating SCH Library - XL6009.SchLib
+        EndSection
+    EndSection
+EndSection

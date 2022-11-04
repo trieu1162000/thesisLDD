@@ -1,0 +1,57 @@
+Change Component Designator: OldDesignator=P2 NewDesignator=P3
+Change Component Designator: OldDesignator=P3 NewDesignator=P2
+Change Component Designator: OldDesignator=Q? NewDesignator=Q1
+Change Component Designator: OldDesignator=R? NewDesignator=R1
+Change Component Designator: OldDesignator=R? NewDesignator=R2
+Change Component Designator: OldDesignator=R? NewDesignator=R3
+Added Component: Designator=P4(HDR1X15)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetP1_6 Pin=P4-6
+Added Pin To Net: NetName=NetP1_5 Pin=P4-7
+Added Pin To Net: NetName=NetP1_1 Pin=P4-13
+Added Pin To Net: NetName=NetLS1_2 Pin=P4-14
+Added Pin To Net: NetName=GND Pin=P4-15
+Change Net Name : Old Net Name=NetP2_3 New Net Name=NetP3_3
+Change Net Name : Old Net Name=NetP2_4 New Net Name=NetP3_4
+Change Net Name : Old Net Name=NetP2_5 New Net Name=NetP3_5
+Change Net Name : Old Net Name=NetP2_6 New Net Name=NetP3_6
+Change Net Name : Old Net Name=NetP2_7 New Net Name=NetP3_7
+Change Net Name : Old Net Name=NetP2_8 New Net Name=NetP3_8
+Change Net Name : Old Net Name=NetP2_9 New Net Name=NetP3_9
+Change Net Name : Old Net Name=NetP2_10 New Net Name=NetP3_10
+Change Net Name : Old Net Name=NetP2_11 New Net Name=NetP3_11
+Change Net Name : Old Net Name=NetP2_13 New Net Name=NetP3_13
+Change Net Name : Old Net Name=NetP2_15 New Net Name=NetP3_15
+Change Net Name : Old Net Name=NetP2_16 New Net Name=NetP3_16
+Change Net Name : Old Net Name=NetQ?_3 New Net Name=NetQ1_3
+Added Pin To Net: NetName=NetP3_14 Pin=P3-14
+Added Pin To Net: NetName=NetP3_14 Pin=P4-2
+Added Pin To Net: NetName=NetP3_14 Pin=PT2-4
+Added Net: Name=NetP3_14
+Added Pin To Net: NetName=NetP4_1 Pin=P4-1
+Added Net: Name=NetP4_1
+Added Pin To Net: NetName=NetP4_3 Pin=P4-3
+Added Net: Name=NetP4_3
+Added Pin To Net: NetName=NetP4_4 Pin=P4-4
+Added Net: Name=NetP4_4
+Added Pin To Net: NetName=NetP4_5 Pin=P4-5
+Added Net: Name=NetP4_5
+Added Pin To Net: NetName=NetP4_8 Pin=P4-8
+Added Net: Name=NetP4_8
+Added Pin To Net: NetName=NetP4_9 Pin=P4-9
+Added Net: Name=NetP4_9
+Added Pin To Net: NetName=NetP4_10 Pin=P4-10
+Added Net: Name=NetP4_10
+Added Pin To Net: NetName=NetP4_11 Pin=P4-11
+Added Net: Name=NetP4_11
+Added Pin To Net: NetName=NetP4_12 Pin=P4-12
+Added Pin To Net: NetName=NetP4_12 Pin=PT1-5
+Added Pin To Net: NetName=NetP4_12 Pin=R1-2
+Added Net: Name=NetP4_12
+Added Member To Class: ClassName=Sheet1 Member=Component P4 Header 15
+Added Member To Class: ClassName=Sheet1 Member=Component R1 1k
+Added Member To Class: ClassName=Sheet1 Member=Component R2 1k
+Added Room: Name=Sheet1

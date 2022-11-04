@@ -1,0 +1,6 @@
+Added Pin To Net: NetName=+12 Pin=C1-1
+Added Pin To Net: NetName=+12 Pin=SS1-2
+Added Pin To Net: NetName=+12 Pin=VR2-1
+Change Net Name : Old Net Name=+12 New Net Name=Net1_2
+Added Member To Class: ClassName=Sheet1 Member=Component C2 Battery
+Added Room: Name=Sheet1

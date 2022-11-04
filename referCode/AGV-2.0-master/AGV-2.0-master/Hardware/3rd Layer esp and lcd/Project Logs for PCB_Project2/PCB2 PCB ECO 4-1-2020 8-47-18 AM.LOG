@@ -1,0 +1,5 @@
+Change Component Designator: OldDesignator=SW1 NewDesignator=RS
+Change Component Designator: OldDesignator=SW2 NewDesignator=Start
+Change Component Designator: OldDesignator=SW3 NewDesignator=Stop
+Change Component Designator: OldDesignator=SW4 NewDesignator=Ready
+Added Room: Name=Sheet2

@@ -1,0 +1,6 @@
+Added Component: Designator=TIP41(SC_TO-252AA)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetTIP41_2 Pin=TIP41-2
+Added Net: Name=NetTIP41_2
+Added Member To Class: ClassName=Sheet1 Member=Component TIP41 TIP41C-TO252
+Added Room: Name=Sheet1

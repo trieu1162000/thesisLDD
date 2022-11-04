@@ -1,0 +1,28 @@
+--cpu Cortex-M3
+"agv05.03\system_stm32f1xx.o"
+"agv05.03\startup_stm32f103xe.o"
+"agv05.03\stm32f1xx_hal_rcc.o"
+"agv05.03\stm32f1xx_hal_flash.o"
+"agv05.03\stm32f1xx_hal_flash_ex.o"
+"agv05.03\stm32f1xx_hal_rcc_ex.o"
+"agv05.03\stm32f1xx_hal_gpio.o"
+"agv05.03\stm32f1xx_hal_gpio_ex.o"
+"agv05.03\stm32f1xx_hal.o"
+"agv05.03\stm32f1xx_hal_uart.o"
+"agv05.03\stm32f1xx_hal_cortex.o"
+"agv05.03\stm32f1xx_hal_pwr.o"
+"agv05.03\stm32f1xx_hal_dma.o"
+"agv05.03\stm32f1xx_hal_adc.o"
+"agv05.03\stm32f1xx_hal_adc_ex.o"
+"agv05.03\stm32f1xx_hal_tim_ex.o"
+"agv05.03\stm32f1xx_hal_tim.o"
+"agv05.03\stm32f1xx_hal_i2c.o"
+"agv05.03\stm32f1xx_it.o"
+"agv05.03\stm32f1xx_hal_msp.o"
+"agv05.03\main.o"
+"agv05.03\i2c-lcd.o"
+"agv05.03\motor.o"
+--library_type=microlib --strict --scatter "AGV05.03\AGV05.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "AGV05.map" -o AGV05.03\AGV05.03

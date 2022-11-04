@@ -1,0 +1,24 @@
+--cpu Cortex-M3
+"adcdma\stm32f1xx_hal_msp.o"
+"adcdma\main.o"
+"adcdma\stm32f1xx_it.o"
+"adcdma\stm32f1xx_hal_gpio_ex.o"
+"adcdma\stm32f1xx_hal_cortex.o"
+"adcdma\stm32f1xx_hal_pwr.o"
+"adcdma\stm32f1xx_hal_adc_ex.o"
+"adcdma\stm32f1xx_hal_rcc_ex.o"
+"adcdma\stm32f1xx_hal_adc.o"
+"adcdma\stm32f1xx_hal.o"
+"adcdma\stm32f1xx_hal_tim_ex.o"
+"adcdma\stm32f1xx_hal_tim.o"
+"adcdma\stm32f1xx_hal_flash.o"
+"adcdma\stm32f1xx_hal_gpio.o"
+"adcdma\stm32f1xx_hal_rcc.o"
+"adcdma\stm32f1xx_hal_dma.o"
+"adcdma\stm32f1xx_hal_flash_ex.o"
+"adcdma\startup_stm32f103xe.o"
+"adcdma\system_stm32f1xx.o"
+--library_type=microlib --strict --scatter "adcDMA\adcDMA.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "adcDMA.map" -o adcDMA\adcDMA.axf

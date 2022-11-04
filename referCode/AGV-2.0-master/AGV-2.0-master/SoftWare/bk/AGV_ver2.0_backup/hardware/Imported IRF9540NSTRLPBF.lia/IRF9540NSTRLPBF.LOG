@@ -1,0 +1,30 @@
+PCAD Importer Log
+Project : IRF9540NSTRLPBF.LibPkg
+
+Section : D:\AGV_ver2.0\hardware\IRF9540NSTRLPBF.lia
+    Section : PCB Library - IRF9540NSTRLPBF.PcbLib
+        Section : Load Messages
+            Warning - 1 : Skipping Token IRF9540NSTRLPBF On Line 193
+            Warning - 1 : Skipping Token attachedSymbol On Line 277
+        EndSection
+
+        Section : Import Messages
+        EndSection
+    EndSection
+
+    Section : SCH Library - IRF9540NSTRLPBF.SchLib
+        Section : Parsing Messages
+            Warning - 1 : Skipping Token padStyleDef On Line 9
+            Warning - 1 : Skipping Token padStyleDef On Line 21
+            Warning - 1 : Skipping Token multiLayer On Line 96
+            Warning - 1 : Skipping Token layerContents On Line 101
+            Warning - 1 : Skipping Token layerContents On Line 115
+            Warning - 1 : Skipping Token layerContents On Line 124
+            Warning - 1 : Skipping Token layerContents On Line 133
+            Warning - 1 : Skipping Token layerContents On Line 183
+        EndSection
+
+        Section : Generating SCH Library - IRF9540NSTRLPBF.SchLib
+        EndSection
+    EndSection
+EndSection

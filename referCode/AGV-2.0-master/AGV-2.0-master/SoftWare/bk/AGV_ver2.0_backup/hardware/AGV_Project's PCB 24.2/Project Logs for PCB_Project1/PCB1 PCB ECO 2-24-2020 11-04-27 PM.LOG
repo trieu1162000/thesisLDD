@@ -1,0 +1,119 @@
+Added Component: Designator=C1(Header4)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1 Description"; Value = "Manufacturer"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.we-online.com"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2 Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "http://katalog.we-online.de/em/datasheet/6130xx143121.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Created by"; Value = "Karrer Zheng"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Created Date"; Value = "29 March 2013"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "W¨¹rth Elektronik eiSos GmbH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "NoPins"; Value = "02"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "partNo"; Value = "613002143121"; VariantName = "[No Variations]"
+Added Component: Designator=Q1(*DPAK254P1524X483-4_3N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Infineon"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "IRF9540NSTRLPBF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "D2PAK Infineon"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/IRF9540NSTRLPBF/Infineon%20Technologies/view-part/565416/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Q2(*DPAK254P1524X483-4_3N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Infineon"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "IRF9540NSTRLPBF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "D2PAK Infineon"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/IRF9540NSTRLPBF/Infineon%20Technologies/view-part/565416/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Q3(*TRANS_IRF3205SPBF)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Infineon Technologies"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "IRF3205SPBF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "D2PAK Infineon"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/IRF3205SPBF/Infineon%20Technologies/view-part/576468/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Q4(*TRANS_IRF3205SPBF)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Infineon Technologies"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "IRF3205SPBF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "D2PAK Infineon"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/IRF3205SPBF/Infineon%20Technologies/view-part/576468/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Q5(SOT23B)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "C2383"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "C1815"; VariantName = "[No Variations]"
+Added Component: Designator=Q6(SOT23B)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = ""; Value = "C2383"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "C1815"; VariantName = "[No Variations]"
+Added Component: Designator=R1(RES-SMD-0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Class"; Value = "Passive"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Generic Components"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "08/06/2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Hobart Technology Centre"; VariantName = "[No Variations]"
+Added Component: Designator=R2(RES-SMD-0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Class"; Value = "Passive"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Generic Components"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "08/06/2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Hobart Technology Centre"; VariantName = "[No Variations]"
+Added Component: Designator=R3(RES-SMD-0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Class"; Value = "Passive"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Generic Components"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "08/06/2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Hobart Technology Centre"; VariantName = "[No Variations]"
+Added Component: Designator=R4(RES-SMD-0805)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Class"; Value = "Passive"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Generic Components"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "08/06/2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Hobart Technology Centre"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetC1_1 Pin=C1-1
+Added Pin To Net: NetName=NetC1_1 Pin=C1-2
+Added Pin To Net: NetName=NetC1_3 Pin=C1-3
+Added Pin To Net: NetName=NetC1_3 Pin=C1-4
+Added Pin To Net: NetName=NetQ1_1 Pin=Q1-1
+Added Pin To Net: NetName=NetQ1_3 Pin=Q1-3
+Added Pin To Net: NetName=NetC1_3 Pin=Q1-4
+Added Pin To Net: NetName=NetQ2_1 Pin=Q2-1
+Added Pin To Net: NetName=NetQ1_3 Pin=Q2-3
+Added Pin To Net: NetName=NetC1_1 Pin=Q2-4
+Added Pin To Net: NetName=NetQ1_1 Pin=Q3-1
+Added Pin To Net: NetName=NetC1_3 Pin=Q3-2
+Added Pin To Net: NetName=GND Pin=Q3-3
+Added Pin To Net: NetName=NetQ2_1 Pin=Q4-1
+Added Pin To Net: NetName=NetC1_1 Pin=Q4-2
+Added Pin To Net: NetName=GND Pin=Q4-3
+Added Pin To Net: NetName=GND Pin=Q5-1
+Added Pin To Net: NetName=NetQ2_1 Pin=Q5-2
+Added Pin To Net: NetName=NetQ5_3 Pin=Q5-3
+Added Pin To Net: NetName=GND Pin=Q6-1
+Added Pin To Net: NetName=NetQ1_1 Pin=Q6-2
+Added Pin To Net: NetName=NetQ6_3 Pin=Q6-3
+Added Pin To Net: NetName=NetQ1_3 Pin=R1-1
+Added Pin To Net: NetName=NetQ1_1 Pin=R1-2
+Added Pin To Net: NetName=NetQ2_1 Pin=R2-1
+Added Pin To Net: NetName=NetQ1_3 Pin=R2-2
+Added Pin To Net: NetName=NetQ6_3 Pin=R3-2
+Added Pin To Net: NetName=NetQ5_3 Pin=R4-1
+Added Member To Class: ClassName=Sheet1 Member=Component C1 Header4
+Added Member To Class: ClassName=Sheet1 Member=Component Q1 IRF9540N
+Added Member To Class: ClassName=Sheet1 Member=Component Q2 IRF9540N
+Added Member To Class: ClassName=Sheet1 Member=Component Q3 IRF3205
+Added Member To Class: ClassName=Sheet1 Member=Component Q4 IRF3205
+Added Member To Class: ClassName=Sheet1 Member=Component Q5 C1815
+Added Member To Class: ClassName=Sheet1 Member=Component Q6 C1815
+Added Member To Class: ClassName=Sheet1 Member=Component R1 1k
+Added Member To Class: ClassName=Sheet1 Member=Component R2 1k
+Added Member To Class: ClassName=Sheet1 Member=Component R3 10k
+Added Member To Class: ClassName=Sheet1 Member=Component R4 10k
+Added Room: Name=Sheet1

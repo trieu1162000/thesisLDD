@@ -1,0 +1,24 @@
+--cpu Cortex-M3
+"adcdma&interrupt\stm32f1xx_hal_dma.o"
+"adcdma&interrupt\stm32f1xx_hal_gpio_ex.o"
+"adcdma&interrupt\stm32f1xx_hal_adc_ex.o"
+"adcdma&interrupt\stm32f1xx_hal_cortex.o"
+"adcdma&interrupt\stm32f1xx_hal_tim.o"
+"adcdma&interrupt\stm32f1xx_hal_tim_ex.o"
+"adcdma&interrupt\stm32f1xx_hal_rcc_ex.o"
+"adcdma&interrupt\stm32f1xx_hal_pwr.o"
+"adcdma&interrupt\stm32f1xx_hal_adc.o"
+"adcdma&interrupt\stm32f1xx_hal_gpio.o"
+"adcdma&interrupt\stm32f1xx_hal_rcc.o"
+"adcdma&interrupt\stm32f1xx_hal_flash_ex.o"
+"adcdma&interrupt\stm32f1xx_hal.o"
+"adcdma&interrupt\stm32f1xx_hal_flash.o"
+"adcdma&interrupt\system_stm32f1xx.o"
+"adcdma&interrupt\startup_stm32f103xe.o"
+"adcdma&interrupt\stm32f1xx_hal_msp.o"
+"adcdma&interrupt\main.o"
+"adcdma&interrupt\stm32f1xx_it.o"
+--library_type=microlib --strict --scatter "adcDMA&Interrupt\adcDMA&Interrupt.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "adcDMA&Interrupt.map" -o adcDMA&Interrupt\adcDMA&Interrupt.axf

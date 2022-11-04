@@ -1,0 +1,196 @@
+Change Component Designator: OldDesignator=BT? NewDesignator=BT1
+Change Component Designator: OldDesignator=LED? NewDesignator=LED20
+Change Component Designator: OldDesignator=LED? NewDesignator=LED21
+Change Component Designator: OldDesignator=LED? NewDesignator=LED22
+Change Component Designator: OldDesignator=LED? NewDesignator=LED23
+Change Component Designator: OldDesignator=LED? NewDesignator=LED24
+Change Component Designator: OldDesignator=LED? NewDesignator=LED25
+Change Component Designator: OldDesignator=LED? NewDesignator=LED26
+Change Component Designator: OldDesignator=LED? NewDesignator=LED27
+Change Component Designator: OldDesignator=LED? NewDesignator=LED28
+Change Component Designator: OldDesignator=LED? NewDesignator=LED29
+Change Component Designator: OldDesignator=LED? NewDesignator=LED30
+Change Component Designator: OldDesignator=LED? NewDesignator=LED31
+Change Component Designator: OldDesignator=LED? NewDesignator=LED32
+Change Component Designator: OldDesignator=LED? NewDesignator=LED33
+Change Component Designator: OldDesignator=LED? NewDesignator=LED34
+Change Component Designator: OldDesignator=LED? NewDesignator=LED35
+Change Component Designator: OldDesignator=LED? NewDesignator=LED36
+Change Component Designator: OldDesignator=LED? NewDesignator=LED37
+Change Component Designator: OldDesignator=LED? NewDesignator=LED38
+Change Component Designator: OldDesignator=LED? NewDesignator=LED39
+Change Component Designator: OldDesignator=LED? NewDesignator=LED40
+Change Component Designator: OldDesignator=LED? NewDesignator=LED41
+Change Component Designator: OldDesignator=LED? NewDesignator=LED42
+Change Component Designator: OldDesignator=LED? NewDesignator=LED43
+Change Component Designator: OldDesignator=LED? NewDesignator=LED44
+Change Component Designator: OldDesignator=LED? NewDesignator=LED45
+Change Component Designator: OldDesignator=LED? NewDesignator=LED46
+Change Component Designator: OldDesignator=LED? NewDesignator=LED47
+Change Component Designator: OldDesignator=R? NewDesignator=R63
+Change Component Designator: OldDesignator=R? NewDesignator=R64
+Change Component Designator: OldDesignator=R? NewDesignator=R65
+Change Component Designator: OldDesignator=R? NewDesignator=R66
+Change Component Designator: OldDesignator=R? NewDesignator=R67
+Change Component Designator: OldDesignator=R? NewDesignator=R68
+Change Component Designator: OldDesignator=R? NewDesignator=R69
+Change Component Designator: OldDesignator=R? NewDesignator=R70
+Change Component Designator: OldDesignator=R? NewDesignator=R71
+Change Component Designator: OldDesignator=R? NewDesignator=R72
+Change Component Designator: OldDesignator=R? NewDesignator=R73
+Change Component Designator: OldDesignator=R? NewDesignator=R74
+Change Component Designator: OldDesignator=R? NewDesignator=R75
+Change Component Designator: OldDesignator=R? NewDesignator=R76
+Change Component Designator: OldDesignator=R? NewDesignator=R77
+Change Component Designator: OldDesignator=R? NewDesignator=R78
+Change Component Designator: OldDesignator=R? NewDesignator=R79
+Change Component Designator: OldDesignator=R? NewDesignator=R80
+Change Component Designator: OldDesignator=R? NewDesignator=R81
+Change Component Designator: OldDesignator=R? NewDesignator=R82
+Change Component Designator: OldDesignator=R? NewDesignator=R83
+Change Component Designator: OldDesignator=R? NewDesignator=R84
+Change Component Designator: OldDesignator=R? NewDesignator=R85
+Change Component Designator: OldDesignator=R? NewDesignator=R86
+Change Component Designator: OldDesignator=R? NewDesignator=R87
+Change Component Designator: OldDesignator=R? NewDesignator=R88
+Change Component Designator: OldDesignator=R? NewDesignator=R89
+Change Component Designator: OldDesignator=R? NewDesignator=R90
+Change Component Designator: OldDesignator=SW? NewDesignator=SW1
+Change Net Name : Old Net Name=NetBT?_1 New Net Name=NetBT1_1
+Change Net Name : Old Net Name=NetLED?_1 New Net Name=NetLED34_1
+Change Net Name : Old Net Name=NetR?_1 New Net Name=NetR63_1
+Added Pin To Net: NetName=NetLED20_1 Pin=LED20-1
+Added Pin To Net: NetName=NetLED20_1 Pin=R63-2
+Added Net: Name=NetLED20_1
+Added Pin To Net: NetName=NetLED21_1 Pin=LED21-1
+Added Pin To Net: NetName=NetLED21_1 Pin=R64-2
+Added Net: Name=NetLED21_1
+Added Pin To Net: NetName=NetLED22_1 Pin=LED22-1
+Added Pin To Net: NetName=NetLED22_1 Pin=R65-2
+Added Net: Name=NetLED22_1
+Added Pin To Net: NetName=NetLED23_1 Pin=LED23-1
+Added Pin To Net: NetName=NetLED23_1 Pin=R66-2
+Added Net: Name=NetLED23_1
+Added Pin To Net: NetName=NetLED24_1 Pin=LED24-1
+Added Pin To Net: NetName=NetLED24_1 Pin=R67-2
+Added Net: Name=NetLED24_1
+Added Pin To Net: NetName=NetLED25_1 Pin=LED25-1
+Added Pin To Net: NetName=NetLED25_1 Pin=R68-2
+Added Net: Name=NetLED25_1
+Added Pin To Net: NetName=NetLED26_1 Pin=LED26-1
+Added Pin To Net: NetName=NetLED26_1 Pin=R69-2
+Added Net: Name=NetLED26_1
+Added Pin To Net: NetName=NetLED27_1 Pin=LED27-1
+Added Pin To Net: NetName=NetLED27_1 Pin=R70-2
+Added Net: Name=NetLED27_1
+Added Pin To Net: NetName=NetLED28_1 Pin=LED28-1
+Added Pin To Net: NetName=NetLED28_1 Pin=R71-2
+Added Net: Name=NetLED28_1
+Added Pin To Net: NetName=NetLED29_1 Pin=LED29-1
+Added Pin To Net: NetName=NetLED29_1 Pin=R72-2
+Added Net: Name=NetLED29_1
+Added Pin To Net: NetName=NetLED30_1 Pin=LED30-1
+Added Pin To Net: NetName=NetLED30_1 Pin=R73-2
+Added Net: Name=NetLED30_1
+Added Pin To Net: NetName=NetLED31_1 Pin=LED31-1
+Added Pin To Net: NetName=NetLED31_1 Pin=R74-2
+Added Net: Name=NetLED31_1
+Added Pin To Net: NetName=NetLED32_1 Pin=LED32-1
+Added Pin To Net: NetName=NetLED32_1 Pin=R75-2
+Added Net: Name=NetLED32_1
+Added Pin To Net: NetName=NetLED33_1 Pin=LED33-1
+Added Pin To Net: NetName=NetLED33_1 Pin=R76-2
+Added Net: Name=NetLED33_1
+Added Pin To Net: NetName=NetLED35_1 Pin=LED35-1
+Added Pin To Net: NetName=NetLED35_1 Pin=R78-2
+Added Net: Name=NetLED35_1
+Added Pin To Net: NetName=NetLED36_1 Pin=LED36-1
+Added Pin To Net: NetName=NetLED36_1 Pin=R79-2
+Added Net: Name=NetLED36_1
+Added Pin To Net: NetName=NetLED37_1 Pin=LED37-1
+Added Pin To Net: NetName=NetLED37_1 Pin=R80-2
+Added Net: Name=NetLED37_1
+Added Pin To Net: NetName=NetLED38_1 Pin=LED38-1
+Added Pin To Net: NetName=NetLED38_1 Pin=R81-2
+Added Net: Name=NetLED38_1
+Added Pin To Net: NetName=NetLED39_1 Pin=LED39-1
+Added Pin To Net: NetName=NetLED39_1 Pin=R82-2
+Added Net: Name=NetLED39_1
+Added Pin To Net: NetName=NetLED40_1 Pin=LED40-1
+Added Pin To Net: NetName=NetLED40_1 Pin=R83-2
+Added Net: Name=NetLED40_1
+Added Pin To Net: NetName=NetLED41_1 Pin=LED41-1
+Added Pin To Net: NetName=NetLED41_1 Pin=R84-2
+Added Net: Name=NetLED41_1
+Added Pin To Net: NetName=NetLED42_1 Pin=LED42-1
+Added Pin To Net: NetName=NetLED42_1 Pin=R85-2
+Added Net: Name=NetLED42_1
+Added Pin To Net: NetName=NetLED43_1 Pin=LED43-1
+Added Pin To Net: NetName=NetLED43_1 Pin=R86-2
+Added Net: Name=NetLED43_1
+Added Pin To Net: NetName=NetLED44_1 Pin=LED44-1
+Added Pin To Net: NetName=NetLED44_1 Pin=R87-2
+Added Net: Name=NetLED44_1
+Added Pin To Net: NetName=NetLED45_1 Pin=LED45-1
+Added Pin To Net: NetName=NetLED45_1 Pin=R88-2
+Added Net: Name=NetLED45_1
+Added Pin To Net: NetName=NetLED46_1 Pin=LED46-1
+Added Pin To Net: NetName=NetLED46_1 Pin=R89-2
+Added Net: Name=NetLED46_1
+Added Pin To Net: NetName=NetLED47_1 Pin=LED47-1
+Added Pin To Net: NetName=NetLED47_1 Pin=R90-2
+Added Net: Name=NetLED47_1
+Added Member To Class: ClassName=Nghich Member=Component LED21 LED
+Added Member To Class: ClassName=Nghich Member=Component LED22 LED
+Added Member To Class: ClassName=Nghich Member=Component LED23 LED
+Added Member To Class: ClassName=Nghich Member=Component LED24 LED
+Added Member To Class: ClassName=Nghich Member=Component LED25 LED
+Added Member To Class: ClassName=Nghich Member=Component LED26 LED
+Added Member To Class: ClassName=Nghich Member=Component LED27 LED
+Added Member To Class: ClassName=Nghich Member=Component LED28 LED
+Added Member To Class: ClassName=Nghich Member=Component LED29 LED
+Added Member To Class: ClassName=Nghich Member=Component LED30 LED
+Added Member To Class: ClassName=Nghich Member=Component LED31 LED
+Added Member To Class: ClassName=Nghich Member=Component LED32 LED
+Added Member To Class: ClassName=Nghich Member=Component LED33 LED
+Added Member To Class: ClassName=Nghich Member=Component LED34 LED
+Added Member To Class: ClassName=Nghich Member=Component LED35 LED
+Added Member To Class: ClassName=Nghich Member=Component LED36 LED
+Added Member To Class: ClassName=Nghich Member=Component LED37 LED
+Added Member To Class: ClassName=Nghich Member=Component LED38 LED
+Added Member To Class: ClassName=Nghich Member=Component LED39 LED
+Added Member To Class: ClassName=Nghich Member=Component LED40 LED
+Added Member To Class: ClassName=Nghich Member=Component LED41 LED
+Added Member To Class: ClassName=Nghich Member=Component LED42 LED
+Added Member To Class: ClassName=Nghich Member=Component LED43 LED
+Added Member To Class: ClassName=Nghich Member=Component LED44 LED
+Added Member To Class: ClassName=Nghich Member=Component LED45 LED
+Added Member To Class: ClassName=Nghich Member=Component LED46 LED
+Added Member To Class: ClassName=Nghich Member=Component LED47 LED
+Added Member To Class: ClassName=Nghich Member=Component R64 Res
+Added Member To Class: ClassName=Nghich Member=Component R65 Res
+Added Member To Class: ClassName=Nghich Member=Component R66 Res
+Added Member To Class: ClassName=Nghich Member=Component R67 Res
+Added Member To Class: ClassName=Nghich Member=Component R68 Res
+Added Member To Class: ClassName=Nghich Member=Component R69 Res
+Added Member To Class: ClassName=Nghich Member=Component R70 Res
+Added Member To Class: ClassName=Nghich Member=Component R71 Res
+Added Member To Class: ClassName=Nghich Member=Component R72 Res
+Added Member To Class: ClassName=Nghich Member=Component R73 Res
+Added Member To Class: ClassName=Nghich Member=Component R74 Res
+Added Member To Class: ClassName=Nghich Member=Component R75 Res
+Added Member To Class: ClassName=Nghich Member=Component R76 Res
+Added Member To Class: ClassName=Nghich Member=Component R77 Res
+Added Member To Class: ClassName=Nghich Member=Component R78 Res
+Added Member To Class: ClassName=Nghich Member=Component R79 Res
+Added Member To Class: ClassName=Nghich Member=Component R80 Res
+Added Member To Class: ClassName=Nghich Member=Component R81 Res
+Added Member To Class: ClassName=Nghich Member=Component R82 Res
+Added Member To Class: ClassName=Nghich Member=Component R83 Res
+Added Member To Class: ClassName=Nghich Member=Component R84 Res
+Added Member To Class: ClassName=Nghich Member=Component R85 Res
+Added Member To Class: ClassName=Nghich Member=Component R86 Res
+Added Member To Class: ClassName=Nghich Member=Component R87 Res
+Added Member To Class: ClassName=Nghich Member=Component R88 Res
+Added Member To Class: ClassName=Nghich Member=Component R89 Res
+Added Member To Class: ClassName=Nghich Member=Component R90 Res

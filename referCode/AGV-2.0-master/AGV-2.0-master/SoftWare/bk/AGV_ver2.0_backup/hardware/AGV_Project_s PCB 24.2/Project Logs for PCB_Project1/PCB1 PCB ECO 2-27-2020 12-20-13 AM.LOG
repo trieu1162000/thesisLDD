@@ -1,0 +1,22 @@
+Change Component Footprint: Designator=R12 Old Footprint=RES-SMD-0805 New Footprint=RES-2W
+Change Component Comment : Designator=R12 Old Comment=Res New Comment=RI
+Change Component Designator: OldDesignator=3 NewDesignator=2
+Change Component Designator: OldDesignator=4 NewDesignator=3
+Change Component Designator: OldDesignator=5 NewDesignator=4
+Change Component Designator: OldDesignator=6 NewDesignator=5
+Change Component Designator: OldDesignator=7 NewDesignator=6
+Change Component Designator: OldDesignator=8 NewDesignator=7
+Change Component Designator: OldDesignator=9 NewDesignator=8
+Change Component Designator: OldDesignator=10 NewDesignator=9
+Change Component Designator: OldDesignator=11 NewDesignator=10
+Change Component Designator: OldDesignator=12 NewDesignator=11
+Change Component Designator: OldDesignator=13 NewDesignator=12
+Change Component Designator: OldDesignator=14 NewDesignator=13
+Change Component Designator: OldDesignator=15 NewDesignator=14
+Change Component Designator: OldDesignator=16 NewDesignator=15
+Change Component Designator: OldDesignator=17 NewDesignator=16
+Change Component Designator: OldDesignator=18 NewDesignator=17
+Change Component Designator: OldDesignator=L? NewDesignator=L1
+Added Member To Class: ClassName=Sheet1 Member=Component 17 TIP41C
+Added Member To Class: ClassName=Sheet1 Member=Component L1 2.20 µH
+Added Room: Name=Sheet1

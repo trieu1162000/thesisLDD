@@ -1,0 +1,6 @@
+Change Component Designator: OldDesignator=P? NewDesignator=P1
+Change Component Designator: OldDesignator=P? NewDesignator=PP1
+Change Component Designator: OldDesignator=P? NewDesignator=PT1
+Added Member To Class: ClassName=Sheet1 Member=Component PP1 Header 10
+Added Member To Class: ClassName=Sheet1 Member=Component PT1 Header 10
+Added Room: Name=Sheet1
