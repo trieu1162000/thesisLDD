@@ -1,5 +1,0 @@
-https://randomnerdtutorials.com/esp8266-web-server/
-
-http://arduino.vn/bai-viet/1511-esp8266-ket-noi-internet-phan-3-arduino-gap-smartphone-hai-dua-noi-chuyen-bang-json
-
-https://www.youtube.com/watch?v=dWM4p_KaTHY

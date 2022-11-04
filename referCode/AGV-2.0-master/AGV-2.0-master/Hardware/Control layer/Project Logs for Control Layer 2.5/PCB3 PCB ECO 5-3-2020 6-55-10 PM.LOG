@@ -1,4 +1,0 @@
-Removed Pin From Net: NetName=Buzzer Pin=SW8-1
-Removed Member From Class: ClassName=STM32 Member=SW8
-Added Pin To Net: NetName=Buzzer Pin=R25-2
-Added Room: Name=STM32

@@ -1,9 +1,0 @@
-Added Component: Designator=BOOT0(SW-DIP1-1)
-Add component. Clean all parameters for all variants
-Add component (AddParameter): Name = "Value"; Value = "SW chip 2 pin"; VariantName = "[No Variations]"
-Added Pin To Net: NetName=VCC3.3 Pin=BOOT0-2
-Added Pin To Net: NetName=NetBOOT0_1 Pin=BOOT0-1
-Added Pin To Net: NetName=NetBOOT0_1 Pin=U1-60
-Added Net: Name=NetBOOT0_1
-Added Member To Class: ClassName=STM32 Member=Component BOOT0 SW
-Added Room: Name=STM32

@@ -1,7 +1,0 @@
-Removed Pin From Net: NetName=VCC3.3 Pin=R16-1
-Removed Member From Class: ClassName=STM32 Member=LED2
-Removed Member From Class: ClassName=STM32 Member=R16
-Added Pin To Net: NetName=NetU1_54 Pin=U1-54
-Added Net: Name=NetU1_54
-Added Member To Class: ClassName=STM32 Member=Component P1 Sonar
-Added Room: Name=STM32
