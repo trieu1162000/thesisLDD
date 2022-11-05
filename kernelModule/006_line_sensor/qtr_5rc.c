@@ -97,7 +97,7 @@ static void qtr_5rc_read_raw(uint16_t *qtr_5rc_value)
 			{
 				time_to_low = ktime_get() - first_time_captured;
 				qtr_5rc_value[i] = (uint16_t) time_to_low;
-				break;
+				// break;
 			}
 			else 
 			{
