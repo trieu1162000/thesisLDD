@@ -88,8 +88,7 @@ static void qtr_5rc_read_raw(uint16_t *qtr_5rc_value)
     for(i=0; i<5; i++){
 		/* Make sensor pin to input */
 		qtr_5rc_gpio_input_mode(GPIO_BASE_NUM+i);
-
-		ndelay(1000);
+		
 		*(qtr_5rc_value + i) = (uint16_t ) gpio_get_value(GPIO_BASE_NUM+i);
 		/* Count time to wait for pin to be low */
 		// time_to_low = 0;
@@ -120,9 +119,14 @@ static ssize_t qtr_5rc_read(struct file *file, char *user_buffer, size_t count, 
 	uint16_t data_read_raw[5];
 
 	/* Read value of sensor */
-	qtr_5rc_read_raw(data_read_raw);
-	for(i=0; i<5; i++)
+	/* Make sensor pin to output and init high value */
+    for(i=0; i<5; i++){
+		qtr_5rc_gpio_output_high(GPIO_BASE_NUM+i);
+		qtr_5rc_gpio_input_mode(GPIO_BASE_NUM+i);
+		ndelay(100);
+		data_read_raw[i] = gpio_get_value(GPIO_BASE_NUM+i);
 		sprintf(buffer_for_read,"%s %d", buffer_for_read, data_read_raw[i]);
+	}
 	printk("%s\n", buffer_for_read);
 	
 	/* Get amount of data to copy */
