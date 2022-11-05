@@ -89,7 +89,7 @@ static void qtr_5rc_read_raw(uint16_t *qtr_5rc_value)
 		/* Make sensor pin to input */
 		qtr_5rc_gpio_input_mode(GPIO_BASE_NUM+i);
 
-		udelay(100);
+		ndelay(1000);
 		*(qtr_5rc_value + i) = (uint16_t ) gpio_get_value(GPIO_BASE_NUM+i);
 		/* Count time to wait for pin to be low */
 		// time_to_low = 0;
