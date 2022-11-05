@@ -194,7 +194,7 @@ static int __init qtr_5rc_init(void) {
 	}
 
 	for(i = 0; i<5; i++){
-		if(!qtr_5rc_init_gpio(GPIO_BASE_NUM+i))
+		if(qtr_5rc_init_gpio(GPIO_BASE_NUM+i))
 			goto GpioError;
 	}
 
