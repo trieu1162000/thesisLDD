@@ -88,23 +88,25 @@ static void qtr_5rc_read_raw(uint16_t *qtr_5rc_value)
     for(i=0; i<5; i++){
 		/* Make sensor pin to input */
 		qtr_5rc_gpio_input_mode(GPIO_BASE_NUM+i);
-		
+
+		udelay(100);
+		*(qtr_5rc_value + i) = (uint16_t ) gpio_get_value(GPIO_BASE_NUM+i);
 		/* Count time to wait for pin to be low */
-		time_to_low = 0;
-		first_time_captured = ktime_get();
-		while(1){
-			if(gpio_get_value(GPIO_BASE_NUM+i)==0)
-			{
-				time_to_low = ktime_get() - first_time_captured;
-				qtr_5rc_value[i] = (uint16_t) time_to_low;
-				// break;
-			}
-			else 
-			{
-				qtr_5rc_value[i] = 3000;
-				time_to_low = ktime_get() - first_time_captured;
-			}
-		}
+		// time_to_low = 0;
+		// first_time_captured = ktime_get();
+		// while(1){
+		// 	if(gpio_get_value(GPIO_BASE_NUM+i)==0)
+		// 	{
+		// 		time_to_low = ktime_get() - first_time_captured;
+		// 		qtr_5rc_value[i] = (uint16_t) time_to_low;
+		// 		break;
+		// 	}
+		// 	else 
+		// 	{
+		// 		qtr_5rc_value[i] = 3000;
+		// 		time_to_low = ktime_get() - first_time_captured;
+		// 	}
+		// }
     }
 
 }
