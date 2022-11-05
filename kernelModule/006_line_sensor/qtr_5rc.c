@@ -117,10 +117,12 @@ static ssize_t qtr_5rc_read(struct file *file, char *user_buffer, size_t count, 
 	int to_copy, not_copied, delta, i, length;
 	char buffer_for_read[100] = "Value of sensor: ";
 	uint16_t data_read_raw[5];
+	
+	printk(KERN_DEBUG"Start to read.\n");
 
 	/* Read value of sensor */
 	/* Make sensor pin to output and init high value */
-    for(i=0; i<5; i++){
+	for(i=0; i<5; i++){
 		qtr_5rc_gpio_output_high(GPIO_BASE_NUM+i);
 		qtr_5rc_gpio_input_mode(GPIO_BASE_NUM+i);
 		ndelay(100);
@@ -139,6 +141,8 @@ static ssize_t qtr_5rc_read(struct file *file, char *user_buffer, size_t count, 
 
 	/* Calculate data */
 	delta = to_copy - not_copied;
+	printk(KERN_DEBUG"Stop to read.\n");
+
 
 	return delta;
 }
