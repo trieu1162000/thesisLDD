@@ -90,6 +90,7 @@ static void qtr_5rc_read_raw(uint16_t *qtr_5rc_value)
 		qtr_5rc_gpio_input_mode(GPIO_BASE_NUM+i);
 		
 		/* Count time to wait for pin to be low */
+		time_to_low = 0;
 		first_time_captured = ktime_get();
 		while(time_to_low < 1000){
 			if(gpio_get_value(GPIO_BASE_NUM+i)==0)
@@ -127,6 +128,7 @@ static ssize_t qtr_5rc_read(struct file *file, char *user_buffer, size_t count, 
 	to_copy = min(count, (size_t) length);
 
 	/* Copy data to user */
+	sprintf(buffer_for_read,"%s\n",buffer_for_read);
 	not_copied = copy_to_user(user_buffer, buffer_for_read, to_copy);
 
 	/* Calculate data */
