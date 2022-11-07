@@ -1,114 +1,11 @@
-#include <linux/module.h>
-#include <linux/init.h>
-#include <linux/fs.h>
-#include <linux/cdev.h>
-#include <linux/uaccess.h>
-#include <linux/gpio.h>
-#include <linux/string.h>  
-#include <linux/delay.h>
+#include "qtr_5rc_api.h"
 
 /* Variables for device and device class */
 static dev_t qtr_5rc_dev;
 static struct class *qtr_5rc_class;
 static struct cdev qtr_5rc_cdev;
 
-#define DRIVER_NAME         "qtr_5rc"
-#define DRIVER_CLASS        "qtr_5rc_class"
-#define GPIO_BASE_NUM       22
-
-
-/**
- * @brief Initializing the GPIO
- */
-static int qtr_5rc_init_gpio(uint gpio_num){
-	char label[100];
-
-	//Checking the GPIO is valid or not 
-	if(!gpio_is_valid(gpio_num)){
-		pr_err("ERROR: GPIO %d is not valid\n", gpio_num);
-		return -1;
-	}
-	//Requesting the GPIO
-	sprintf(label,"gpio-%d", gpio_num);
-	if(gpio_request(gpio_num, label) < 0){
-		pr_err("ERROR: GPIO %d request\n", gpio_num);
-		return -1;
-	}
-
-	return 0;
-}
-
-/**
- * @brief set pin of gpios to the input mode
- */
-static void qtr_5rc_gpio_input_mode(uint gpio_num)
-{
-	if(gpio_direction_input(gpio_num)) {
-		pr_err("ERROR:Can not set GPIO %d to input!\n", gpio_num);
-	}
-}
-
-/**
- * @brief set pin of gpios to the output mode and init high value
- */
-static void qtr_5rc_gpio_output_high(uint gpio_num)
-{
-	if(gpio_direction_output(gpio_num, 1)) {
-		pr_err("ERRORCan not set GPIO %d to output high!\n", gpio_num);
-	}
-}
-
-/**
- * @brief set pin of gpios to the output mode and init low value
- */
-// static void qtr_5rc_gpio_output_low(uint gpio_num)
-// {
-// 	if(gpio_direction_output(gpio_num, 0)) {
-// 		pr_err("ERRORCan not set GPIO %d to output low!\n", gpio_num);
-// 	}
-// }
-
-/**
- * @brief Read value from pin of sensor
- */
-static void qtr_5rc_read_raw(uint16_t *qtr_5rc_value)
-{
-	int i;
-	ktime_t time_to_low = 0;
-	ktime_t first_time_captured = 0;
-
-	/* Make sensor pin to output and init high value */
-    for(i=0; i<5; i++){
-		qtr_5rc_gpio_output_high(GPIO_BASE_NUM+i);
-    }
-	
-	/* Wait for 10us */
-	udelay(10);
-
-    for(i=0; i<5; i++){
-		/* Make sensor pin to input */
-		qtr_5rc_gpio_input_mode(GPIO_BASE_NUM+i);
-		
-		*(qtr_5rc_value + i) = (uint16_t ) gpio_get_value(GPIO_BASE_NUM+i);
-		/* Count time to wait for pin to be low */
-		// time_to_low = 0;
-		// first_time_captured = ktime_get();
-		// while(1){
-		// 	if(gpio_get_value(GPIO_BASE_NUM+i)==0)
-		// 	{
-		// 		time_to_low = ktime_get() - first_time_captured;
-		// 		qtr_5rc_value[i] = (uint16_t) time_to_low;
-		// 		break;
-		// 	}
-		// 	else 
-		// 	{
-		// 		qtr_5rc_value[i] = 3000;
-		// 		time_to_low = ktime_get() - first_time_captured;
-		// 	}
-		// }
-    }
-
-}
+static struct hrtimer qtr_5rc_hrtimer;
 
 /**
  * @brief Read data out of the buffer
@@ -120,17 +17,19 @@ static ssize_t qtr_5rc_read(struct file *file, char *user_buffer, size_t count, 
 	
 	printk(KERN_DEBUG"Start to read.\n");
 
-	/* Read value of sensor */
-	/* Make sensor pin to output and init high value */
-	for(i=0; i<5; i++){
-		qtr_5rc_gpio_output_high(GPIO_BASE_NUM+i);
-		qtr_5rc_gpio_input_mode(GPIO_BASE_NUM+i);
-		ndelay(100);
-		data_read_raw[i] = gpio_get_value(GPIO_BASE_NUM+i);
-		sprintf(buffer_for_read,"%s %d", buffer_for_read, data_read_raw[i]);
-	}
-	printk("%s\n", buffer_for_read);
+	/* Start hr timer */
+	hrtimer_start(&qtr_5rc_hrtimer, ktime_set(TIMEOUT_SEC, TIMEOUT_NSEC), HRTIMER_MODE_ABS);
 	
+	do 
+	{
+
+	} while (flag_stop_timer == 0);
+
+	for(i = 0; i<5; i++){
+		sprintf(buffer_for_read,"%s %d", buffer_for_read, sensor_array[i]);
+	}
+	printk(KERN_DEBUG"%s\n", buffer_for_read);
+
 	/* Get amount of data to copy */
 	length = strlen(buffer_for_read);
 	to_copy = min(count, (size_t) length);
@@ -209,6 +108,9 @@ static int __init qtr_5rc_init(void) {
 		if(qtr_5rc_init_gpio(GPIO_BASE_NUM+i))
 			goto GpioError;
 	}
+
+	hrtimer_init(&qtr_5rc_hrtimer, CLOCK_MONOTONIC, HRTIMER_MODE_ABS);
+	qtr_5rc_hrtimer.function = &hrtimer_handler;
 
 	printk(KERN_DEBUG"Kernel module for QTR-5RC was loaded.\n");
 
