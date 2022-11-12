@@ -23,7 +23,7 @@ static uint sensor_value = 0;
 #define DRIVER_NAME "my_gpio_driver"
 #define DRIVER_CLASS "MyModuleClass"
 #define TIMEOUT_SEC         0
-#define TIMEOUT_NSEC        10000
+#define TIMEOUT_NSEC        1000
 
 // static void set_up(int counter){
 	
@@ -40,14 +40,14 @@ enum hrtimer_restart timer_callback(struct hrtimer *timer)
 		gpio_set_value(22, 1);
 	}
 
-    if(count == 2)
+    if(count == 20)
     {
 		gpio_direction_input(22);
 	}
 
 	count++;
 
-	if(count > 2)
+	if(count > 20)
 	{
 		if(gpio_get_value(22) == 0)
 		{
@@ -61,6 +61,7 @@ enum hrtimer_restart timer_callback(struct hrtimer *timer)
 			// }
     		pr_info("Count = %d\n",count);
 			count = 0;
+			return HRTIMER_NORESTART;
 		}
 	}
 	// printk("Value of sensor: %d\n", sensor_value);
