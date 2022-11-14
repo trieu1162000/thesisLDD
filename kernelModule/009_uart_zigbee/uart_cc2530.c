@@ -26,19 +26,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <linux/hrtimer.h>
 #include <linux/sched.h>
 #include <linux/string.h>
-
-/* comment this out for building for a RPi 1 */
-#define RASPBERRY_PI2_OR_PI3
-
-
-#define IO_ADDRESS(x)		(((x) & 0x00ffffff) + (((x) >> 4) & 0x0f000000) + 0xf0000000)
-#define __io_address(n)		IOMEM(IO_ADDRESS(n))
-#ifdef RASPBERRY_PI2_OR_PI3
-  #define BCM2708_PERI_BASE	0x3F000000
-#else
-  #define BCM2708_PERI_BASE	0x20000000
-#endif
-#define GPIO_BASE		(BCM2708_PERI_BASE + 0x200000) /* GPIO controller */
+#include <linux/gpio.h>
 
 MODULE_LICENSE("GPL v2");
 MODULE_AUTHOR("Leonardo Ciocari");
@@ -67,41 +55,6 @@ unsigned char TX_BUFFER[TX_BUFFER_SIZE+1];
 unsigned char RX_BUFFER[RX_BUFFER_SIZE+1];
 bool LOOPBACK=0;
 
-struct GPIO_REGISTERS
-{
-	uint32_t GPFSEL[6];
-	uint32_t Reserved1;
-	uint32_t GPSET[2];
-	uint32_t Reserved2;
-	uint32_t GPCLR[2];
-	uint32_t Reserved3;
-	uint32_t GPLEV[2];
-} *pGPIO_REGISTER;
-
-//--------------------------------------------------------------------------------------
-static void GPIOFunction(int gpio, int function)
-{	
-	pGPIO_REGISTER->GPFSEL[gpio / 10] = (pGPIO_REGISTER->GPFSEL[gpio / 10] & ~(0b111 << ((gpio % 10) * 3))) | ((function << ((gpio % 10) * 3)) & (0b111 << ((gpio % 10) * 3)));
-}
-
-//--------------------------------------------------------------------------------------
-static void GPIOOutputValueSet(int gpio, bool value)
-{
-	if (value)
-		pGPIO_REGISTER->GPSET[gpio / 32] = (1 << (gpio % 32));
-	else
-		pGPIO_REGISTER->GPCLR[gpio / 32] = (1 << (gpio % 32));
-}
-
-//--------------------------------------------------------------------------------------
-static bool GPIOInputValueGet(int gpio)
-{
-	if(gpio>31)
-		return (pGPIO_REGISTER->GPLEV[gpio / 32] & (0x00000001 << (gpio-32) )) >> (gpio-32);
-	else
-		return (pGPIO_REGISTER->GPLEV[gpio / 32] & (0x00000001 << gpio)) >> gpio;
-}
-
 //--------------------------------------------------------------------------------------
 static enum hrtimer_restart FunctionTimerTX(struct hrtimer * unused)
 {
@@ -110,15 +63,15 @@ static enum hrtimer_restart FunctionTimerTX(struct hrtimer * unused)
 	if(strlen(TX_BUFFER)>0)	//Data ready to send
 	{
 		if(bit==-1)	//Start bit
-			GPIOOutputValueSet(GPIO_TX, (0 & bit++) );
+			gpio_set_value(GPIO_TX, (0 & bit++) );
 		else if(bit>=0 && bit <=7)	//Data bits
 		{
-			GPIOOutputValueSet(GPIO_TX, ((TX_BUFFER[strlen(TX_BUFFER)-1] & (1 << bit)) >> bit) );
+			gpio_set_value(GPIO_TX, ((TX_BUFFER[strlen(TX_BUFFER)-1] & (1 << bit)) >> bit) );
 			bit++;
 		}
 		else	if(bit==8)
 		{
-			GPIOOutputValueSet(GPIO_TX, 1);	//Stop bit
+			gpio_set_value(GPIO_TX, 1);	//Stop bit
 			TX_BUFFER[strlen(TX_BUFFER)-1]='\0';
 			bit=-1;
 		}	
@@ -134,11 +87,11 @@ static enum hrtimer_restart FunctionTimerRX(struct hrtimer * unused)
 {
 	static int bit=-1;
 	
-	if(GPIOInputValueGet(GPIO_RX)==0 && bit==-1)	//Start bit received
+	if(gpio_get_value(GPIO_RX)==0 && bit==-1)	//Start bit received
 		bit++;
 	else	if(bit>=0 && bit<8)	//Data bits
 	{
-		if(GPIOInputValueGet(GPIO_RX)==0)
+		if(gpio_get_value(GPIO_RX)==0)
 			RX_DATA &= 0b01111111;
 		else
 			RX_DATA |= ~0b01111111;
@@ -174,10 +127,10 @@ static ssize_t set_gpio_tx_callback(struct device* dev, struct device_attribute*
 	if (gpio > 53 || gpio < 0)	//Check GPIO range
 		return -EINVAL;
 
-	GPIOFunction(GPIO_TX, 0b000);		//Restore old GPIO default value
+	gpio_set_value(GPIO_TX, 0);		//Restore old GPIO default value
 
 	GPIO_TX = gpio;
-	GPIOFunction(GPIO_TX, 0b001);		//Set new GPIO as output
+	gpio_direction_output(GPIO_TX, 0);		//Set new GPIO as output
 
 	return count;
 }
@@ -194,7 +147,7 @@ static ssize_t set_gpio_rx_callback(struct device* dev, struct device_attribute*
 		return -EINVAL;
 
 	GPIO_RX = gpio;
-	GPIOFunction(GPIO_RX, 0b000);		//Set new GPIO as input
+	gpio_direction_input(GPIO_RX);		//Set new GPIO as input
 
 	return count;
 }
@@ -309,9 +262,29 @@ static int __init ModuleInit(void)
 {
 	int result;
 
-	pGPIO_REGISTER = (struct GPIO_REGISTERS *) __io_address(GPIO_BASE);
-	GPIOFunction(GPIO_TX, 0b001);	//GPIO as output
-	GPIOFunction(GPIO_RX, 0b000);	//GPIO as input
+	/* GPIO_TX init */
+	if(gpio_request(GPIO_TX, "rpi-gpio-tx")) {
+		printk("Can not allocate GPIO_TX\n");
+		gpio_free(GPIO_TX);
+	}
+
+	/* Set GPIO_TX direction */
+	if(gpio_direction_output(GPIO_TX, 0)) {
+		printk("Can not set GPIO_TX to output!\n");
+		gpio_free(GPIO_TX);
+	}
+
+	/* GPIO_RX init */
+	if(gpio_request(GPIO_RX, "rpi-gpio-rx")) {
+		printk("Can not allocate GPIO_RX\n");
+        gpio_free(GPIO_RX);
+	}
+
+	/* Set GPIO_RX direction */
+	if(gpio_direction_input(GPIO_RX)) {
+		printk("Can not set GPIO_RX to input!\n");
+		gpio_free(GPIO_RX);
+	}
 	
 	pDEVICE_CLASS = class_create(THIS_MODULE, "softuart");
 	BUG_ON(IS_ERR(pDEVICE_CLASS));
@@ -346,8 +319,9 @@ static void __exit ModuleExit(void)
 	hrtimer_cancel(&hrtimer_rx);
 	
 	//Restore default GPIO function
-	GPIOFunction(GPIO_TX, 0);
-	
+	gpio_set_value(GPIO_RX, 0);
+	gpio_free(GPIO_RX);
+	gpio_free(GPIO_RX);
 	device_remove_file(pDEVICE, &dev_attr_gpio_tx);
 	device_remove_file(pDEVICE, &dev_attr_gpio_rx);
 	device_remove_file(pDEVICE, &dev_attr_data);
