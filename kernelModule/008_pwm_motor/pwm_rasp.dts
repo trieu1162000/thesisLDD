@@ -1,0 +1,30 @@
+/dts-v1/;
+/plugin/;
+/ {
+        compatible = "brcm,bcm2835";
+        fragment@0 {
+                target = <&soc>;
+                __overlay__ {
+                        motor_left_pwm {
+                                compatible = "motor_left";
+                                pwms = <&pwm 0 1000000>;
+                                pinctrl-names = "default";
+                                pinctrl-0 = <&pwm0_gpio18>;
+                        };
+                        motor_right_pwm {
+                                compatible = "motor_right";
+                                pwms = <&pwm 1 1000000>;
+                                pinctrl-names = "default";
+                                pinctrl-0 = <&pwm0_gpio12>;
+                        };
+
+                };
+        };
+
+        fragment@1 {
+                target = <&pwm>;
+                frag1: __overlay__ {
+                        status = "okay";
+                };
+        };
+};
