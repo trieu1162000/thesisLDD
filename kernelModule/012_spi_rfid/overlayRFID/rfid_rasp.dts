@@ -1,0 +1,29 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2835";
+
+	fragment@0 {
+		target = <&spidev0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@1 {
+		target = <&spi0>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+
+			rfid@0 {
+				compatible = "rfid_rc522";
+				spi-max-frequency = <500000>;
+				reg = <0>;
+				status = "okay";
+			};
+		};
+	};
+};

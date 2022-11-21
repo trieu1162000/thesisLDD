@@ -229,6 +229,7 @@ void CalulateCRC(unsigned char *pIndata,unsigned char len,unsigned char *pOutDat
 
 char PcdReset(void)
 {
+	// printk("pcd reseting\n");
 	SET_RC522RST;
 	delay_ns(10);
 	CLR_RC522RST;
@@ -237,14 +238,14 @@ char PcdReset(void)
 	delay_ns(10);
 	WriteRawRC(CommandReg,PCD_RESETPHASE);
 	delay_ns(10);
-
-	WriteRawRC(ModeReg,0x3D);            //��Mifare��ͨѶ��CRC��ʼֵ0x6363
+    // printk("pcd ok\n");
+	WriteRawRC(ModeReg,0x3D);            
 	WriteRawRC(TReloadRegL,30);           
 	WriteRawRC(TReloadRegH,0);
 	WriteRawRC(TModeReg,0x8D);
 	WriteRawRC(TPrescalerReg,0x3E);
 
-	WriteRawRC(TxAutoReg,0x40);//����Ҫ
+	WriteRawRC(TxAutoReg,0x40);
 
 	return MI_OK;
 }
@@ -273,13 +274,13 @@ unsigned char ReadRawRC(unsigned char Address)
 {
 	unsigned char ucAddr;
 	unsigned char ucResult=0;
-	int ret;
 	CLR_SPI_CS;
 	ucAddr = ((Address<<1)&0x7E)|0x80;
 
 	//	SPIWriteByte(ucAddr);
 	//	ucResult=SPIReadByte();
-	ret = spi_write_then_read(rc522_spi, &ucAddr, 1, &ucResult, 1);
+	// printk("spi in = %p\n", rc522_spi);
+	int ret = spi_write_then_read(rc522_spi, &ucAddr, 1, &ucResult, 1);
 	if(ret != 0) {
 		printk("spi_write_then_read err = %d\n", ret);
 	}
@@ -291,14 +292,14 @@ unsigned char ReadRawRC(unsigned char Address)
 void WriteRawRC(unsigned char Address, unsigned char value)
 {  
 	unsigned char ucAddr;
-	struct spi_transfer st[2];  
-	struct spi_message  msg; 
-
+    // printk("rc522:%p\n",rc522_spi);
 	CLR_SPI_CS;
 	ucAddr = ((Address<<1)&0x7E);
 
 	//	SPIWriteByte(ucAddr);
 	//	SPIWriteByte(value);
+	struct spi_transfer st[2];  
+	struct spi_message  msg; 
 	spi_message_init( &msg );
 	memset( st, 0, sizeof(st) );
 
@@ -429,5 +430,3 @@ void PcdAntennaOff(void)
 {
 	ClearBitMask(TxControlReg, 0x03);
 }
-
-

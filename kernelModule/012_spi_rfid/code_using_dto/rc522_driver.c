@@ -248,6 +248,7 @@ static int rc522_remove(struct spi_device *spi)
 }
 static int rc522_probe(struct spi_device *spi)
 {
+	printk(KERN_DEBUG "Probed");
 	printk(KERN_DEBUG "SPI number = %d",spi->controller->bus_num);
 	blockAddr = 1;
 	printk(KERN_DEBUG"%s\n", __func__);
@@ -256,7 +257,7 @@ static int rc522_probe(struct spi_device *spi)
 };
 
 static struct of_device_id spi_rfid_dt_ids[] = { // DTS compatible //
-		{ .compatible = "shtl,rfid_rc522" },
+		{ .compatible = "rfid_rc522" },
 		{},
 };
 
