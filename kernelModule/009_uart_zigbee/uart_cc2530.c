@@ -1,22 +1,3 @@
-/* 
-Raspberry Pi / BCM2835 Software-based UART Linux device driver
-Copyright (C) 2014 Leonardo Ciocari
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
-
 #include <asm/io.h>
 #include <linux/init.h>
 #include <linux/module.h>
@@ -88,9 +69,7 @@ static ssize_t uart_cc2530_write(struct file *file, const char *user_buffer, siz
 	return delta;
 }
 
-
-
-//--------------------------------------------------------------------------------------
+/* Call back func for transmitting data */
 static enum hrtimer_restart FunctionTimerTX(struct hrtimer * unused)
 {
 	static int bit=-1;
@@ -121,7 +100,7 @@ static enum hrtimer_restart FunctionTimerTX(struct hrtimer * unused)
 	return HRTIMER_RESTART;
 }
 
-//--------------------------------------------------------------------------------------
+/* Call back func for receiving data */
 static enum hrtimer_restart FunctionTimerRX(struct hrtimer * unused)
 {
 	static int bit=-1;
@@ -159,7 +138,7 @@ static enum hrtimer_restart FunctionTimerRX(struct hrtimer * unused)
  * @brief This function is called, when the device file is opened
  */
 static int uart_cc2530_open(struct inode *device_file, struct file *instance) {
-	printk("Open driver uart_cc2530 successfully\n");
+	pr_info("Open driver uart_cc2530 successfully.\n");
 	return 0;
 }
 
@@ -167,7 +146,7 @@ static int uart_cc2530_open(struct inode *device_file, struct file *instance) {
  * @brief This function is called, when the device file is opened
  */
 static int uart_cc2530_close(struct inode *device_file, struct file *instance) {
-	printk("Close driver uart_cc2530 successfully\n");
+	pr_info("Close driver uart_cc2530 successfully.\n");
 	return 0;
 }
 
@@ -178,195 +157,61 @@ static struct file_operations fops = {
 	.read = uart_cc2530_read,
 	.write = uart_cc2530_write
 };
-//--------------------------------------------------------------------------------------
-// static ssize_t set_gpio_tx_callback(struct device* dev, struct device_attribute* attr, const char* buf, size_t count)
-// {
-// 	long gpio;
-	
-// 	if (kstrtol(buf, 10, &gpio) < 0)
-// 		return -EINVAL;
-		
-// 	if (gpio > 53 || gpio < 0)	//Check GPIO range
-// 		return -EINVAL;
 
-// 	gpio_set_value(GPIO_TX, 0);		//Restore old GPIO default value
-
-// 	GPIO_TX = gpio;
-// 	gpio_direction_output(GPIO_TX, 0);		//Set new GPIO as output
-
-// 	return count;
-// }
-
-//--------------------------------------------------------------------------------------
-// static ssize_t set_gpio_rx_callback(struct device* dev, struct device_attribute* attr, const char* buf, size_t count)
-// {
-// 	long gpio;
-	
-// 	if (kstrtol(buf, 10, &gpio) < 0)
-// 		return -EINVAL;
-		
-// 	if (gpio > 53 || gpio < 0)	//Lock GPIO out of range
-// 		return -EINVAL;
-
-// 	GPIO_RX = gpio;
-// 	gpio_direction_input(GPIO_RX);		//Set new GPIO as input
-
-// 	return count;
-// }
-
-//--------------------------------------------------------------------------------------
-// static ssize_t get_gpio_tx_callback(struct device* dev, struct device_attribute* attr,char* buf)
-// {
-// 	return sprintf(buf,"%i\n",GPIO_TX);
-// }
-
-// //--------------------------------------------------------------------------------------
-// static ssize_t get_gpio_rx_callback(struct device* dev, struct device_attribute* attr,char* buf)
-// {
-// 	return sprintf(buf,"%i\n",GPIO_RX);
-// }
-
-//--------------------------------------------------------------------------------------
-// static ssize_t set_data_callback(struct device* dev, struct device_attribute* attr, const char* buf, size_t count)
-// {
-// 	int n;
-	
-// 	for(n=0;n<=strlen(buf);n++)
-// 	{
-	
-// 		if(LOOPBACK)
-// 		{
-// 			RX_BUFFER[strlen(RX_BUFFER)]=buf[n];
-// 			if(strlen(RX_BUFFER)==RX_BUFFER_SIZE+1)
-// 				memset(RX_BUFFER,'\0',RX_BUFFER_SIZE+1);
-// 		}
-// 		else
-// 		{
-// 			TX_BUFFER[strlen(TX_BUFFER)]=buf[strlen(buf)-n];
-// 			if(strlen(TX_BUFFER)==TX_BUFFER_SIZE+1)
-// 				memset(TX_BUFFER,'\0',TX_BUFFER_SIZE+1);
-// 		}
-	
-// 	}
-	
-// 	hrtimer_start(&hrtimer_tx,  ktime_set(0, 0), HRTIMER_MODE_REL);
-	
-// 	return count;
-// }
-
-//--------------------------------------------------------------------------------------
-// static ssize_t get_data_callback(struct device* dev, struct device_attribute* attr,char* buf)
-// {
-// 	unsigned char tmp[RX_BUFFER_SIZE+1];
-	
-// 	strcpy(tmp,RX_BUFFER);
-// 	memset(RX_BUFFER,'\0',RX_BUFFER_SIZE+1);
-	
-// 	return sprintf(buf,"%s",tmp);
-// }
-
-//--------------------------------------------------------------------------------------
-// static ssize_t set_loopback_callback(struct device* dev, struct device_attribute* attr, const char* buf, size_t count)
-// {
-// 	long loopback;
-	
-// 	if (kstrtol(buf, 10, &loopback) < 0)
-// 		return -EINVAL;
-		
-// 	if (loopback != 0 && loopback != 1)
-// 		return -EINVAL;
-	
-// 	LOOPBACK=loopback;
-
-// 	return count;
-// }
-
-//--------------------------------------------------------------------------------------
-// static ssize_t get_loopback_callback(struct device* dev, struct device_attribute* attr,char* buf)
-// {
-// 	return sprintf(buf,"%i\n",LOOPBACK);
-// }
-
-//--------------------------------------------------------------------------------------
-// static ssize_t set_baudrate_callback(struct device* dev, struct device_attribute* attr, const char* buf, size_t count)
-// {
-// 	long baudrate;
-	
-// 	if (kstrtol(buf, 10, &baudrate) < 0)
-// 		return -EINVAL;
-		
-// 	if (baudrate < 1200 || baudrate > 19200)	//Lock utopia values ;)
-// 		return -EINVAL;
-	
-// 	BAUDRATE=baudrate;
-
-// 	return count;
-// }
-
-//--------------------------------------------------------------------------------------
-// static ssize_t get_baudrate_callback(struct device* dev, struct device_attribute* attr,char* buf)
-// {
-// 	return sprintf(buf,"%i\n",BAUDRATE);
-// }
-
-//--------------------------------------------------------------------------------------
-// static DEVICE_ATTR(gpio_tx, 0644, get_gpio_tx_callback, set_gpio_tx_callback);
-// static DEVICE_ATTR(gpio_rx, 0644, get_gpio_rx_callback, set_gpio_rx_callback);
-// static DEVICE_ATTR(data, 0644, get_data_callback, set_data_callback);
-// static DEVICE_ATTR(loopback, 0644, get_loopback_callback, set_loopback_callback);
-// static DEVICE_ATTR(baudrate, 0644, get_baudrate_callback, set_baudrate_callback);
-
-//--------------------------------------------------------------------------------------
+/**
+ * @brief This function is called, when the module is loaded into the kernel
+ */
 static int __init uart_cc2530_module_init(void)
 {
 	/* GPIO_TX init */
 	if(gpio_request(GPIO_TX, "rpi-gpio-tx")) {
-		printk("Can not allocate GPIO_TX\n");
+		pr_info("%s: Can not allocate GPIO_TX.\n", __func__);
 		gpio_free(GPIO_TX);
 	}
 
 	/* Set GPIO_TX direction */
 	if(gpio_direction_output(GPIO_TX, 0)) {
-		printk("Can not set GPIO_TX to output!\n");
+		pr_info("%s: Can not set GPIO_TX to output.\n", __func__);
 		gpio_free(GPIO_TX);
 	}
 
 	/* GPIO_RX init */
 	if(gpio_request(GPIO_RX, "rpi-gpio-rx")) {
-		printk("Can not allocate GPIO_RX\n");
+		pr_info("%s: Can not allocate GPIO_RX.\n", __func__);
         gpio_free(GPIO_RX);
 	}
 
 	/* Set GPIO_RX direction */
 	if(gpio_direction_input(GPIO_RX)) {
-		printk("Can not set GPIO_RX to input!\n");
+		pr_info("%s: Can not set GPIO_RX to input.\n", __func__);
 		gpio_free(GPIO_RX);
 	}
 	
+	/*1. Dynamically allocate a device number */
 	if( alloc_chrdev_region(&uart_cc2530_no, 0, 1, "uart_cc2530_device") < 0) {
-		printk("Cannot allocate major number.\n");
+		pr_err("%s: Device number could not be allocated.\n", __func__);
 		goto rem_unreg;
 	}
-	pr_info("Major = %d, Minor = %d \n",MAJOR(uart_cc2530_no), MINOR(uart_cc2530_no));
+	pr_info("Device number with najor: %d, minor: %d was registered.\n",MAJOR(uart_cc2530_no), MINOR(uart_cc2530_no));
 
-	/* Creating cdev structure */
+	/*2. Initialize the cdev structure with fops*/
 	cdev_init(&uart_cc2530_cdev, &fops);
 
-	/* Adding character device to the system */
+	/* 3. Register a device (cdev structure) with VFS */
 	if((cdev_add(&uart_cc2530_cdev, uart_cc2530_no, 1)) < 0){
-		pr_err("Cannot add the device to the system\n");
+		pr_err("%s: Registering of device to kernel failed.\n", __func__);
 		goto rem_del;
 	}
 
-	/* Creating struct class */
+	/*4. create device class under /sys/class/ */
 	if((uart_cc2530_class = class_create(THIS_MODULE,"uart_cc2530_class")) == NULL){
-		pr_err("Cannot create the struct class\n");
+		pr_err("%s: Device class can not be created.\n", __func__);
 		goto rem_class;
 	}
 
-	/* Creating device */
+	/*5.  populate the sysfs with device information */
 	if((device_create(uart_cc2530_class, NULL, uart_cc2530_no, NULL, "uart_cc2530_device")) == NULL){
-		pr_err( "Cannot create the device \n");
+		pr_err( "%s: Cannot create the device.\n", __func__);
 		goto rem_device;
 	}
 
@@ -377,7 +222,7 @@ static int __init uart_cc2530_module_init(void)
 	hrtimer_rx.function = FunctionTimerRX;
 	hrtimer_start(&hrtimer_rx,  ktime_set(0, 0), HRTIMER_MODE_REL);
 	
-	pr_info("UART Zigbee CC2530 driver module is loaded into the kernel successfully.\n");
+	pr_info("UART Zigbee CC2530 driver module is loaded.\n");
 	return 0;
 
 rem_device:								/* Delete device file */
@@ -392,32 +237,24 @@ rem_unreg:								/* Free allocated region */
 
 }
 
-//--------------------------------------------------------------------------------------
-static void __exit uart_cc2530_module_exit(void)
+/**
+ * @brief This function is called, when the module is removed from the kernel
+ */
+ static void __exit uart_cc2530_module_exit(void)
 {
 	hrtimer_cancel(&hrtimer_tx);
 	hrtimer_cancel(&hrtimer_rx);
-	printk("Remove timer done\n");
 
 	/* Restore default GPIO function and free them */
 	gpio_set_value(GPIO_TX, 0);
 	gpio_free(GPIO_RX);
-	printk("free GPIO 2\n");
 	gpio_free(GPIO_TX);
-	printk("free GPIO 4\n");
 
-
-	// device_remove_file(pDEVICE, &dev_attr_gpio_tx);
-	// device_remove_file(pDEVICE, &dev_attr_gpio_rx);
-	// device_remove_file(pDEVICE, &dev_attr_data);
-	// device_remove_file(pDEVICE, &dev_attr_loopback);
-	// device_remove_file(pDEVICE, &dev_attr_baudrate);
 	device_destroy(uart_cc2530_class, uart_cc2530_no);
 	class_destroy(uart_cc2530_class);
 	cdev_del(&uart_cc2530_cdev);
 	unregister_chrdev_region(uart_cc2530_no, 1);
-	pr_info("UART Zigbee CC2530 driver module is removed \
-			out of the kernel successfully.\n");
+	pr_info("UART Zigbee CC2530 driver module is unloaded.\n");
 } 
 
 //--------------------------------------------------------------------------------------

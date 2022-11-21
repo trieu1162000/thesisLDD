@@ -1,5 +1,4 @@
-obj-m := qtr_5rc_driver.o
-qtr_5rc_driver-objs := qtr_5rc.o qtr_5rc_api.o
+obj-m := tcrt5000_driver.o
 
 HOST_KERN_DIR=/lib/modules/$(shell uname -r)/build/
 
