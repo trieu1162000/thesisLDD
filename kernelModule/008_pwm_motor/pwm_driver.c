@@ -64,7 +64,7 @@ static int pwm_driver_open(struct inode *device_file, struct file *instance)
                 pr_info("%s: Cannot find the device in linked list.\n", __func__);
 		return status;
         }
-        pr_info("Open driver pwm successfully.\n");
+        pr_info("Open pwm driver successfully.\n");
 
         instance->private_data = motor;
 
@@ -75,7 +75,7 @@ static int pwm_driver_open(struct inode *device_file, struct file *instance)
 // Same thing, but for close
 static int pwm_driver_close(struct inode *device_file, struct file *instance)
 {
-        pr_info("Close driver pwm successfully\n");
+        pr_info("Close pwm driver successfully.\n");
 
         return 0;
 }
@@ -229,7 +229,7 @@ static struct platform_driver pwm_platform_driver = {
 static int __init pwm_driver_module_init(void)
 {
 
-        pr_info("PWM driver module loaded.\n");
+        pr_info("PWM driver module is loaded.\n");
 
         // Instead of using a static device number, like in many tutorials, 
         // let's try to used a system allocated one by the means of interfacing 
@@ -267,11 +267,11 @@ static int __init pwm_driver_module_init(void)
 static void __exit pwm_driver_module_exit(void)
 {
 
-        platform_driver_unregister(&pwm_platform_driver);
-        class_destroy(pwm_driver_class);
+	platform_driver_unregister(&pwm_platform_driver);
+	class_destroy(pwm_driver_class);
 	unregister_chrdev_region(dev_num, 2);
 
-        pr_info("PWM driver module unloaded.\n");
+	pr_info("PWM driver module is unloaded.\n");
 }
 
 /* Meta information for alllowing correct loading of modules through distros*/
