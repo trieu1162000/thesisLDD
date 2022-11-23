@@ -12,6 +12,7 @@ struct hd44780_geometry {
 
 /* just a struct describing for the LCD */ 
 struct hd44780 {
+	dev_t dev_number;
 	struct cdev cdev;
 	struct device *device;
 	struct i2c_client *i2c_client;

@@ -12,8 +12,8 @@
 #include "lcd_i2c_api.h"
 
 #define CLASS_NAME	"hd44780"
-#define NAME		"hd44780"
-#define NUM_DEVICES	8
+#define DRIVER_NAME	"hd44780"
+#define NUM_DEVICES	1
 
 static struct class *hd44780_class;
 static dev_t dev_no;
@@ -152,12 +152,14 @@ ATTRIBUTE_GROUPS(hd44780_device);
 
 static int hd44780_file_open(struct inode *inode, struct file *filp)
 {
+	pr_info("Open lcd_i2c driver successfully.\n");
 	filp->private_data = container_of(inode->i_cdev, struct hd44780, cdev);
 	return 0;
 }
 
 static int hd44780_file_release(struct inode *inode, struct file *filp)
 {
+	pr_info("Close lcd_i2c driver successfully.\n");
 	struct hd44780 *lcd = filp->private_data;
 	hd44780_flush(lcd);
 	return 0;
@@ -166,10 +168,10 @@ static int hd44780_file_release(struct inode *inode, struct file *filp)
 static ssize_t hd44780_file_write(struct file *filp, const char __user *buf, size_t count, loff_t *offp)
 {
 	struct hd44780 *lcd;
-	size_t n;
+	size_t to_copy;
 
 	lcd = filp->private_data;
-	n = min(count, (size_t)BUF_SIZE);
+	to_copy = min(count, (size_t)BUF_SIZE);
 
 	// TODO: Consider using an interruptible lock
 	mutex_lock(&lcd->lock);
@@ -181,11 +183,11 @@ static ssize_t hd44780_file_write(struct file *filp, const char __user *buf, siz
 	}
 
 	hd44780_write(lcd, lcd->buf, n);
- 	pr_info("Number of bytes successfully written = %zu\n",n);	
+ 	pr_info("Write %zu bytes receive from user space to lcd.\n",n);	
 	
 	mutex_unlock(&lcd->lock);
 
-	return n;
+	return to_copy;		// return not_copied is more suitable
 }
 
 static void hd44780_init(struct hd44780 *lcd, struct hd44780_geometry *geometry,
@@ -205,6 +207,7 @@ static void hd44780_init(struct hd44780 *lcd, struct hd44780_geometry *geometry,
 }
 
 static struct file_operations fops = {
+	.owner = THIS_MODULE,
 	.open = hd44780_file_open,
 	.release = hd44780_file_release,
 	.write = hd44780_file_write,
@@ -212,63 +215,62 @@ static struct file_operations fops = {
 
 static int hd44780_probe(struct i2c_client *client, const struct i2c_device_id *id)
 {
-	dev_t devt;
-	struct hd44780 *lcd;
-	struct device *device;
-	int ret, minor;
+	int major_number = MAJOR(dev_no);
+	int minor_number;
+	struct hd44780 *lcd = NULL;
+	int ret;
 
-	minor = atomic_inc_return(&next_minor);
-	devt = MKDEV(MAJOR(dev_no), minor);
 
-	lcd = (struct hd44780 *)kmalloc(sizeof(struct hd44780), GFP_KERNEL);
-	if (!lcd) {
-		return -ENOMEM;
-	}
+	/* Dynamically allocate memory for the device private data  */
+	lcd = devm_kzalloc(&pdev->dev, sizeof(*lcd),GFP_KERNEL);
+	if (!lcd) 
+		goto lcd_aloccate_failed;	
 
+	/* Init lcd parameter for client */
 	hd44780_init(lcd, hd44780_geometries[0], client);
+
+	minor_number = i2c_adapter_id(lcd->i2c_client->adapter->nr);
+	lcd->dev_number = MKDEV(major_number, minor_number);
+	pr_info("%s: A lcd_i2c device is probed, major: %d, minor: %d\n", __func__, major_number, minor_number);
+	lcd->device = device_create(hd44780_class, &pdev->dev, lcd->dev_number, lcd, "lcd%d", minor_number);
+	if(lcd->device == NULL)
+	{
+			pr_info("%s: Can not create device.\n", __func__);
+			goto rem_device;
+	}
 
 	spin_lock(&hd44780_list_lock);
 	list_add(&lcd->list, &hd44780_list);
 	spin_unlock(&hd44780_list_lock);
 
 	cdev_init(&lcd->cdev, &fops);
+	lcd->cdev.owner = THIS_MODULE;
+	lcd->cdev.dev = lcd->dev_number;
 	ret = cdev_add(&lcd->cdev, devt, 1);
 	if (ret) {
-		pr_warn("Can't add cdev\n");
-		goto exit;
+		pr_err("%s: Cdev add failed.\n", __func__);
+		goto rem_del;
 	}
 
-	device = device_create_with_groups(hd44780_class, NULL, devt, NULL,
-		hd44780_device_groups, "lcd%d", MINOR(devt));
-
-	if (IS_ERR(device)) {
-		ret = PTR_ERR(device);
-		pr_warn("Can't create device\n");
-		goto del_exit;
-	}
-
-	dev_set_drvdata(device, lcd);
-	lcd->device = device;
-
+	dev_set_drvdata(&pdev->dev, lcd);
 	hd44780_init_lcd(lcd);
-
 	hd44780_print(lcd, "/dev/");
-	hd44780_print(lcd, device->kobj.name);
+	hd44780_print(lcd, lcd->device->kobj.name);
 	lcd->dirty = true;
-	pr_info("Probe was called successfully\n");
+	pr_info("Probe was called successfully.\n");
 
 	return 0;
 
-del_exit:
+rem_del:
 	cdev_del(&lcd->cdev);
 
 	spin_lock(&hd44780_list_lock);
 	list_del(&lcd->list);
 	spin_unlock(&hd44780_list_lock);
-exit:
-	kfree(lcd);
-
-	return ret;
+rem_device:
+	device_destroy(hd44780_class, lcd->dev_number);	
+lcd_aloccate_failed:
+	return -1;
 }
 
 static struct hd44780 * get_hd44780_by_i2c_client(struct i2c_client *i2c_client)
@@ -292,64 +294,69 @@ static int hd44780_remove(struct i2c_client *client)
 {
 	struct hd44780 *lcd;
 	lcd = get_hd44780_by_i2c_client(client);
-	device_destroy(hd44780_class, lcd->device->devt);
-	cdev_del(&lcd->cdev);
 
 	spin_lock(&hd44780_list_lock);
 	list_del(&lcd->list);
 	spin_unlock(&hd44780_list_lock);
-
-	kfree(lcd);
+	device_destroy(hd44780_class, lcd->device->devt);
+	cdev_del(&lcd->cdev);
+	unregister_chrdev_region(lcd->dev_number, 1);
+	
+	pr_info("%s: Removing lcd_i2c%d device", __func__, lcd->i2c_client->adapter->nr); 
 	
 	return 0;
 }
 
-static const struct i2c_device_id hd44780_id[] = {
-	{ NAME, 0},
-	{ }
+static const struct i2c_device_id hd44780_match_table[] = {
+     {
+        .compatible = "lcd_i2c0",     
+     },
 };
 
 static struct i2c_driver hd44780_driver = {
+	.probe = hd44780_probe,
+	.remove = hd44780_remove,
 	.driver = {
 		.name	= NAME,
 		.owner	= THIS_MODULE,
+		.of_match_table = of_match_ptr(hd44780_match_table),
 	},
-	.probe = hd44780_probe,
-	.remove = hd44780_remove,
-	.id_table = hd44780_id,
 };
+MODULE_DEVICE_TABLE(of, hd44780_match_table);
 
 static int __init hd44780_driver_init(void)
 {
 	int ret;
 
-	ret = alloc_chrdev_region(&dev_no, 0, NUM_DEVICES, NAME);
+	ret = alloc_chrdev_region(&dev_no, 0, NUM_DEVICES, DRIVER_NAME);
 	if (ret) {
-		pr_warn("Can't allocate chardev region");
-		return ret;
+		pr_err("%s: Error in allocation of device file number\n", __func__);
+		goto ClassError;
 	}
 
-	hd44780_class = class_create(THIS_MODULE, CLASS_NAME);
-	if (IS_ERR(hd44780_class)) {
-		ret = PTR_ERR(hd44780_class);
-		pr_warn("Can't create %s class\n", CLASS_NAME);
-		goto exit;
+	// Device class creation 
+	if((hd44780_class = class_create(THIS_MODULE, DRIVER_CLASS)) == NULL){
+			pr_err("%s: Device class cannot be created\n", __func__);
+			
+			goto FileError;
 	}
 
 	ret = i2c_add_driver(&hd44780_driver);
 	if (ret) {
-		pr_warn("Can't register I2C driver %s\n", hd44780_driver.driver.name);
-		goto destroy_exit;
+		pr_err("Can't register I2C driver %s\n", hd44780_driver.driver.name);
+		goto FileError;
 	}
+
+	pr_info("lcd_i2c driver module is loaded.\n");
 
 	return 0;
 
-destroy_exit:
+FileError:
 	class_destroy(hd44780_class);
-exit:
+ClassError:
 	unregister_chrdev_region(dev_no, NUM_DEVICES);
 
-	return ret;
+	return -1;
 }
 
 static void __exit hd44780_driver_exit(void)
@@ -364,4 +371,4 @@ module_exit(hd44780_driver_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Trieu Huynh <vikingtc4@gmail.com>");
-MODULE_DESCRIPTION("Device Driver for LCD - I2C <ThesisLDD Project>");
+MODULE_DESCRIPTION("Driver for LCD - I2C <ThesisLDD Project>");

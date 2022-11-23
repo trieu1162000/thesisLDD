@@ -229,8 +229,6 @@ static struct platform_driver pwm_platform_driver = {
 static int __init pwm_driver_module_init(void)
 {
 
-        pr_info("PWM driver module is loaded.\n");
-
         // Instead of using a static device number, like in many tutorials, 
         // let's try to used a system allocated one by the means of interfacing 
         // with the alloc_chrdev_region function
@@ -249,6 +247,8 @@ static int __init pwm_driver_module_init(void)
         }
 
         platform_driver_register(&pwm_platform_driver);
+
+        pr_info("PWM driver module is loaded.\n");
 
         // Sucess
         return 0;
