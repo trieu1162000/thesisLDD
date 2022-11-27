@@ -15,6 +15,11 @@ static dev_t tcrt5000_dev;
 static struct class *tcrt5000_class;
 static struct cdev tcrt5000_cdev;
 
+uint read_value_for_pid(uint *data_int)
+{
+	return ((data_int[0]*2000 + data_int[1]*2000 + data_int[2]*1000 + data_int[3]*0 + data_int[4]*0)/(data_int[0] + data_int[1] + data_int[2] + data_int[3] + data_int[4]));
+}
+
 int tcrt5000_init_gpio(uint gpio_num)
 {
 	char label[100];
@@ -46,21 +51,28 @@ void tcrt5000_gpio_input_mode(uint gpio_num)
  */
 static ssize_t tcrt5000_read(struct file *file, char *user_buffer, size_t count, loff_t *offs) {
 	int to_copy, not_copied, delta, i, length;
-	char buffer_for_read[100] = "Value of sensor: ";
-	char data_read_raw[5] = {0};
-
+	char string_value_for_pid[100];
+	uint int_value_for_pid;
+	char data_read_raw_string[6] ;
+	uint data_read_raw_int[5];
+	memset(data_read_raw_string, '\0', 6);
+	memset(string_value_for_pid, '\0', 100);
+	memset(int_value_for_pid, '\0', 100);
 	for(i = 0; i<5; i++){
-		sprintf(&data_read_raw[i],"%d", gpio_get_value(GPIO_BASE_NUM+i));
+		data_read_raw_int[i] = gpio_get_value(GPIO_BASE_NUM+i);
+		sprintf(&data_read_raw_string[i],"%d", gpio_get_value(GPIO_BASE_NUM+i));
 	}
-	sprintf(buffer_for_read,"%s %s\r\n", buffer_for_read, data_read_raw);
-	pr_info("%s", buffer_for_read);
+	int_value_for_pid = read_value_for_pid(data_read_raw_int);
+	sprintf(string_value_for_pid, "%d", int_value_for_pid);
+	pr_info("Value read raw: %s", data_read_raw_string);
+	pr_info("Value for pid: %s", string_value_for_pid);
 
 	/* Get amount of data to copy */
-	length = strlen(data_read_raw);
+	length = strlen(string_value_for_pid);
 	to_copy = min(count, (size_t) length);
 
 	/* Copy data to user */
-	not_copied = copy_to_user(user_buffer, data_read_raw, to_copy);
+	not_copied = copy_to_user(user_buffer, string_value_for_pid, to_copy);
 
 	/* Calculate data */
 	delta = to_copy - not_copied;
@@ -104,7 +116,7 @@ static int __init tcrt5000_module_init(void) {
 		pr_err("%s: Device number could not be allocated.\n", __func__);
 		goto rem_unreg;
 	}
-	printk("Device number with najor: %d, minor: %d was registered.\n", MAJOR(tcrt5000_dev), MINOR(tcrt5000_dev));
+	pr_info("Device number with najor: %d, minor: %d was registered.\n", MAJOR(tcrt5000_dev), MINOR(tcrt5000_dev));
 
 	/*2. Initialize the cdev structure with fops*/
 	cdev_init(&tcrt5000_cdev, &fops);
@@ -118,13 +130,13 @@ static int __init tcrt5000_module_init(void) {
 	/*4. create device class under /sys/class/ */
 	if((tcrt5000_class = class_create(THIS_MODULE, DRIVER_CLASS)) == NULL) {
 		pr_err("%s: Device class can not be created.\n", __func__);
-		goto rem_unreg;
+		goto rem_class;
 	}
 
 	/*5.  populate the sysfs with device information */
 	if(device_create(tcrt5000_class, NULL, tcrt5000_dev, NULL, DRIVER_NAME) == NULL) {
 		pr_err("%s: Can not create device file.\n", __func__);
-		goto rem_class;
+		goto rem_device;
 	}
 
 	/* init gpio */

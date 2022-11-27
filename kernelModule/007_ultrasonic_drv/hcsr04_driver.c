@@ -1,13 +1,4 @@
-/***************************************************************************//**
-*  \file       driver.c
-*
-*  \details    Simple GPIO driver explanation
-*
-*  \author     Trieu Huynh
-*
-*  \Tested with Linux raspberrypi 5.4.51-v7l+
-*
-*******************************************************************************/
+
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/module.h>
@@ -28,10 +19,12 @@
 #define HCSR04_TRIGGER		15	// P9-24
 #define IRQF_DISABLED 		0
 #define DEV_MEM_SIZE 		512
+#define DRIVER_NAME         "hcsr04"
+#define DRIVER_CLASS        "hcsr04_class"
 
 char device_buffer[DEV_MEM_SIZE];
-dev_t dev = 0;
-static struct class *dev_class;
+static dev_t hcsr04_dev;
+static struct class *hcsr04_class;
 static struct cdev hcsr04_cdev;
 
 static int gpio_irq = -1;
@@ -40,8 +33,8 @@ static int valid_value = 0;
 static ktime_t echo_start;
 static ktime_t echo_end;
  
-static int __init hcsr04_driver_init(void);
-static void __exit hcsr04_driver_exit(void);
+static int __init hcsr04_module_init(void);
+static void __exit hcsr04_module_exit(void);
  
  
 /*************** Driver functions **********************/
@@ -66,7 +59,7 @@ static struct file_operations fops =
 */ 
 static int hcsr04_open(struct inode *inode, struct file *file)
 {
-  pr_info("Device file for HCSR04 driver opened.\n");
+  pr_info("Open hcsr04 driver successfully.\n");
   return 0;
 }
 
@@ -75,7 +68,7 @@ static int hcsr04_open(struct inode *inode, struct file *file)
 */
 static int hcsr04_release(struct inode *inode, struct file *file)
 {
-  pr_info("Device file for HCSR04 driver closed.\n");
+  pr_info("Close hcsr04 driver successfully.\n");
   return 0;
 }
 
@@ -115,10 +108,10 @@ static ssize_t hcsr04_read(struct file *filp,
 	/* copy_to_user(void *dst, const void *src, unsigned int size) */
 	if( copy_to_user(buf, device_buffer, len) > 0)
 	{
-		pr_err("ERROR: Not all the bytes have been copied to user\n");
+		pr_err("%s: Not all the bytes have been copied to user\n", __func__);
 	}
 
-	pr_info("Read function : Distance = %d\n",distance);
+	pr_info("%s: Distance = %d\n",__func__, distance);
 	return 0;
 }
 
@@ -147,52 +140,52 @@ static irqreturn_t gpio_isr(int irq, void *data)
 /*
 ** Module Init function
 */ 
-static int __init hcsr04_driver_init(void)
+static int __init hcsr04_module_init(void)
 {
 	int rtc;
 	
 	/* Allocating Major number */
-	if((alloc_chrdev_region(&dev, 0, 1, "hcsr04_dev")) <0){
-		pr_err("Cannot allocate major number\n");
+	if((alloc_chrdev_region(&hcsr04_dev, 0, 1, DRIVER_NAME)) <0){
+		pr_err("%s: Device number could not be allocated.\n", __func__);
 		goto rem_unreg;
 	}
-	pr_info("Major = %d, Minor = %d \n",MAJOR(dev), MINOR(dev));
+	pr_info("Device number with najor: %d, minor: %d was registered.\n",MAJOR(hcsr04_dev), MINOR(hcsr04_dev));
 	
 	/* Creating cdev structure */
 	cdev_init(&hcsr04_cdev,&fops);
 	
 	/* Adding character device to the system */
 	if((cdev_add(&hcsr04_cdev,dev,1)) < 0){
-		pr_err("Cannot add the device to the system\n");
+		pr_err("%s: Registering of device to kernel failed.\n", __func__);
 		goto rem_del;
 	}
 	
 	/* Creating struct class */
-	if((dev_class = class_create(THIS_MODULE,"hcsr04_class")) == NULL){
-		pr_err("Cannot create the struct class\n");
+	if((hcsr04_class = class_create(THIS_MODULE, DRIVER_CLASS)) == NULL){
+		pr_err("%s: Device class can not be created.\n", __func__);
 		goto rem_class;
 	}
 	
 	/* Creating device */
-	if((device_create(dev_class,NULL,dev,NULL,"hcsr04_dev")) == NULL){
-		pr_err( "Cannot create the Device \n");
+	if((device_create(hcsr04_class,NULL,dev,NULL,"hcsr04_dev")) == NULL){
+		pr_err("%s: Can not create device file.\n", __func__);
 		goto rem_device;
 	}
 	
 	/* Checking the GPIO is valid or not */
 	if(gpio_is_valid(HCSR04_ECHO) == false || gpio_is_valid(HCSR04_TRIGGER) == false)
 	{
-		pr_err("GPIO %d is not valid\n", HCSR04_ECHO? HCSR04_ECHO:HCSR04_TRIGGER);
-		goto rem_device;
+		pr_err("%s: GPIO %d is not valid\n", __func__, HCSR04_ECHO? HCSR04_ECHO:HCSR04_TRIGGER);
+		goto rem_gpio;
 	}
 	
 	/* Requesting the GPIO */
 	if(gpio_request(HCSR04_ECHO,"ECHO") < 0){
-		pr_err("ERROR: GPIO %d request\n", HCSR04_ECHO);
+		pr_err("%s: GPIO %d request\n", __func__, HCSR04_ECHO);
 		goto rem_gpio;
 	}
 	if(gpio_request(HCSR04_TRIGGER,"TRIGGER") < 0){
-		pr_err("ERROR: GPIO %d request\n", HCSR04_TRIGGER);
+		pr_err("%s: GPIO %d request\n", __func__, HCSR04_TRIGGER);
 		goto rem_gpio;
 	}
 	
@@ -209,7 +202,7 @@ static int __init hcsr04_driver_init(void)
 	/* Request IRQ number from GPIO pin */
 	rtc = gpio_to_irq(HCSR04_ECHO);
 	if (rtc<0) {
-		printk(KERN_INFO "Error %d\n",__LINE__);
+		pr_err("%s: Can not request irq number from gpio echo pin.\n", __func__);
 		goto fail;
 	}
 	else 
@@ -222,20 +215,21 @@ static int __init hcsr04_driver_init(void)
 	gpio_to_irq(HCSR04_ECHO);
 	
 	if(rtc) {
-		printk(KERN_ERR "Unable to request IRQ: %d\n", rtc);
+		pr_err("%s: Unable to request IR line for gpio_irq: %d\n", __func__, rtc);
 		goto fail;
 	}
 	
-	pr_info("HCSR04 driver module is loaded into the kernel successfully.\n");
+	pr_info("HCSR04 driver module is loaded.\n");
+
 	return 0;
  
 rem_gpio:								/* Free GPIO */
 	gpio_free(HCSR04_ECHO);
 	gpio_free(HCSR04_TRIGGER);
 rem_device:								/* Delete device file */
-	device_destroy(dev_class,dev);		
+	device_destroy(hcsr04_class,dev);		
 rem_class:								/* Delete class of device file */
-	class_destroy(dev_class);
+	class_destroy(hcsr04_class);
 rem_del:								/* Delete cdev structure */	
 	cdev_del(&hcsr04_cdev);
 rem_unreg:								/* Free allocated region */
@@ -247,7 +241,7 @@ fail:
 /*
 ** Module exit function
 */ 
-static void __exit hcsr04_driver_exit(void)
+static void __exit hcsr04_module_exit(void)
 {
 	/*
 	** All this functions below are explained similar as label rem_* in the init function 
@@ -256,15 +250,15 @@ static void __exit hcsr04_driver_exit(void)
 	gpio_unexport(HCSR04_TRIGGER);
 	gpio_free(HCSR04_ECHO);
 	gpio_free(HCSR04_TRIGGER);
-	device_destroy(dev_class,dev);
-	class_destroy(dev_class);
+	device_destroy(hcsr04_class,dev);
+	class_destroy(hcsr04_class);
 	cdev_del(&hcsr04_cdev);
 	unregister_chrdev_region(dev, 1);
-	pr_info("HCSr04 driver remove out of the kernel successfully.\n");
+	pr_info("HCSR04 driver module is unloaded.\n");
 }
  
-module_init(hcsr04_driver_init);
-module_exit(hcsr04_driver_exit);
+module_init(hcsr04_module_init);
+module_exit(hcsr04_module_exit);
  
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Trieu Huynh <vikingtc4@gmail.com>");

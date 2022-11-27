@@ -11,9 +11,9 @@
 #include <linux/cdev.h>
 #include <linux/uaccess.h>
 
-static int BAUDRATE = 4800;
-static int GPIO_TX = 4;
-static int GPIO_RX = 2;
+static int BAUDRATE = 9600;
+static int GPIO_TX = 22;
+static int GPIO_RX = 23;
 
 #define TX_BUFFER_SIZE	256
 #define RX_BUFFER_SIZE	256
@@ -49,19 +49,21 @@ static ssize_t uart_cc2530_write(struct file *file, const char *user_buffer, siz
 	
 	/* Get amount of data to copy */
 	to_copy = min(count, sizeof(TX_BUFFER));
-
+	pr_info("user bufer after: %s\n", user_buffer);
 	/* Copy data to user */
 	not_copied = copy_from_user(&TX_BUFFER, user_buffer, to_copy);
 
 	for(n=0;n<=strlen(user_buffer);n++)
 	{
 	
-		TX_BUFFER[strlen(TX_BUFFER)]=user_buffer[strlen(user_buffer)-n];
+		// TX_BUFFER[strlen(TX_BUFFER)]=user_buffer[strlen(user_buffer)-n];
+		TX_BUFFER[n] = user_buffer[n];
 		if(strlen(TX_BUFFER)==TX_BUFFER_SIZE+1)
 			memset(TX_BUFFER,'\0',TX_BUFFER_SIZE+1);
 	
 	}
-	
+	pr_info("user bufer after: %s\n", TX_BUFFER);
+	memset(user_buffer, '\0', strlen(user_buffer));
 	hrtimer_start(&hrtimer_tx,  ktime_set(0, 0), HRTIMER_MODE_REL);
 	
 	delta = to_copy - not_copied;
@@ -73,6 +75,7 @@ static ssize_t uart_cc2530_write(struct file *file, const char *user_buffer, siz
 static enum hrtimer_restart FunctionTimerTX(struct hrtimer * unused)
 {
 	static int bit=-1;
+	int n;
 	
 	if(strlen(TX_BUFFER)>0)	//Data ready to send
 	{
@@ -80,12 +83,16 @@ static enum hrtimer_restart FunctionTimerTX(struct hrtimer * unused)
 			gpio_set_value(GPIO_TX, (0 & bit++) );
 		else if(bit>=0 && bit <=7)	//Data bits
 		{
-			gpio_set_value(GPIO_TX, ((TX_BUFFER[strlen(TX_BUFFER)-1] & (1 << bit)) >> bit) );
+			gpio_set_value(GPIO_TX, ((TX_BUFFER[0] & (1 << bit)) >> bit) );
+			// gpio_set_value(GPIO_TX, ((TX_BUFFER[strlen(TX_BUFFER)-1] & (1 << bit)) >> bit) );
 			bit++;
 		}
 		else	if(bit==8)
 		{
 			gpio_set_value(GPIO_TX, 1);	//Stop bit
+			for(n=0; n < (strlen(TX_BUFFER)-1); n++){
+				TX_BUFFER[n] = TX_BUFFER[n+1];
+			}
 			TX_BUFFER[strlen(TX_BUFFER)-1]='\0';
 			bit=-1;
 		}	

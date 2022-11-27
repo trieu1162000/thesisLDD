@@ -8,8 +8,8 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			lcd0: lcd_i2c0@27 {
-				compatible = "lcd_i2c0";
+			lcd0: lcd_i2c1@27 {
+				compatible = "lcd_i2c1";
 				reg = <0x27>;
 				status = "okay";
 			};
