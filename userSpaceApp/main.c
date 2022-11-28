@@ -27,28 +27,40 @@ int main(int argc, char** argv)
         int status;
 
         /* Files descriptor opening */
-        rc522_fd = open("/dev/rfid_rc522_dev", O_RDWR);
-        if(rc522_fd == -1)
+        rfid_rc522_fd = open("/dev/rfid_rc522", O_RDWR);
+        if(rfid_rc522_fd == -1)
         {
-                perror("open rc522");        /* error check */
+                perror("open rfid_rc522 device file\n");        /* error check */
                 exit(1);
         }
-        lcd_fd = open("/dev/lcd0", O_WR);
-        if(rc522_fd == -1)
+        i2c_lcd_fd = open("/dev/lcd0", O_WRONLY);
+        if(i2c_lcd_fd == -1)
         {
-                perror("open rc522");        /* error check */
+                perror("open i2c_lcd device fil\ne");        /* error check */
                 exit(1);
         }
-        hcsr04_fd = open("/dev/hcsr04", O_RD);
-        if(rc522_fd == -1)
+        hcsr04_fd = open("/dev/hcsr04", O_RDONLY);
+        if(hcsr04_fd == -1)
         {
-                perror("open rc522");        /* error check */
+                perror("open hcsr04 device file\n");        /* error check */
                 exit(1);
         }
-        tcrt5000_fd = open("/dev/tcrt5000", O_RD);
-        if(rc522_fd == -1)
+        tcrt5000_fd = open("/dev/tcrt5000", O_RDONLY);
+        if(tcrt5000_fd == -1)
         {
-                perror("open rc522");        /* error check */
+                perror("open tcrt5000 device file\n");        /* error check */
+                exit(1);
+        }
+        uart_cc2530_fd = open("/dev/uart_cc2530", O_RDWR);
+        if(uart_cc2530_fd == -1)
+        {
+                perror("open uart_cc2530 device file\n");        /* error check */
+                exit(1);
+        }
+        pwm_motor_fd = open("/dev/pwm_motor", O_WRONLY);
+        if(pwm_motor_fd == -1)
+        {
+                perror("open pwm_motor device file\n");        /* error check */
                 exit(1);
         }
 
@@ -62,7 +74,7 @@ int main(int argc, char** argv)
         main_thread_id = pthread_self();
         param.sched_priority = priority_max;
         param.sched_priority=priority_max;
-        status = pthread_setschedparam(main_id, policy, &param);
+        status = pthread_setschedparam(main_thread_id, policy, &param);
         if (status != 0) 
                 perror("pthread_setschedparam");        /* error check */
 
@@ -109,6 +121,22 @@ int main(int argc, char** argv)
                         // print lcd  
                         // receive data remotely from GUI
                         // drive motor base on data 
+                        switch(control_motor)
+                        {
+                                case STOP:
+                                        break;
+                                case FORWARD:
+                                        break;
+                                case BACKWARD:
+                                        break;
+                                case TURN_LEFT:
+                                        break;
+                                case TURN_RIGHT:
+                                        break;
+                                default:
+                                        break;
+
+                        }
                 }
 
                 else if(mode == AUTO)
@@ -121,9 +149,33 @@ int main(int argc, char** argv)
                         // print lcd 
                         // send data to the GUI 
                 }
+                else {
+                        read(tcrt5000_fd, tcrt5000_buf, sizeof(tcrt5000_buf));
+                        line_measure_value = atoi(tcrt5000_buf);
+                        PID_line(line_measure_value, velocity_initial);
+                }
 
 
         }
 
         return 0; 
 } 
+
+
+void PID_Line(float line_measure_value, float velocity)
+{
+
+        int error = line_measure_value - 1000;
+        int out_line = setkp_line * error + setkd_line * (error - preError1);
+        preError1 = error;
+        
+        if (out_line > velocity) out_line  = velocity;
+        else if (out_line  < -velocity) out_line  = -velocity;
+        
+        int rightMotorSpeed = velocity + 2 + out_line/1.6;       //1.5       
+        int leftMotorSpeed = velocity - out_line/1.6;  		
+        
+        write(pwm_motor_left_fd, leftMotorSpeed);
+        write(pwm_motor_right_fd, rightMotorSpeed);
+
+}

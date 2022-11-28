@@ -16,14 +16,31 @@
 #include <sys/ioctl.h>
 #include <math.h>
 
-static pthread_t send_thread_id, receive_thread_id, main_thread_id;
-static pthread_attr_t attr_send_thread, attr_receive_thread;         /* thread attribute structures */
-static enum selected_mode{AUTO, MANUAL};
-static uint mode;
-static int rc522_fd;
-static int lcd_fd;
-static int policy;
-static int priority_min, priority_max;      /* for range of priority levels */
-static struct sched_param param;            /* scheduling structure for thread attributes */
+enum selected_mode{AUTO, MANUAL};
+enum direction{STOP, FORWARD, BACKWARD, TURN_LEFT, TURN_RIGHT};
+enum selected_mode mode;
+enum direction control_motor;
+pthread_t send_thread_id, receive_thread_id, main_thread_id;
+pthread_attr_t attr_send_thread, attr_receive_thread;         /* thread attribute structures */
+int rfid_rc522_fd, i2c_lcd_fd, hcsr04_fd, uart_cc2530_fd, tcrt5000_fd, pwm_motor_fd;
+int policy;
+int priority_min, priority_max;      /* for range of priority levels */
+struct sched_param param;            /* scheduling structure for thread attributes */
+struct robot_info{
+    enum selected_mode mode;
+    uint velocity;
+    uint battery;
+    struct manual{
+        enum direction control_motor;
+    }
+    struct auto{
+        uint current_node;
+        uint next_node;
+        uint obstacle_distance;
+        enum direction orient;
+    }
+
+
+}
 
 #endif 
