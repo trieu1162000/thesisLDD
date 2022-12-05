@@ -57,15 +57,20 @@ static ssize_t tcrt5000_read(struct file *file, char *user_buffer, size_t count,
 	uint data_read_raw_int[5];
 	memset(data_read_raw_string, '\0', 6);
 	memset(string_value_for_pid, '\0', 100);
-	memset(int_value_for_pid, '\0', 100);
+
 	for(i = 0; i<5; i++){
 		data_read_raw_int[i] = gpio_get_value(GPIO_BASE_NUM+i);
 		sprintf(&data_read_raw_string[i],"%d", gpio_get_value(GPIO_BASE_NUM+i));
 	}
 	int_value_for_pid = read_value_for_pid(data_read_raw_int);
-	sprintf(string_value_for_pid, "%d", int_value_for_pid);
-	pr_info("Value read raw: %s", data_read_raw_string);
-	pr_info("Value for pid: %s", string_value_for_pid);
+	if(int_value_for_pid<1000){
+		sprintf(string_value_for_pid, "0%d", int_value_for_pid);
+	}
+	else{
+		sprintf(string_value_for_pid, "%d", int_value_for_pid);
+	}
+	pr_info("%s: Value read raw: %s", __func__, data_read_raw_string);
+	pr_info("%s: Value for pid: %s", __func__, string_value_for_pid);
 
 	/* Get amount of data to copy */
 	length = strlen(string_value_for_pid);
@@ -78,7 +83,7 @@ static ssize_t tcrt5000_read(struct file *file, char *user_buffer, size_t count,
 	delta = to_copy - not_copied;
 	pr_info("Read tcrt5000 driver successfully.\n");
 
-	return delta;
+	return 0;
 }
 
 /**
@@ -116,7 +121,7 @@ static int __init tcrt5000_module_init(void) {
 		pr_err("%s: Device number could not be allocated.\n", __func__);
 		goto rem_unreg;
 	}
-	pr_info("Device number with najor: %d, minor: %d was registered.\n", MAJOR(tcrt5000_dev), MINOR(tcrt5000_dev));
+	pr_info("%s: Device number with major: %d, minor: %d was registered.\n", __func__, MAJOR(tcrt5000_dev), MINOR(tcrt5000_dev));
 
 	/*2. Initialize the cdev structure with fops*/
 	cdev_init(&tcrt5000_cdev, &fops);

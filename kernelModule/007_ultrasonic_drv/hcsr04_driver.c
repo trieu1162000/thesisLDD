@@ -15,8 +15,8 @@
 #include <linux/interrupt.h> 
  
 /* Change these two lines to use differents GPIOs */
-#define HCSR04_ECHO			49	// P9-23
-#define HCSR04_TRIGGER		15	// P9-24
+#define HCSR04_ECHO			17
+#define HCSR04_TRIGGER		27	
 #define IRQF_DISABLED 		0
 #define DEV_MEM_SIZE 		512
 #define DRIVER_NAME         "hcsr04"
@@ -149,13 +149,13 @@ static int __init hcsr04_module_init(void)
 		pr_err("%s: Device number could not be allocated.\n", __func__);
 		goto rem_unreg;
 	}
-	pr_info("Device number with najor: %d, minor: %d was registered.\n",MAJOR(hcsr04_dev), MINOR(hcsr04_dev));
+	pr_info("%s: Device number with major: %d, minor: %d was registered.\n", __func__, MAJOR(hcsr04_dev), MINOR(hcsr04_dev));
 	
 	/* Creating cdev structure */
 	cdev_init(&hcsr04_cdev,&fops);
 	
 	/* Adding character device to the system */
-	if((cdev_add(&hcsr04_cdev,dev,1)) < 0){
+	if((cdev_add(&hcsr04_cdev, hcsr04_dev, 1)) < 0){
 		pr_err("%s: Registering of device to kernel failed.\n", __func__);
 		goto rem_del;
 	}
@@ -167,7 +167,7 @@ static int __init hcsr04_module_init(void)
 	}
 	
 	/* Creating device */
-	if((device_create(hcsr04_class,NULL,dev,NULL,"hcsr04_dev")) == NULL){
+	if((device_create(hcsr04_class,NULL, hcsr04_dev, NULL, DRIVER_NAME)) == NULL){
 		pr_err("%s: Can not create device file.\n", __func__);
 		goto rem_device;
 	}
@@ -211,7 +211,7 @@ static int __init hcsr04_module_init(void)
 	}
 	
 	/* Request IRQ line */
-	rtc = request_irq(gpio_irq, gpio_isr, IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING | IRQF_DISABLED , "hcsr04_device", NULL);
+	rtc = request_irq(gpio_irq, gpio_isr, IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING | IRQF_DISABLED , "hcsr04_obstacle", NULL);
 	gpio_to_irq(HCSR04_ECHO);
 	
 	if(rtc) {
@@ -227,13 +227,13 @@ rem_gpio:								/* Free GPIO */
 	gpio_free(HCSR04_ECHO);
 	gpio_free(HCSR04_TRIGGER);
 rem_device:								/* Delete device file */
-	device_destroy(hcsr04_class,dev);		
+	device_destroy(hcsr04_class, hcsr04_dev);		
 rem_class:								/* Delete class of device file */
 	class_destroy(hcsr04_class);
 rem_del:								/* Delete cdev structure */	
 	cdev_del(&hcsr04_cdev);
 rem_unreg:								/* Free allocated region */
-	unregister_chrdev_region(dev,1);
+	unregister_chrdev_region(hcsr04_dev, 1);
 fail:
 	return -1;
 }
@@ -248,12 +248,13 @@ static void __exit hcsr04_module_exit(void)
 	*/ 
 	gpio_unexport(HCSR04_ECHO);
 	gpio_unexport(HCSR04_TRIGGER);
+	free_irq(gpio_irq, NULL);
 	gpio_free(HCSR04_ECHO);
 	gpio_free(HCSR04_TRIGGER);
-	device_destroy(hcsr04_class,dev);
+	device_destroy(hcsr04_class, hcsr04_dev);
 	class_destroy(hcsr04_class);
 	cdev_del(&hcsr04_cdev);
-	unregister_chrdev_region(dev, 1);
+	unregister_chrdev_region(hcsr04_dev, 1);
 	pr_info("HCSR04 driver module is unloaded.\n");
 }
  

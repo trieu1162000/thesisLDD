@@ -49,10 +49,11 @@ void InitRc522(void)
 	unsigned char a;
 	PcdReset();
 	a = ReadRawRC(TReloadRegL);
+	/* For debug purpose */
 	if(a != 30)
-		printk(KERN_DEBUG"NO RC522 - %d\n",a);
+		pr_err("%s: RC522 not found. - %d\n", __func__, a);
 	else
-		printk(KERN_DEBUG"RC522 exist\n");
+		pr_info("%s: RC522 exist.\n", __func__);
 	PcdAntennaOff();  
 	PcdAntennaOn();
 	M500PcdConfigISOType( 'A' );
@@ -67,13 +68,13 @@ static char rc522_loop_work(uint opnd)
 	status=PcdRequest(PICC_REQIDL,&RevBuffer[0]);
 	if(status!=MI_OK)
 	{
-		printk(KERN_DEBUG"search card: no card\n");
+		pr_err("%s: search card: no card.\n", __func__);
 		return -EFAULT;
 	}
 	status=PcdAnticoll(&RevBuffer[2]);
 	if(status!=MI_OK)
 	{
-		printk(KERN_DEBUG"get card nu: no number\n");
+		pr_err("%s: get card nu: no number.\n", __func__);
 		return -EFAULT;
 	} 
 	memcpy(MLastSelectedSnr,&RevBuffer[2],4);
@@ -81,7 +82,7 @@ static char rc522_loop_work(uint opnd)
 	status=PcdSelect(MLastSelectedSnr);
 	if(status!=MI_OK)
 	{
-		printk(KERN_DEBUG"select card: no card\n");
+		pr_err("%s: select card: no card.\n", __func__);
 		return -EFAULT;            
 	}
 	if (opnd == GET_ID) {
@@ -91,51 +92,51 @@ static char rc522_loop_work(uint opnd)
 		status=PcdAuthState(PICC_AUTHENT1A,blockAddr,PassWd,MLastSelectedSnr);
 		if(status!=MI_OK)
 		{
-			printk(KERN_DEBUG"read authorize card err\n");
+			pr_err("%s: read authorize card err.\n", __func__);
 			return -EFAULT;
 		}
 		status=PcdRead(blockAddr,Read_Data);
 		if(status!=MI_OK)
 		{
-			printk(KERN_DEBUG"read card err\n");
+			pr_err("%s: read card err.\n", __func__);
 			return -EFAULT;
 		} else {
 			int i;
 			memcpy(pdata, Read_Data, sizeof(Read_Data));
-			printk(KERN_DEBUG"read block %d info:", blockAddr);
+			pr_info("%s: read block %d info:", __func__, blockAddr);
 			for(i = 0; i < 16; i++) {
-				printk(KERN_DEBUG"%2.2X",pdata[i]);
+				pr_info("%2.2X",pdata[i]);
 			}
-			printk(KERN_DEBUG"\n");
+			pr_info("\n");
 		}
 	} else if (opnd == CHANGE_KEY) {
 		status=PcdAuthState(PICC_AUTHENT1A,blockAddr,PassWd,MLastSelectedSnr);
 		if(status!=MI_OK)
 		{
-			printk(KERN_DEBUG"card authorize err");
+			pr_err("%s: card authorize err.", __func__);
 			return -EFAULT;
 		}
 		status=PcdWrite(blockAddr,&NewKey[0]);
 		if(status!=MI_OK)
 		{
-			printk(KERN_DEBUG"change password err");
+			pr_err("%s: change password err.", __func__);
 			return -EFAULT;
 		} else
-			printk(KERN_DEBUG"set password success");
+			pr_info("%s: set password success.", __func__);
 	} else if (opnd == WRITE_CARD) {
 		status=PcdAuthState(PICC_AUTHENT1A,blockAddr,PassWd,MLastSelectedSnr);
 		if(status!=MI_OK)
 		{
-			printk(KERN_DEBUG"write authrioze err\n");
+			pr_err("%s: write authrioze err.\n", __func__);
 			return -EFAULT;
 		}
 		status=PcdWrite(blockAddr,&WriteData[0]);
 		if(status!=MI_OK)
 		{
-			printk(KERN_DEBUG"write data err\n");
+			pr_err("%s: write data err.\n", __func__);
 			return -EFAULT;
 		} else {
-			printk(KERN_DEBUG"write data to block %d sucess\n", blockAddr);
+			pr_info("%s: write data to block %d sucess\n", __func__, blockAddr);
 		}
 	}
 	PcdHalt();
@@ -147,7 +148,7 @@ static char rc522_loop_work(uint opnd)
 static int rc522_open(struct inode *inode,struct file *filp)
 {
 	InitRc522();
-	printk(KERN_DEBUG"rc522 start work!\n");
+	pr_info("Open rfid_rc522 driver successfully.\n");
 	return 0;
 }
 
@@ -157,9 +158,9 @@ static ssize_t rc522_read (struct file *filp, char *buf, size_t count, loff_t *f
 	operationcard = READ_CARD;
 	if(rc522_loop_work(operationcard))
 		return 0;
-	printk(KERN_DEBUG"card info:%2.2X\n",Read_Data[0]);
+	pr_info("%s: card info:%2.2X\n", __func__, Read_Data[0]);
 	if (copy_to_user(buf, read_data_buff, sizeof(read_data_buff))) {
-		printk(KERN_DEBUG"copy card number to userspace err\n");
+		pr_err("%s: copy card number to userspace err.\n", __func__);
 		return 0;
 	}
 	return sizeof(read_data_buff);
@@ -168,20 +169,20 @@ static ssize_t rc522_read (struct file *filp, char *buf, size_t count, loff_t *f
 static ssize_t rc522_write (struct file *filp, const char *buf, size_t count, loff_t *f_pos)
 {
 	if (blockAddr == 0) {
-		printk(KERN_DEBUG"block[0] is reserveed, can't write\n");
+		pr_info("%s: block[0] is reserveed, can not write.\n", __func__);
 		return 0;
 	}
 	if (blockAddr < 0 || blockAddr > 63) {
-		printk(KERN_DEBUG"block[%d] unreachable, please set the write block first", blockAddr);
+		pr_info("%s: block[%d] unreachable, please set the write block first", __func__, blockAddr);
 		return -0;
 	} 
 	if ((blockAddr % 4) == 3) {
-		printk(KERN_DEBUG"block[%d] is key block, not data block\n", blockAddr);
+		pr_info("%s: block[%d] is key block, not data block\n", __func__, blockAddr);
 		return -0;
 	}
 	memset(WriteData, 0, sizeof(WriteData));
 	if (copy_from_user(WriteData, (char *)buf, count)) {
-		printk(KERN_DEBUG"%s, [line %d] copy from user err.\n", __FILE__, __LINE__);
+		pr_err("%s, [line %d] copy from user err.\n", __FILE__, __LINE__);
 		return 0;
 	}
 	/*PcdReset();*/
@@ -193,28 +194,28 @@ static ssize_t rc522_write (struct file *filp, const char *buf, size_t count, lo
 
 static int rc522_release(struct inode *inode,struct file *filp)
 {
-	printk(KERN_DEBUG"%s\n", __func__);
+	pr_info("Close rfid_rc522 driver successfully.\n");
 	return 0;
 }
 
 static long rc522_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
-	printk(KERN_DEBUG "CMD = 0x%x\n", cmd);
+	pr_info( "%s: CMD = 0x%x\n", __func__, cmd);
 	switch(cmd) {
 	case CHANGE_PASSWD:
 		operationcard = CHANGE_PASSWD;
 		if (copy_from_user(PassWd, (char *)arg, sizeof(PassWd))) {
-			printk(KERN_DEBUG"%s:change pass word err", __func__);
+			pr_err("%s: change pass word err", __func__);
 			return -EFAULT;
 		}
 		break;
 	case CHANGE_BLOCK:
 		if (arg < 0 || arg > 63) {
-			printk(KERN_DEBUG"block number err %lu\n", arg);
+			pr_err("%s: block number err %lu\n", __func__, arg);
 			return -EFAULT;
 		}
 		blockAddr = (int)arg;
-		printk(KERN_INFO "block = %d", blockAddr);
+		pr_info( "%s: block = %d", __func__, blockAddr);
 		break;
 	case READ_CARD:
 		break;
@@ -227,7 +228,7 @@ static long rc522_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 		operationcard =  GET_ID;
 		if(!rc522_loop_work(operationcard)){
 			if (copy_to_user((char *)arg, MLastSelectedSnr,4)) {
-				printk(KERN_DEBUG"%s, [line %d] copy to user err.\n", __FILE__, __LINE__);
+				pr_err("%s, [line %d] copy to user err.\n", __FILE__, __LINE__);
 				return -EFAULT;
 			}
 		}
@@ -248,10 +249,8 @@ static int rc522_remove(struct spi_device *spi)
 }
 static int rc522_probe(struct spi_device *spi)
 {
-	printk(KERN_DEBUG "Probed");
-	printk(KERN_DEBUG "SPI number = %d",spi->controller->bus_num);
+	pr_info( "%s: SPI number = %d", __func__, spi->controller->bus_num);
 	blockAddr = 1;
-	printk(KERN_DEBUG"%s\n", __func__);
 	rc522_spi = spi;
 	return 0;
 };
@@ -282,42 +281,41 @@ static struct file_operations rc522_fops = {
 		.unlocked_ioctl = rc522_ioctl,
 };
 
-static int RC522_init(void)
+static int rfid_rc522_init(void)
 {
 	int i;
 	
-	printk(KERN_DEBUG"RFID_RC522 module init.\n");
+	pr_info("RFID_RC522 module init.\n");
 
 	if((alloc_chrdev_region(&dev, 0, 1, DEVICE_NAME)) < 0) {
-		printk(KERN_INFO "Error allocation Major number !\n");
+		pr_err("%s: Error in allocation of device file number\n", __func__);
 		return -1;
 	}
-	printk(KERN_INFO "RFID_RC522 module has been inserted, Major num: %d | Minor num: %d\n", MAJOR(dev), MINOR(dev));
+	pr_info("%s: Device number with major: %d, minor: %d was registered.\n", __func__, MAJOR(dev), MINOR(dev));
 
 	cdev_init(&rfid_cdev,&rc522_fops);
 
 	if((cdev_add(&rfid_cdev, dev, 1)) < 0) {
-		printk(KERN_INFO "Cannot add rfid_cdev to the system\n");
+		pr_err("%s: Cdev add failed.\n", __func__);
 		goto rem_cdev;
 	}
-	printk(KERN_INFO "Char device for RC522_RFID module has been added");
 
 	if((dev_class = class_create(THIS_MODULE,CLASS_NAME)) == NULL) {
-		printk(KERN_INFO "Couldnt create a class");
+		pr_err("%s: Device class cannot be created\n", __func__);
 		goto rem_class;
 	}
 
 	if((dev_struct = device_create(dev_class,NULL,dev,NULL,DEVICE_NAME)) == NULL) {
-		printk(KERN_INFO "Talos device cannot be created");
+		pr_err("%s: Can not create device.\n", __func__);
 		goto rem_device;
 	}
 
 	if(spi_register_driver(&rc522_driver) < 0) {
-		printk(KERN_DEBUG"SPI driver register failed\n");
+		pr_err("%s: SPI driver register failed.\n", __func__);
 		goto rem_device;
 	}
 	for(i=0; i < (sizeof(ioctls) / sizeof(IOCTLDescription_t)); i++)
-		printk(KERN_INFO"IOCTL Codes:\t%s=0x%02X\n", ioctls[i].name, ioctls[i].ioctlcode);
+		pr_info("IOCTL Codes:\t%s=0x%02X\n", ioctls[i].name, ioctls[i].ioctlcode);
 	
 	return 0;
 
@@ -331,22 +329,22 @@ rem_cdev:
 	return -1;
 }
 
-static void RC522_exit(void)
+static void rfid_rc522_exit(void)
 {
 	spi_unregister_driver(&rc522_driver);
 	device_destroy(dev_class,dev);
 	class_destroy(dev_class);
 	cdev_del(&rfid_cdev);
 	unregister_chrdev_region(dev,1);
-	printk(KERN_DEBUG"RC522_RFID module has been removed\n");
+	pr_info("rfid_rc522 driver module is unloaded.\n");
 }
 
-module_init(RC522_init);
-module_exit(RC522_exit);
+/* Meta information for alllowing correct loading of modules through distros*/
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Trieu Huynh <vikingtc4@gmail.com>");
+MODULE_DESCRIPTION("Driver for RFID RC522 <ThesisLDD Project>");
 
-// test branch
 
-MODULE_AUTHOR("RealTime Goup-Tal,Alex,Shay,Avi");
-MODULE_DESCRIPTION("Linux Kernel Device Drivers Final Project");
-MODULE_LICENSE("Dual BSD/GPL");	
+module_init(rfid_rc522_init);
+module_exit(rfid_rc522_exit);
 

@@ -15,7 +15,7 @@
                                 compatible = "motor_right";
                                 pwms = <&pwm 1 1000000>;
                                 pinctrl-names = "default";
-                                pinctrl-0 = <&pwm0_gpio12>;
+                                pinctrl-0 = <&pwm1_gpio19>;
                         };
 
                 };

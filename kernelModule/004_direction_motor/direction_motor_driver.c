@@ -32,42 +32,61 @@ void set_direction(int direction)
 {
 	switch (direction)
 	{
-      case FORWARD:
-         gpio_set_value(gpio_motor_in1, 0);
-         gpio_set_value(gpio_motor_in2, 0);
-         gpio_set_value(gpio_motor_in3, 1);
-         gpio_set_value(gpio_motor_in4, 0);
 
-	      pr_info("%s Direction: FORWARD.\n", __func__);	
-         break;	
+      	case FORWARD:
+			// MOTOR LEFT
+			gpio_set_value(gpio_motor_in1, 1);
+			gpio_set_value(gpio_motor_in2, 0);
+			// MOTOR RIGHT
+			gpio_set_value(gpio_motor_in3, 0);
+			gpio_set_value(gpio_motor_in4, 1);
+			pr_info("%s: FORWARD.\n", __func__);	
+			break;	
 
-      case BACKWARD:
-         //
-	      pr_info("%s Direction: BACKWARD.\n", __func__);
-         break;
-      case TURN_LEFT:
-         //
-	      pr_info("%s Direction: TURN_LEFT.\n", __func__);
-         break;
-      case TURN_RIGHT:
-         //
-	      pr_info("%s Direction: TURN_RIGHT.\n", __func__);
-         break;
-      case STOP:
-         gpio_set_value(gpio_motor_in1, 0);
-         gpio_set_value(gpio_motor_in2, 0);
-         gpio_set_value(gpio_motor_in3, 0);
-         gpio_set_value(gpio_motor_in4, 0);
-	      pr_info("%s Direction: STOP.\n", __func__);
-         break;
+      	case BACKWARD:
+			// MOTOR LEFT
+			gpio_set_value(gpio_motor_in1, 0);
+			gpio_set_value(gpio_motor_in2, 1);
+			// MOTOR RIGHT
+			gpio_set_value(gpio_motor_in3, 1);
+			gpio_set_value(gpio_motor_in4, 0);
+			pr_info("%s: BACKWARD.\n", __func__);
+			break;
+
+      	case TURN_LEFT:
+			// MOTOR LEFT
+			gpio_set_value(gpio_motor_in1, 0);
+			gpio_set_value(gpio_motor_in2, 1);
+			// MOTOR RIGHT
+			gpio_set_value(gpio_motor_in3, 0);
+			gpio_set_value(gpio_motor_in4, 1);
+	      	pr_info("%s: TURN_LEFT.\n", __func__);
+         	break;
+
+      	case TURN_RIGHT:
+			// MOTOR LEFT
+			gpio_set_value(gpio_motor_in1, 1);
+			gpio_set_value(gpio_motor_in2, 0);
+			// MOTOR RIGHT
+			gpio_set_value(gpio_motor_in3, 1);
+			gpio_set_value(gpio_motor_in4, 0);
+	      	pr_info("%s: TURN_RIGHT.\n", __func__);
+         	break;
+      	case STOP:
+			gpio_set_value(gpio_motor_in1, 0);
+			gpio_set_value(gpio_motor_in2, 0);
+			gpio_set_value(gpio_motor_in3, 0);
+			gpio_set_value(gpio_motor_in4, 0);
+			pr_info("%s: STOP.\n", __func__);
+			break;
       
-      default:
-         gpio_set_value(gpio_motor_in1, 0);
-         gpio_set_value(gpio_motor_in2, 0);
-         gpio_set_value(gpio_motor_in3, 0);
-         gpio_set_value(gpio_motor_in4, 0);
-	      pr_info("%s Invalid Command.\n", __func__);	   
-         break;
+      	default:
+			gpio_set_value(gpio_motor_in1, 0);
+			gpio_set_value(gpio_motor_in2, 0);
+			gpio_set_value(gpio_motor_in3, 0);
+			gpio_set_value(gpio_motor_in4, 0);
+			pr_info("%s Invalid Command.\n", __func__);	   
+			break;
    }
 }
  
@@ -141,7 +160,7 @@ static int __init direction_motor_module_init(void){
 		pr_err("%s: Device number could not be allocated.\n", __func__);
 		goto rem_unreg;
 	}
-	pr_info("Device number with najor: %d, minor: %d was registered.\n", MAJOR(direction_motor_dev), MINOR(direction_motor_dev));
+	pr_info("%s: Device number with major: %d, minor: %d was registered.\n", __func__, MAJOR(direction_motor_dev), MINOR(direction_motor_dev));
 
 	/*2. Initialize the cdev structure with fops*/
 	cdev_init(&direction_motor_cdev, &fops);

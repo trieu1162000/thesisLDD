@@ -17,14 +17,11 @@
 #define DRIVER_CLASS "pwm_driver_class"
 
 // Period for pwm data (10 usecond <=> 100kHz)
-#define PWM_PERIOD 10000
+#define PWM_PERIOD 5000000
 
 // Initial period for duty cycle (1%)
-#define PWM_DUTY_INITIAL 100
+#define PWM_DUTY_INITIAL 50000
 
-// Struct that defines the pwm control abstraction
-struct pwm_device *pwm_left = NULL;
-struct pwm_device *pwm_right = NULL;
 
 /* Device data struct */
 struct pwm_motor{
@@ -116,14 +113,40 @@ static ssize_t pwm_driver_write(struct file *file, const char *user_buffer, size
 
         return count;
 }
- 
+
+
+static ssize_t pwm_driver_read(struct file *file, char *buf, size_t len,
+				loff_t *offs)
+{
+	/*This function for debug purpose */
+	struct pwm_motor *motor = file->private_data;
+	unsigned int duty;
+	unsigned int period;
+	struct pwm_state state;
+
+	pwm_get_state(motor->pwmdev, &state);
+	duty = state.duty_cycle;
+	period = state.period;
+
+	pr_info("duty circle is %u; period is %u, pwm_enable: %d\n", duty,
+		 period, motor->pwmdev->state.enabled);
+
+	// if (pwm_enable(motor->pwmdev)) {
+	// 	pr_err("Can not enable pwm device\n");
+	// }
+
+	// pr_info("pwm_enable: %d\n", motor->pwmdev->state.enabled);
+
+	return 0;
+}
 // Assuming pwm function is, for now, a char dev
 // We could instantiate even more operations here (like read)
 static struct file_operations fops = {
     .owner = THIS_MODULE,
     .open = pwm_driver_open,
     .release = pwm_driver_close,
-    .write = pwm_driver_write
+    .write = pwm_driver_write,
+    .read = pwm_driver_read,
 };
 
 static int pwm_driver_probe(struct platform_device *pdev)
