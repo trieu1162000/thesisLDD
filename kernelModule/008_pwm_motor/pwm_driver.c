@@ -110,7 +110,7 @@ static ssize_t pwm_driver_write(struct file *file, const char *user_buffer, size
         }
 
         // delta = to_copy - not_copied;
-
+        pr_info("%s: pwm value from user: %llu\n", __func__, pwm_value);
         return count;
 }
 
@@ -169,7 +169,7 @@ static int pwm_driver_probe(struct platform_device *pdev)
         minor_number = motor->pwmdev->pwm;
         motor->dev_number = MKDEV(major_number, minor_number);
         pr_info("%s: A motor device is probed, major: %d, minor: %d\n", __func__, major_number, minor_number);
-        motor->device = device_create(pwm_driver_class, &pdev->dev, motor->dev_number, motor, "motor%d", minor_number);
+        motor->device = device_create(pwm_driver_class, &pdev->dev, motor->dev_number, motor, "pwm_motor%d", minor_number);
         if(motor->device == NULL)
         {
                 pr_info("%s: Can not create device.\n", __func__);

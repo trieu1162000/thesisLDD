@@ -7,8 +7,8 @@
 #include <linux/gpio.h>
 #include <linux/cdev.h>
 
-#define  DRIVER_NAME "direction_motor_driver" 
-#define  DRIVER_CLASS  "direction_motor_driver_class" 
+#define  DRIVER_NAME "direction_motor" 
+#define  DRIVER_CLASS  "direction_motor_class" 
 
 enum direction{
    STOP,

@@ -144,8 +144,8 @@
 #define GET_ID              _IOR(RFID_IOCTL_BASE, (0x06 << 1), char *)
 #define BEEP                _IO(RFID_IOCTL_BASE, (0x07 << 1))
 
-#define CLASS_NAME "RC522"
-#define DEVICE_NAME "rfid_rc522_dev"
+#define CLASS_NAME "rfid_rc522_class"
+#define DEVICE_NAME "rfid_rc522"
 
 typedef struct ioctl_description {
   uint32_t ioctlcode;
