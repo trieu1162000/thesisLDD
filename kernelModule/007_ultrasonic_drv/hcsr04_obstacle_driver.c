@@ -19,7 +19,7 @@
 #define HCSR04_TRIGGER		27	
 #define IRQF_DISABLED 		0
 #define DEV_MEM_SIZE 		512
-#define DRIVER_NAME         "hcsr04"
+#define DRIVER_NAME         "hcsr04_obstacle"
 #define DRIVER_CLASS        "hcsr04_class"
 
 char device_buffer[DEV_MEM_SIZE];
@@ -38,44 +38,43 @@ static void __exit hcsr04_module_exit(void);
  
  
 /*************** Driver functions **********************/
-static int hcsr04_open(struct inode *inode, struct file *file);
-static int hcsr04_release(struct inode *inode, struct file *file);
-static ssize_t hcsr04_read(struct file *filp, 
+static int hcsr04_driver_open(struct inode *inode, struct file *file);
+static int hcsr04_driver_close(struct inode *inode, struct file *file);
+static ssize_t hcsr04_driver_read(struct file *filp, 
                 char __user *buf, size_t len,loff_t * off);
 /******************************************************/
-
 
 //File operation structure 
 static struct file_operations fops =
 {
 	.owner          = THIS_MODULE,
-	.read           = hcsr04_read,
-	.open           = hcsr04_open,
-	.release        = hcsr04_release,
+	.read           = hcsr04_driver_read,
+	.open           = hcsr04_driver_open,
+	.release        = hcsr04_driver_close,
 };
 
 /*
 ** This function will be called when we open the Device file
 */ 
-static int hcsr04_open(struct inode *inode, struct file *file)
+static int hcsr04_driver_open(struct inode *inode, struct file *file)
 {
-  pr_info("Open hcsr04 driver successfully.\n");
+  pr_info("Open hcsr04_obstacle driver successfully.\n");
   return 0;
 }
 
 /*
 ** This function will be called when we close the Device file
 */
-static int hcsr04_release(struct inode *inode, struct file *file)
+static int hcsr04_driver_close(struct inode *inode, struct file *file)
 {
-  pr_info("Close hcsr04 driver successfully.\n");
+  pr_info("Close hcsr04_obstacle driver successfully.\n");
   return 0;
 }
 
 /*
 ** This function will be called when we read the Device file
 */ 
-static ssize_t hcsr04_read(struct file *filp, 
+static ssize_t hcsr04_driver_read(struct file *filp, 
                 char __user *buf, size_t len, loff_t *off)
 {
 	int counter;
@@ -95,14 +94,14 @@ static ssize_t hcsr04_read(struct file *filp,
 	while (valid_value==0) {
 		// Out of range
 		if (++counter>23200) {
-			return sprintf(buf, "%d\n", -1);;
+			return sprintf(buf, "%d\n", -1);
 		}
 		udelay(1);
 	}
 
 	distance = (int)(ktime_to_us(ktime_sub(echo_end,echo_start)))/58;
 
-	sprintf(device_buffer, "%d\n", distance);
+	sprintf(device_buffer, "%d", distance);
 	len = strlen(device_buffer);
 
 	/* copy_to_user(void *dst, const void *src, unsigned int size) */
@@ -111,7 +110,7 @@ static ssize_t hcsr04_read(struct file *filp,
 		pr_err("%s: Not all the bytes have been copied to user\n", __func__);
 	}
 
-	pr_info("%s: Distance = %d\n",__func__, distance);
+	// pr_info("%s: Distance = %d\n",__func__, distance);
 	return 0;
 }
 
@@ -219,7 +218,7 @@ static int __init hcsr04_module_init(void)
 		goto fail;
 	}
 	
-	pr_info("HCSR04 driver module is loaded.\n");
+	pr_info("hcsr04_obstacle driver module is loaded.\n");
 
 	return 0;
  
@@ -255,7 +254,7 @@ static void __exit hcsr04_module_exit(void)
 	class_destroy(hcsr04_class);
 	cdev_del(&hcsr04_cdev);
 	unregister_chrdev_region(hcsr04_dev, 1);
-	pr_info("HCSR04 driver module is unloaded.\n");
+	pr_info("hcsr04_obstacle driver module is unloaded.\n");
 }
  
 module_init(hcsr04_module_init);
@@ -263,4 +262,4 @@ module_exit(hcsr04_module_exit);
  
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Trieu Huynh <vikingtc4@gmail.com>");
-MODULE_DESCRIPTION("Device Driver for HCSR04 Sensor <ThesisLDD Project>");
+MODULE_DESCRIPTION("Device Driver for HCSR04 Sensor to detect obstacle. <ThesisLDD Project>");

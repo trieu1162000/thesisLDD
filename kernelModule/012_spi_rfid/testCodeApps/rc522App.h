@@ -26,7 +26,7 @@ typedef enum _IO_CMD_RFID {
         READ_CARD                       =0x8004CE06,
         WRITE_CARD                      =0x4004CE08,
         CHANGE_KEY                      =0xCE0A,
-        GET_ID                          =0x8004CE0C,
+        IOCTL_GET_ID                          =0x8004CE0C,
         BEEP                            =0xCE0E,
 }IO_CMD_RFID;
 

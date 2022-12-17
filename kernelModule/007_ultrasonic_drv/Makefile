@@ -1,4 +1,4 @@
-obj-m += hcsr04_driver.o
+obj-m += hcsr04_water_capacity_driver.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules

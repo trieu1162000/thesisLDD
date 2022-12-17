@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 void Init(void)
 {
         printf("Init RFID_RC522\n");
-        rc522_fd = open("/dev/rfid_rc522_dev", O_RDWR);
+        rc522_fd = open("/dev/rfid_rc522", O_RDWR);
         if(rc522_fd == -1)
         {
                 printf("test: Error Opening rc522 file\n");
@@ -66,7 +66,7 @@ void MFRC522_ReadUnameAndUid(void)
 void MFRC522_ReadSerialNum()
 {
         char a[16] = {0};
-        ioctl(rc522_fd, GET_ID, a);
+        ioctl(rc522_fd, IOCTL_GET_ID, a);
         printf("UID = 0x%x%x%x%x \n", a[0],a[1],a[2],a[3]);
 }
 
