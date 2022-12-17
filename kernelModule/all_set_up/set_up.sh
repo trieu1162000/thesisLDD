@@ -1,6 +1,7 @@
 # !/bin/bash
 
-sudo insmod hcsr04_driver.ko
+sudo insmod hcsr04_obstacle_driver.ko
+sudo insmod hcsr04_water_capacity_driver.ko
 sudo insmod lcd_i2c_driver.ko
 sudo insmod tcrt5000_driver.ko
 sudo insmod pwm_driver.ko
