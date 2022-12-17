@@ -170,7 +170,7 @@ static irq_handler_t enc0_irq_handler(unsigned int irq, void *dev_id, struct pt_
 	}	
 	else
 	{
-		printk("STOPPED \t");
+		// printk("STOPPED \t");
 	}	
 
 	vel_index0 = vel_index0 + 1;
@@ -201,17 +201,17 @@ static irq_handler_t enc1_irq_handler(unsigned int irq, void *dev_id, struct pt_
 	
 	if(dir == CLOCKWISE)
 	{
-		printk("Rotated CLOCKWISE \t");
+		// printk("Rotated CLOCKWISE \t");
 		enc1_count++;
 	}
 	else if(dir == ANTI_CLOCKWISE)
 	{
-		printk("Rotated ANTI-CLOCKWISE \t");
+		// printk("Rotated ANTI-CLOCKWISE \t");
 		enc1_count--;
 	}	
 	else
 	{
-		printk("STOPPED \t");
+		// printk("STOPPED \t");
 	}		
 
 	vel_index1 = vel_index1 + 1;
@@ -347,7 +347,7 @@ static void __exit encoder_module_exit(void){
  *  @param filep A pointer to a file object (defined in linux/fs.h)
  */
 static int encoder_driver_open(struct inode *inodep, struct file *filep){
-	pr_info("Open encoder driver successfully.\n");
+	// pr_info("Open encoder driver successfully.\n");
 	return 0;
 }
  
@@ -375,7 +375,7 @@ long encoder_driver_ioctl(struct file *file, unsigned int ioctl_num, unsigned lo
  */
 static int encoder_driver_close(struct inode *inodep, struct file *filep)
 {
-	pr_info("Close encoder driver successfully.\n");   
+	// pr_info("Close encoder driver successfully.\n");   
 	return 0;
 }
  

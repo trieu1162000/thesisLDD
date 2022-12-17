@@ -13,15 +13,19 @@
 #include <linux/kernel.h>
 
 // Name of the device 
-#define DRIVER_NAME "pwm_driver" 
+#define DRIVER_NAME  "pwm_driver" 
 #define DRIVER_CLASS "pwm_driver_class"
+#define NUM_DEVICES  2
 
 // Period for pwm data (10 usecond <=> 100kHz)
-#define PWM_PERIOD 5000000
+#define PWM_PERIOD 1000000
 
 // Initial period for duty cycle (1%)
-#define PWM_DUTY_INITIAL 50000
+#define PWM_DUTY_INITIAL 10000
 
+// Struct that defines the pwm control abstraction
+struct pwm_device *pwm_left = NULL;
+struct pwm_device *pwm_right = NULL;
 
 /* Device data struct */
 struct pwm_motor{
@@ -58,10 +62,10 @@ static int pwm_driver_open(struct inode *device_file, struct file *instance)
 
         if(status)
         {
-                pr_info("%s: Cannot find the device in linked list.\n", __func__);
+                pr_err("%s: Cannot find the device in linked list.\n", __func__);
 		return status;
         }
-        pr_info("Open pwm driver successfully.\n");
+        // pr_info("Open pwm driver successfully.\n");
 
         instance->private_data = motor;
 
@@ -72,7 +76,7 @@ static int pwm_driver_open(struct inode *device_file, struct file *instance)
 // Same thing, but for close
 static int pwm_driver_close(struct inode *device_file, struct file *instance)
 {
-        pr_info("Close pwm driver successfully.\n");
+        // pr_info("Close pwm driver successfully.\n");
 
         return 0;
 }
@@ -110,43 +114,17 @@ static ssize_t pwm_driver_write(struct file *file, const char *user_buffer, size
         }
 
         // delta = to_copy - not_copied;
-        pr_info("%s: pwm value from user: %llu\n", __func__, pwm_value);
+
         return count;
 }
-
-
-static ssize_t pwm_driver_read(struct file *file, char *buf, size_t len,
-				loff_t *offs)
-{
-	/*This function for debug purpose */
-	struct pwm_motor *motor = file->private_data;
-	unsigned int duty;
-	unsigned int period;
-	struct pwm_state state;
-
-	pwm_get_state(motor->pwmdev, &state);
-	duty = state.duty_cycle;
-	period = state.period;
-
-	pr_info("duty circle is %u; period is %u, pwm_enable: %d\n", duty,
-		 period, motor->pwmdev->state.enabled);
-
-	// if (pwm_enable(motor->pwmdev)) {
-	// 	pr_err("Can not enable pwm device\n");
-	// }
-
-	// pr_info("pwm_enable: %d\n", motor->pwmdev->state.enabled);
-
-	return 0;
-}
+ 
 // Assuming pwm function is, for now, a char dev
 // We could instantiate even more operations here (like read)
 static struct file_operations fops = {
     .owner = THIS_MODULE,
     .open = pwm_driver_open,
     .release = pwm_driver_close,
-    .write = pwm_driver_write,
-    .read = pwm_driver_read,
+    .write = pwm_driver_write
 };
 
 static int pwm_driver_probe(struct platform_device *pdev)
@@ -169,10 +147,10 @@ static int pwm_driver_probe(struct platform_device *pdev)
         minor_number = motor->pwmdev->pwm;
         motor->dev_number = MKDEV(major_number, minor_number);
         pr_info("%s: A motor device is probed, major: %d, minor: %d\n", __func__, major_number, minor_number);
-        motor->device = device_create(pwm_driver_class, &pdev->dev, motor->dev_number, motor, "pwm_motor%d", minor_number);
+        motor->device = device_create(pwm_driver_class, &pdev->dev, motor->dev_number, motor, "motor%d", minor_number);
         if(motor->device == NULL)
         {
-                pr_info("%s: Can not create device.\n", __func__);
+                pr_err("%s: Can not create device.\n", __func__);
                 goto rem_device;
         }
 
@@ -257,7 +235,7 @@ static int __init pwm_driver_module_init(void)
         // with the alloc_chrdev_region function
 
         // Allocated new device number
-        if(alloc_chrdev_region(&dev_num, 0, 2, DRIVER_NAME) < 0){
+        if(alloc_chrdev_region(&dev_num, 0, NUM_DEVICES, DRIVER_NAME) < 0){
                 pr_err("%s: Error in allocation of device file number\n", __func__);
                 goto ClassError;
         }
@@ -281,7 +259,7 @@ static int __init pwm_driver_module_init(void)
                 class_destroy(pwm_driver_class);
 
         ClassError:
-                unregister_chrdev(dev_num, DRIVER_NAME);
+                unregister_chrdev_region(dev_num, NUM_DEVICES);
 
                 return -1;
 }

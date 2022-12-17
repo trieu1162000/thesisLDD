@@ -58,7 +58,7 @@ static struct file_operations fops =
 */ 
 static int hcsr04_driver_open(struct inode *inode, struct file *file)
 {
-  pr_info("Open hcsr04_obstacle driver successfully.\n");
+//   pr_info("Open hcsr04_obstacle driver successfully.\n");
   return 0;
 }
 
@@ -67,7 +67,7 @@ static int hcsr04_driver_open(struct inode *inode, struct file *file)
 */
 static int hcsr04_driver_close(struct inode *inode, struct file *file)
 {
-  pr_info("Close hcsr04_obstacle driver successfully.\n");
+//   pr_info("Close hcsr04_obstacle driver successfully.\n");
   return 0;
 }
 

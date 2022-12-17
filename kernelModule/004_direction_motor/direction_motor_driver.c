@@ -40,7 +40,7 @@ void set_direction(int direction)
 			// MOTOR RIGHT
 			gpio_set_value(gpio_motor_in3, 0);
 			gpio_set_value(gpio_motor_in4, 1);
-			pr_info("%s: FORWARD.\n", __func__);	
+			// pr_info("%s: FORWARD.\n", __func__);	
 			break;	
 
       	case BACKWARD:
@@ -50,7 +50,7 @@ void set_direction(int direction)
 			// MOTOR RIGHT
 			gpio_set_value(gpio_motor_in3, 1);
 			gpio_set_value(gpio_motor_in4, 0);
-			pr_info("%s: BACKWARD.\n", __func__);
+			// pr_info("%s: BACKWARD.\n", __func__);
 			break;
 
       	case TURN_LEFT:
@@ -60,7 +60,7 @@ void set_direction(int direction)
 			// MOTOR RIGHT
 			gpio_set_value(gpio_motor_in3, 0);
 			gpio_set_value(gpio_motor_in4, 1);
-	      	pr_info("%s: TURN_LEFT.\n", __func__);
+	      	// pr_info("%s: TURN_LEFT.\n", __func__);
          	break;
 
       	case TURN_RIGHT:
@@ -70,14 +70,14 @@ void set_direction(int direction)
 			// MOTOR RIGHT
 			gpio_set_value(gpio_motor_in3, 1);
 			gpio_set_value(gpio_motor_in4, 0);
-	      	pr_info("%s: TURN_RIGHT.\n", __func__);
+	      	// pr_info("%s: TURN_RIGHT.\n", __func__);
          	break;
       	case STOP:
 			gpio_set_value(gpio_motor_in1, 0);
 			gpio_set_value(gpio_motor_in2, 0);
 			gpio_set_value(gpio_motor_in3, 0);
 			gpio_set_value(gpio_motor_in4, 0);
-			pr_info("%s: STOP.\n", __func__);
+			// pr_info("%s: STOP.\n", __func__);
 			break;
       
       	default:
@@ -95,7 +95,7 @@ void set_direction(int direction)
  *  This will only increment the number_of_opens counter in this case.
  */
 static int direction_motor_open(struct inode *inodep, struct file *filep){
-   pr_info("Open direction_motor driver successfully.\n");
+//    pr_info("Open direction_motor driver successfully.\n");
    return 0;
 }
  
@@ -121,7 +121,7 @@ static ssize_t direction_motor_write(struct file *filep, const char *user_buffer
 	} 
    *offset = len;
 
-   pr_info("%s: Valid input = %llu\n", __func__, direction_value);
+//    pr_info("%s: Valid input = %llu\n", __func__, direction_value);
 
    set_direction(direction_value);
 
@@ -132,7 +132,7 @@ static ssize_t direction_motor_write(struct file *filep, const char *user_buffer
  *  the userspace program
  */
 static int direction_motor_close(struct inode *inodep, struct file *filep){
-   pr_info("Close direction_motor driver successfully.\n");
+//    pr_info("Close direction_motor driver successfully.\n");
    return 0;
 }
  

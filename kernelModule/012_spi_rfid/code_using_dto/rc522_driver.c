@@ -148,7 +148,7 @@ static char rc522_loop_work(uint opnd)
 static int rc522_open(struct inode *inode,struct file *filp)
 {
 	InitRc522();
-	pr_info("Open rfid_rc522 driver successfully.\n");
+	// pr_info("Open rfid_rc522 driver successfully.\n");
 	return 0;
 }
 
@@ -194,7 +194,7 @@ static ssize_t rc522_write (struct file *filp, const char *buf, size_t count, lo
 
 static int rc522_release(struct inode *inode,struct file *filp)
 {
-	pr_info("Close rfid_rc522 driver successfully.\n");
+	// pr_info("Close rfid_rc522 driver successfully.\n");
 	return 0;
 }
 

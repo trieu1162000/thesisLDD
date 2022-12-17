@@ -69,8 +69,8 @@ static ssize_t tcrt5000_read(struct file *file, char *user_buffer, size_t count,
 	else{
 		sprintf(string_value_for_pid, "%d", int_value_for_pid);
 	}
-	pr_info("%s: Value read raw: %s", __func__, data_read_raw_string);
-	pr_info("%s: Value for pid: %s", __func__, string_value_for_pid);
+	// pr_info("%s: Value read raw: %s", __func__, data_read_raw_string);
+	// pr_info("%s: Value for pid: %s", __func__, string_value_for_pid);
 
 	/* Get amount of data to copy */
 	length = strlen(string_value_for_pid);
@@ -81,7 +81,7 @@ static ssize_t tcrt5000_read(struct file *file, char *user_buffer, size_t count,
 
 	/* Calculate data */
 	delta = to_copy - not_copied;
-	pr_info("Read tcrt5000 driver successfully.\n");
+	// pr_info("Read tcrt5000 driver successfully.\n");
 
 	return 0;
 }
@@ -90,7 +90,7 @@ static ssize_t tcrt5000_read(struct file *file, char *user_buffer, size_t count,
  * @brief This function is called, when the device file is opened
  */
 static int tcrt5000_open(struct inode *device_file, struct file *instance) {
-	pr_info("Open tcrt5000 driver successfully.\n");
+	// pr_info("Open tcrt5000 driver successfully.\n");
 	return 0;
 }
 
@@ -98,7 +98,7 @@ static int tcrt5000_open(struct inode *device_file, struct file *instance) {
  * @brief This function is called, when the device file is opened
  */
 static int tcrt5000_close(struct inode *device_file, struct file *instance) {
-	pr_info("Close tcrt500 driver successfully.\n");
+	// pr_info("Close tcrt500 driver successfully.\n");
 	return 0;
 }
 

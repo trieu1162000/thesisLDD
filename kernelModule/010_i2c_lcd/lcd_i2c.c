@@ -151,7 +151,7 @@ ATTRIBUTE_GROUPS(hd44780_device);
 static int hd44780_file_open(struct inode *inode, struct file *filp)
 {
 	filp->private_data = container_of(inode->i_cdev, struct hd44780, cdev);
-	pr_info("Open lcd_i2c driver successfully.\n");
+	// pr_info("Open lcd_i2c driver successfully.\n");
 
 	return 0;
 }
@@ -160,7 +160,7 @@ static int hd44780_file_release(struct inode *inode, struct file *filp)
 {
 	struct hd44780 *lcd = filp->private_data;
 	hd44780_flush(lcd);
-	pr_info("Close lcd_i2c driver successfully.\n");
+	// pr_info("Close lcd_i2c driver successfully.\n");
 
 	return 0;
 }
@@ -183,7 +183,7 @@ static ssize_t hd44780_file_write(struct file *filp, const char __user *buf, siz
 	}
 
 	hd44780_write(lcd, lcd->buf, to_copy);
- 	pr_info("Write %zu bytes receive from user space to lcd.\n",to_copy);	
+ 	// pr_info("Write %zu bytes receive from user space to lcd.\n",to_copy);	
 	
 	mutex_unlock(&lcd->lock);
 

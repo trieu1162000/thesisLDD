@@ -138,13 +138,13 @@ long ina219_driver_ioctl(struct file *file, unsigned int ioctl_num, unsigned lon
 
 static int ina219_driver_open(struct inode *deviceFile, struct file *instance)
 {
-	pr_info("Open ina219_i2c driver successfully.\n");
+	// pr_info("Open ina219_i2c driver successfully.\n");
 	return 0;
 }
 
 static int ina219_driver_close(struct inode *deviceFile, struct file *instance) 
 {
-	pr_info("Close ina219_i2c driver successfully.\n");
+	// pr_info("Close ina219_i2c driver successfully.\n");
        return 0;
 }
 
