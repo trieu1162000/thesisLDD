@@ -124,7 +124,7 @@ char direction_buf[MAX_BUF_SIZE];
 char left_speed_buf[MAX_BUF_SIZE];
 char right_speed_buf[MAX_BUF_SIZE];
 float p_part, i_part, d_part;
-float k_p = 0.03, k_i =0.00005, k_d =0;
+float k_p = 0.06, k_i =0.00005, k_d =0;
 int error, pre_error, pre_pre_error, pre_out;
 float out_line;
 struct timeval start, end;

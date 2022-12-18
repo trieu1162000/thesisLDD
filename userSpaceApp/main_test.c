@@ -56,12 +56,12 @@ int main(int argc, char** argv)
         printf("Speed left: %d\n", speed_left_value);
         ioctl(encoder_fd, IOCTL_SPEED_RIGHT, &speed_right_value);
         printf("Speed right: %d\n", speed_right_value);
-        ioctl(tcrt5000_fd, IOCTL_READ_TCRT5000, &line_measure_value);
+        // ioctl(tcrt5000_fd, IOCTL_READ_TCRT5000, &line_measure_value);
         // printf("Value: %d\n", line_measure_value); 
-        pid_line();
-        write(motor_left_fd, left_speed_buf, 2);
-        write(motor_right_fd, right_speed_buf, 2);
-        printf("Left value: %d, right value: %d\n", left_motor_speed, right_motor_speed);
+        // pid_line();
+        // write(motor_left_fd, left_speed_buf, 2);
+        // write(motor_right_fd, right_speed_buf, 2);
+        // printf("Left value: %d, right value: %d\n", left_motor_speed, right_motor_speed);
         // if(line_measure_value == 1000)
         // {
         //         write(motor_left_fd, "60;666", 2);
@@ -100,16 +100,16 @@ void pid_line()
     error = line_measure_value - 1000;
     out_line = k_p*error + k_d*(error - pre_error);
     pre_error = error;
-    left_motor_speed = (int) (75.0 + out_line);
-    right_motor_speed = (int) (66.0 - out_line);
-    if(left_motor_speed < 61)
-        left_motor_speed = 61;
+    left_motor_speed = (int) (30.0 + out_line);
+    right_motor_speed = (int) (28.0 - out_line);
+    if(left_motor_speed < 3)
+        left_motor_speed = 3;
     else if(left_motor_speed > 99)
         left_motor_speed = 99;
-    if(left_motor_speed < 57)
-        left_motor_speed = 57;
-    else if(left_motor_speed > 95)
-        left_motor_speed = 95;
+    if(left_motor_speed < 1)
+        left_motor_speed = 1;
+    else if(left_motor_speed > 97)
+        left_motor_speed = 97;
     sprintf(left_speed_buf, "%d", left_motor_speed);
     sprintf(right_speed_buf, "%d", right_motor_speed);
 }
