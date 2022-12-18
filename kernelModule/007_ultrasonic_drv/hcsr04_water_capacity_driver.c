@@ -20,7 +20,7 @@
 #define IRQF_DISABLED 		0
 #define DEV_MEM_SIZE 		512
 #define DRIVER_NAME         "hcsr04_w_capacity"
-#define DRIVER_CLASS        "hcsr04_class"
+#define DRIVER_CLASS        "hcsr04_w_capacity_class"
 
 char device_buffer[DEV_MEM_SIZE];
 static dev_t hcsr04_dev;

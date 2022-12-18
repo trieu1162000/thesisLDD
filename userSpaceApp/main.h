@@ -23,6 +23,7 @@
 
 #define BLOCK_SIZE 16
 #define MAX_BUF_SIZE 256
+#define ENCODER_FILE "/dev/encoder"
 #define UART_FILE "/dev/serial0"
 #define RFID_FILE "/dev/rfid_rc522"
 #define TCRT5000_FILE "/dev/tcrt5000"
@@ -36,6 +37,7 @@
 #define IOCTL_BUS_VOLTAGE _IOWR(156, 0, int16_t *)
 #define IOCTL_SPEED_LEFT _IOWR(158, 0, int16_t *)
 #define IOCTL_SPEED_RIGHT _IOWR(158, 1, int16_t *)
+#define IOCTL_READ_TCRT5000 _IOWR(159, 0, int16_t *)
 #define IOCTL_GET_ID 0x8004CE0C
 
 uint8_t tag_id[16][4] = {{0x88, 0x1d, 0xf6, 0x31},
@@ -60,7 +62,7 @@ enum direction{STOP, FORWARD, BACKWARD, TURN_LEFT, TURN_RIGHT};
 enum orient{N, S, W, E};
 pthread_t send_thread_id, receive_thread_id, main_thread_id;
 pthread_attr_t attr_send_thread, attr_receive_thread;         /* thread attribute structures */
-int rfid_rc522_fd, i2c_lcd_fd, hcsr04_obstacle_fd, uart_fd, tcrt5000_fd,\
+int encoder_fd, rfid_rc522_fd, i2c_lcd_fd, hcsr04_obstacle_fd, uart_fd, tcrt5000_fd,\
     motor_right_fd, motor_left_fd, direction_motor_fd, ina219_fd, hcsr04_w_capacity_fd;
 int left_motor_speed, right_motor_speed;
 int policy;
@@ -112,6 +114,8 @@ uint8_t path_run_back[32];
 uint start_task_node = -1;
 int line_measure_value;
 int velocity_initial = 0;
+int speed_left_value = 0;
+int speed_right_value = 0;
 int ina219_value = 0;
 char hcsr04_w_capacity_buf[MAX_BUF_SIZE];
 char hcsr04_obstacle_buf[MAX_BUF_SIZE];
@@ -120,8 +124,9 @@ char direction_buf[MAX_BUF_SIZE];
 char left_speed_buf[MAX_BUF_SIZE];
 char right_speed_buf[MAX_BUF_SIZE];
 float p_part, i_part, d_part;
-float k_p = 0.04, k_i =0.00005, k_d =0.05;
-int error, pre_error, pre_pre_error, out_line, pre_out;
+float k_p = 0.03, k_i =0.00005, k_d =0;
+int error, pre_error, pre_pre_error, pre_out;
+float out_line;
 struct timeval start, end;
 float ts;
 char rx_data[256];

@@ -800,8 +800,8 @@ void pid_line(/*int line_measure_value, int velocity*/)
         
         if(line_measure_value == 1000)
         {
-                write(motor_left_fd, "70", 2);
-                write(motor_right_fd, "75", 2);
+                write(motor_left_fd, "60", 2);
+                write(motor_right_fd, "60", 2);
         }
 
         else if(line_measure_value == 1250) //01111 

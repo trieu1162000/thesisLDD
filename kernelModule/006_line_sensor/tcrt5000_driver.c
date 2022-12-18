@@ -9,6 +9,8 @@
 #define DRIVER_NAME         "tcrt5000"
 #define DRIVER_CLASS        "tcrt5000_class"
 #define GPIO_BASE_NUM       22
+#define MAGIC_NUM 			159
+#define IOCTL_READ_TCRT5000 _IOWR(MAGIC_NUM, 0, int16_t *)
 
 /* Variables for device and device class */
 static dev_t tcrt5000_dev;
@@ -44,6 +46,23 @@ void tcrt5000_gpio_input_mode(uint gpio_num)
 	if(gpio_direction_input(gpio_num)) {
 		pr_err("%s:Can not set GPIO %d to input.\n", __func__, gpio_num);
 	}
+}
+
+long tcrt5000_ioctl(struct file *file, unsigned int ioctl_num, unsigned long ioctl_param)
+{
+	uint data_read_raw_int[5];
+	int i = 0;
+	switch(ioctl_num)
+	{
+		case IOCTL_READ_TCRT5000:
+			for(i = 0; i<5; i++){
+				data_read_raw_int[i] = gpio_get_value(GPIO_BASE_NUM+i);
+			}
+			put_user(read_value_for_pid(data_read_raw_int), (int16_t*)ioctl_param);
+			break;
+	
+	}
+	return 0;
 }
 
 /**
@@ -107,6 +126,7 @@ static struct file_operations fops = {
 	.open = tcrt5000_open,
 	.release = tcrt5000_close,
 	.read = tcrt5000_read,
+	.unlocked_ioctl = tcrt5000_ioctl,
 };
 
 /**
