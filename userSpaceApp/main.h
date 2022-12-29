@@ -24,7 +24,7 @@
 #define BLOCK_SIZE 16
 #define MAX_BUF_SIZE 256
 #define ENCODER_FILE "/dev/encoder"
-#define UART_FILE "/dev/serial0"
+#define UART_FILE "/dev/uart_cc2530_device"
 #define RFID_FILE "/dev/rfid_rc522"
 #define TCRT5000_FILE "/dev/tcrt5000"
 #define PWM_LEFT_FILE "/dev/pwm_motor0"
@@ -34,6 +34,7 @@
 #define HCSR04_O_FILE "/dev/hcsr04_obstacle"
 #define HCSR04_WC_FILE "/dev/hcsr04_w_capacity"
 #define INA219_FILE "/dev/ina219"
+#define PUMP_FILE "/dev/pump"
 #define IOCTL_BUS_VOLTAGE _IOWR(156, 0, int16_t *)
 #define IOCTL_SPEED_LEFT _IOWR(158, 0, int16_t *)
 #define IOCTL_SPEED_RIGHT _IOWR(158, 1, int16_t *)
@@ -60,100 +61,109 @@ uint8_t tag_id[16][4] = {{0x88, 0x1d, 0xf6, 0x31},
 enum selected_mode{CHARGING, AUTO, MANUAL};
 enum direction{STOP, FORWARD, BACKWARD, TURN_LEFT, TURN_RIGHT};
 enum orient{N, S, W, E};
-pthread_t send_thread_id, receive_thread_id, main_thread_id;
-pthread_attr_t attr_send_thread, attr_receive_thread;         /* thread attribute structures */
-int encoder_fd, rfid_rc522_fd, i2c_lcd_fd, hcsr04_obstacle_fd, uart_fd, tcrt5000_fd,\
+
+pthread_t send_thread_id, receive_thread_id, main_thread_id, auto_thread_id, manual_thread_id;
+pthread_attr_t attr_send_thread, attr_receive_thread, attr_auto_thread, attr_manual_thread;         /* thread attribute structures */
+
+int pump_fd, encoder_fd, rfid_rc522_fd, i2c_lcd_fd, hcsr04_obstacle_fd, uart_fd, tcrt5000_fd,\
     motor_right_fd, motor_left_fd, direction_motor_fd, ina219_fd, hcsr04_w_capacity_fd;
-int left_motor_speed, right_motor_speed;
+
 int policy;
 int priority_min, priority_max;      /* for range of priority levels */
 struct sched_param param;            /* scheduling structure for thread attributes */
-int control_motor = STOP;
-int robot_mode = 0;
-
-// Send
-// robot_info: 0xA0
-// auto_info: 0xA1
-
-// Receive
-// mode: 0xB0
-// path_run: 0xC0
-// header - functional code - node0, dir0 - noden, dirn - nodeG
-// path_run_back: 0xC1
-// start_task_node: 0xC2
-
-// direction: 0xD0
-// 
 
 /* For send purpose */
-typedef struct{
-	uint16_t header;
-	uint8_t functional_code; // 
-    uint8_t current_node;
-    uint8_t current_orient;
-    uint8_t obstacle_distance;
-    // bool task_incomplete; // when robot is in low battery and low water capacity
-    uint8_t task_complete;
-    uint16_t EOFrame;
-}__attribute__((packed)) auto_info;
-auto_info send_auto_info;
+// typedef struct{
+// 	uint16_t header;
+// 	uint8_t functional_code; // 0xA1
+//     uint8_t length;
+//     uint8_t current_node;
+//     uint8_t current_orient;
+//     uint8_t obstacle_flag;
+//     uint8_t task_complete_flag;
+//     uint16_t EOFrame;
+// }__attribute__((packed)) auto_info;
+// auto_info send_auto_info;
 
 typedef struct{
 	uint16_t header;
-	uint8_t functional_code; // 0x01
+	uint8_t functional_code; // 0xA0
+    // uint8_t length;
 	uint8_t velocity;
     uint8_t battery;
     uint8_t water_capacity; 
+    uint8_t current_node;
+    uint8_t current_orient;
 	uint16_t EOFrame;
 }__attribute__((packed)) robot_info;
 robot_info send_robot_info;
 
+typedef struct{
+    uint16_t header;
+    uint8_t functional_code;
+    uint8_t data;
+    uint16_t EOFrame;
+}__attribute__((packed)) data_info;
+data_info send_data_info;
 
-uint8_t path_run[32];
-uint8_t path_run_back[32];
+int index_start_data;
+int index_stop_data;
+int back_complete_flag = 0;
+int task_complete_flag = 0;
+int obstacle_flag = 0;
+int send_ACK_task_flag = 0;
+int send_ACK_back_flag = 0;
+int reserve_last_node_flag = 0;
+int control_motor = STOP;
+int control_pump = 0; // 0 is OFF, 1 is ON
+int left_motor_speed = 0;
+int right_motor_speed = 0;
+int robot_mode = 0;
 uint start_task_node = -1;
-int line_measure_value;
+int line_measure_value = 0;
 int velocity_initial = 0;
 int speed_left_value = 0;
 int speed_right_value = 0;
 int ina219_value = 0;
+int rx_data_len = 0;
+int receiver_flag = 0;
+int run_task_flag = 0;
+int run_back_flag = 0;
+uint8_t pre_orient = 'N';
+uint8_t pre_node = 15;
+int path_run_back_count = 0, path_run_count = 0;
+int rfid_flag = 0;
+int low_battery_flag = 0;
+int low_water_flag = 0;
+bool back_to_start = false;
+float k_p = 0.2;
+float k_d = 3.5;
+float k_i = 0.0;
+int error = 0, pre_error = 0, pre_pre_error = 0;
+float out_line = 0;
+
+// uint8_t data_receive;
+uint8_t path_run[32];
+uint8_t path_run_back[32];
+uint8_t way_to_go;
 char hcsr04_w_capacity_buf[MAX_BUF_SIZE];
 char hcsr04_obstacle_buf[MAX_BUF_SIZE];
-char tcrt5000_buf[MAX_BUF_SIZE];
 char direction_buf[MAX_BUF_SIZE];
 char left_speed_buf[MAX_BUF_SIZE];
 char right_speed_buf[MAX_BUF_SIZE];
-float p_part, i_part, d_part;
-float k_p = 0.06, k_i =0.00005, k_d =0;
-int error, pre_error, pre_pre_error, pre_out;
-float out_line;
-struct timeval start, end;
-float ts;
-char rx_data[256];
-int rx_data_len;
-char receive_data, pre_receive_data;
-int flag_receiver = 0;
-int flag_run_back = 0;
-uint8_t pre_orient = 'N';
-uint8_t pre_node = -1;
-int path_run_back_count, path_run_count;
-int i = 0;
-uint8_t way_to_go;
-char* user_id;
-int rfid_flag;
-int low_battery_flag = 0;
-int low_water_flag = 0;
+uint8_t rx_data[256];
+
 void pid_line();
+
+// Function for UART
 int set_baudrate(int fd, speed_t speed);
 int get_baudrate(int baudrate);
-bool back_to_start = false;
+
 void turn_left();
 void turn_right();
-// void reserve_straight();
 int get_node();
 void stop();
 int compare_tag(uint8_t *tag_read, uint8_t *tag_compare);
-
 
 
 #endif 

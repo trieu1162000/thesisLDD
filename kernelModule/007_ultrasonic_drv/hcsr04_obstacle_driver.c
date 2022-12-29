@@ -19,6 +19,8 @@
 #define HCSR04_TRIGGER		27	
 #define IRQF_DISABLED 		0
 #define DEV_MEM_SIZE 		512
+#define MAGIC_NUM 			160
+#define IOCTL_OBSTACLE		_IOWR(MAGIC_NUM, 0, int16_t *)
 #define DRIVER_NAME         "hcsr04_obstacle"
 #define DRIVER_CLASS        "hcsr04_obstacle_class"
 
@@ -42,6 +44,7 @@ static int hcsr04_driver_open(struct inode *inode, struct file *file);
 static int hcsr04_driver_close(struct inode *inode, struct file *file);
 static ssize_t hcsr04_driver_read(struct file *filp, 
                 char __user *buf, size_t len,loff_t * off);
+long hcsr04_driver_ioctl(struct file *file, unsigned int ioctl_num, unsigned long ioctl_param);
 /******************************************************/
 
 //File operation structure 
@@ -51,7 +54,43 @@ static struct file_operations fops =
 	.read           = hcsr04_driver_read,
 	.open           = hcsr04_driver_open,
 	.release        = hcsr04_driver_close,
+	.unlocked_ioctl = hcsr04_driver_ioctl,
 };
+
+long hcsr04_driver_ioctl(struct file *file, unsigned int ioctl_num, unsigned long ioctl_param)
+{
+	int counter;
+	int distance;
+
+	// Send a 10us impulse to the TRIGGER line
+	gpio_set_value(HCSR04_TRIGGER,1);
+	udelay(10);
+	gpio_set_value(HCSR04_TRIGGER,0);
+	valid_value=0;
+	counter=0;
+
+	/* 
+	** When we trigger the HCSR04_TRIGGER pin for 10us, it will call IRQ handler
+	** and then we will wait for the handler set valid_value to 1.
+	*/
+	while (valid_value==0) {
+		// Out of range
+		if (++counter>23200) {
+			return -1;
+		}
+		udelay(1);
+	}
+
+	distance = (int)(ktime_to_us(ktime_sub(echo_end,echo_start)))/58;
+	
+	switch(ioctl_num)
+	{
+			put_user(distance, (int16_t*)ioctl_param);
+			break;
+	
+	}
+	return 0;
+}
 
 /*
 ** This function will be called when we open the Device file
@@ -100,18 +139,20 @@ static ssize_t hcsr04_driver_read(struct file *filp,
 	}
 
 	distance = (int)(ktime_to_us(ktime_sub(echo_end,echo_start)))/58;
-
+	pr_info("Distance: %d", distance);
 	sprintf(device_buffer, "%d", distance);
 	len = strlen(device_buffer);
 
+	pr_info("Distance 1: %s", device_buffer);
 	/* copy_to_user(void *dst, const void *src, unsigned int size) */
 	if( copy_to_user(buf, device_buffer, len) > 0)
 	{
 		pr_err("%s: Not all the bytes have been copied to user\n", __func__);
 	}
 
+
 	// pr_info("%s: Distance = %d\n",__func__, distance);
-	return 0;
+	return len;
 }
 
 /*

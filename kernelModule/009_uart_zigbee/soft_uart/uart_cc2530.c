@@ -12,8 +12,8 @@
 #include <linux/uaccess.h>
 
 static int BAUDRATE = 9600;
-static int GPIO_TX = 22;
-static int GPIO_RX = 23;
+static int GPIO_TX = 14;
+static int GPIO_RX = 15;
 
 #define TX_BUFFER_SIZE	256
 #define RX_BUFFER_SIZE	256
@@ -177,7 +177,7 @@ static int __init uart_cc2530_module_init(void)
 	}
 
 	/* Set GPIO_TX direction */
-	if(gpio_direction_output(GPIO_TX, 0)) {
+	if(gpio_direction_output(GPIO_TX, 1)) {
 		pr_info("%s: Can not set GPIO_TX to output.\n", __func__);
 		gpio_free(GPIO_TX);
 	}
@@ -221,7 +221,8 @@ static int __init uart_cc2530_module_init(void)
 		pr_err( "%s: Cannot create the device.\n", __func__);
 		goto rem_device;
 	}
-
+	gpio_export(GPIO_TX, false);
+	gpio_export(GPIO_RX, false);
 	hrtimer_init(&hrtimer_tx, CLOCK_REALTIME, HRTIMER_MODE_REL);
 	hrtimer_tx.function = FunctionTimerTX;
 	
@@ -253,7 +254,9 @@ rem_unreg:								/* Free allocated region */
 	hrtimer_cancel(&hrtimer_rx);
 
 	/* Restore default GPIO function and free them */
-	gpio_set_value(GPIO_TX, 0);
+	gpio_set_value(GPIO_TX, 1);
+	gpio_unexport(GPIO_TX);
+	gpio_unexport(GPIO_RX);
 	gpio_free(GPIO_RX);
 	gpio_free(GPIO_TX);
 

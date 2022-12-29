@@ -19,7 +19,7 @@ static struct cdev tcrt5000_cdev;
 
 uint read_value_for_pid(uint *data_int)
 {
-	return ((data_int[0]*0 + data_int[1]*500 + data_int[2]*1000 + data_int[3]*1500 + data_int[4]*2000)/(data_int[0] + data_int[1] + data_int[2] + data_int[3] + data_int[4]));
+	return ((data_int[0]*1000 + data_int[1]*2000 + data_int[2]*3000 + data_int[3]*4000 + data_int[4]*5000)/(data_int[0] + data_int[1] + data_int[2] + data_int[3] + data_int[4]));
 }
 
 int tcrt5000_init_gpio(uint gpio_num)

@@ -38,7 +38,6 @@ int main(int argc, char** argv)
     }
 
 
-    memset(tcrt5000_buf, 0, MAX_BUF_SIZE);
     memset(direction_buf, 0, MAX_BUF_SIZE);
     memset(left_speed_buf, 0, MAX_BUF_SIZE);
     memset(right_speed_buf, 0, MAX_BUF_SIZE);
@@ -46,12 +45,13 @@ int main(int argc, char** argv)
     sprintf(direction_buf, "%d", FORWARD);
     write(direction_motor_fd, direction_buf, 1);
 
-    write(motor_left_fd, "00", 2);
-    write(motor_right_fd, "00", 2);
-    // write(motor_left_fd, "82", 2);
+    // write(motor_left_fd, "75", 2);
+    // write(motor_right_fd, "69", 2);
+    // write(motor_left_fd, "72", 2);
     while(1)
     {
-        sleep(2);
+        sleep(1);
+        // // usleep(10000);
         ioctl(encoder_fd, IOCTL_SPEED_LEFT, &speed_left_value);
         printf("Speed left: %d\n", speed_left_value);
         ioctl(encoder_fd, IOCTL_SPEED_RIGHT, &speed_right_value);
@@ -64,29 +64,29 @@ int main(int argc, char** argv)
         // printf("Left value: %d, right value: %d\n", left_motor_speed, right_motor_speed);
         // if(line_measure_value == 1000)
         // {
-        //         write(motor_left_fd, "60;666", 2);
+        //         write(motor_left_fd, "69;666", 2);
         //         write(motor_right_fd, "57", 2);
         // }
 
         // else if(line_measure_value == 1250) //11110 
         // {
-        //         write(motor_left_fd, "70", 2);
+        //         write(motor_left_fd, "69", 2);
         //         write(motor_right_fd, "0", 2);
         
         // }
         // else if(line_measure_value == 1125 || line_measure_value == 1500 ) //11101 //11100
         // {
-        //         write(motor_left_fd, "70", 2);
+        //         write(motor_left_fd, "69", 2);
         //         write(motor_right_fd, "55", 2);
         // }
 
-        // else if(line_measure_value == 875 || line_measure_value == 500) // 10111 00111
+        // else if(line_measure_value == 881 || line_measure_value == 500) // 10111 00111
         // {
         //         write(motor_left_fd, "57", 2);
         //         write(motor_right_fd, "72", 2);
         // }
 
-        // else if(line_measure_value == 750) // 01111
+        // else if(line_measure_value == 810) // 01111
         // {
         //         write(motor_left_fd, "0", 2);
         //         write(motor_right_fd, "72", 2);
@@ -95,21 +95,50 @@ int main(int argc, char** argv)
     return 0;
 }
 
+// 77 0.2 0.05
 void pid_line()
 {
-    error = line_measure_value - 1000;
+    error = line_measure_value - 3000;
     out_line = k_p*error + k_d*(error - pre_error);
     pre_error = error;
-    left_motor_speed = (int) (30.0 + out_line);
-    right_motor_speed = (int) (28.0 - out_line);
-    if(left_motor_speed < 3)
-        left_motor_speed = 3;
-    else if(left_motor_speed > 99)
-        left_motor_speed = 99;
-    if(left_motor_speed < 1)
-        left_motor_speed = 1;
+    // if(out_line > 69)
+    //     out_line = 69;
+    // if(out_line<-69)
+    //     out_line = -69;
+    left_motor_speed = (int) (86.0 + out_line );
+    right_motor_speed = (int) (86.0 - out_line + 2.0);
+    if(left_motor_speed > 0 && right_motor_speed > 0)
+    {
+        sprintf(direction_buf, "%d", FORWARD);
+        write(direction_motor_fd, direction_buf, 1);
+    }
+
+    if(left_motor_speed < 0)
+    {
+        left_motor_speed = 0;
+        // if(left_motor_speed < -97)
+        //     left_motor_speed = 97;
+        // else 
+        //     left_motor_speed = - left_motor_speed;
+        // sprintf(direction_buf, "%d", TURN_RIGHT);
+        // write(direction_motor_fd, direction_buf, 1);
+    }
     else if(left_motor_speed > 97)
         left_motor_speed = 97;
+
+    if(right_motor_speed < 0)
+    {
+        right_motor_speed = 0;
+        // if(right_motor_speed < -99)
+        //     right_motor_speed = 99;
+        // else 
+        //     right_motor_speed = - right_motor_speed;
+        // sprintf(direction_buf, "%d", TURN_LEFT);
+        // write(direction_motor_fd, direction_buf, 1);
+    }
+    else if(right_motor_speed > 99)
+        right_motor_speed = 99;
+
     sprintf(left_speed_buf, "%d", left_motor_speed);
     sprintf(right_speed_buf, "%d", right_motor_speed);
 }

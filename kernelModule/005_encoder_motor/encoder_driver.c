@@ -357,11 +357,11 @@ long encoder_driver_ioctl(struct file *file, unsigned int ioctl_num, unsigned lo
        switch(ioctl_num)
        {
 			case IOCTL_SPEED_LEFT:
-					put_user(get_speed(velocity_buffer1),(int16_t*)ioctl_param);
+					put_user(get_speed(velocity_buffer0),(int16_t*)ioctl_param);
 					break;
 			
 			case IOCTL_SPEED_RIGHT:
-					put_user(get_speed(velocity_buffer0),(int16_t*)ioctl_param);
+					put_user(get_speed(velocity_buffer1),(int16_t*)ioctl_param);
 					break;
        }
        return 0;

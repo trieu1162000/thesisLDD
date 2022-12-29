@@ -18,10 +18,10 @@
 #define NUM_DEVICES  2
 
 // Period for pwm data (10 usecond <=> 100kHz)
-#define PWM_PERIOD 200000
+#define PWM_PERIOD 5000000
 
 // Initial period for duty cycle (1%)
-#define PWM_DUTY_INITIAL 2000
+#define PWM_DUTY_INITIAL 50000
 
 // Struct that defines the pwm control abstraction
 struct pwm_device *pwm_left = NULL;
